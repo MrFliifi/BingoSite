@@ -42,8 +42,7 @@ const options = {
 // Creates Socket.io Object and links it to the express HTTP-Server and the cors options that accepts our "frontAdress" as a valid origin
 const io = require("socket.io")(httpServer, options);
 
-/* // Export the io instance for use in other files
-module.exports = io; */
+
 // imports the logik back to the server.js file
 require("../socket/socket-events.js")(io);
 

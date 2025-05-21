@@ -1,4 +1,4 @@
-// File for alle the Socket.io Events
+// File for all the Socket.io Events
 
 
 // Every  Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
