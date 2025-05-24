@@ -5,6 +5,7 @@
 module.exports = function (io) {
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
+    
     socket.on("buttonPressed", () => {console.log("Button Pressed");});
 
     socket.on("disconnect", () => {

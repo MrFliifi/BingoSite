@@ -6,12 +6,11 @@ function bingoSite(){
         socket.emit("buttonPressed");
     }
     let buttonName = ["Enis 1", "Enis 2", "Enis 3", "Enis 4", "Enis 5", "Enis 6", "Enis 7", 
-                        "Enis 8", "Enis 9", "Enis 10", "Enis 11", "Enis 12", "Enis 13", 
-                        "Enis 14", "Enis 15", "Enis 16", "Enis 17", "Enis 18", "Enis 19", 
-                        "Enis 20", "Enis 21", "Enis 22", "Enis 23", "Enis 24", "Enis 25"];
+                      "Enis 8", "Enis 9", "Enis 10", "Enis 11", "Enis 12", "Enis 13", 
+                      "Enis 14", "Enis 15", "Enis 16", "Enis 17", "Enis 18", "Enis 19", 
+                      "Enis 20", "Enis 21", "Enis 22", "Enis 23", "Enis 24", "Enis 25"];
     return (
     <div>
-
         <div className="Überschrift"> 
             Players:
         </div>
