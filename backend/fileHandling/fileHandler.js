@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-
+/* TODO: instances need to be terminated 
+         write to file
+         delete file
+         remove single entries
+*/
 
 class fileHandler{
     // needed to acces files in any way
@@ -50,6 +54,10 @@ class fileHandler{
     }
 }
 // exampte for how to use the class. also for testing purposes
-const fl = new fileHandler("../fileHandling/saveFileLocation", "testFile");
+
+/* const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
 fl.createSaveFile();
 fl.readFromSaveFile();
+*/
+module.exports = {fileHandler};
+
