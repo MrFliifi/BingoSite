@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import App from './bingoField.js';
 import reportWebVitals from './reportWebVitals';
 
-import {socket} from './websocket/socket.js';
+//import {socket} from './websocket/socket.js';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// Has to be called App
 root.render(
   <React.StrictMode>
     <App />
