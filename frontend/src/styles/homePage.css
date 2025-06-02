@@ -1,0 +1,58 @@
+
+
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("../assets/NightreignRecluse.jpg");
+    background-size: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* a stands for anchor tag. here i use it to color the links to white. */
+a{
+    color : white
+}
+a:hover {
+    color: purple;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.title {
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border: solid 5px;
+    border-color: purple;
+    background-color: rgb(30, 30, 30);
+    padding: 20px;
+}
+
+.links-container {
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+.links {
+    
+    margin-top: 20px;
+    border: solid 4px purple;
+    background-color: rgb(30,30,30);
+    padding: 10px;
+    font-size: 50px;
+    color: white;
+    padding: 25px;
+
+    max-width: 800px;
+}

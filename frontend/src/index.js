@@ -1,17 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './bingoField.js';
+import {createBrowserRouter, RouterProvider} from 'react-router';
 import reportWebVitals from './reportWebVitals';
 
-//import {socket} from './websocket/socket.js';
+//import pages
+import BingoPage from "./pages/bingoField.js";
+import HomePage from "./pages/homePage.js";
+import NotFoundPage from "./pages/notFoundPage.js";
+
+
+// React Components like HomePage or BingoSite Function HAVE to be in Pascal Case!!!
+
+
+// Creates the router for the frontend
+const router = createBrowserRouter([
+  {
+    //This is the Homepage the player first lands on.
+    path: "/",
+    element: <HomePage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/bingoLockout",
+    element: <BingoPage />,
+  },
+  {
+    path: "/bingoNonLockout",
+    element: <BingoPage />,
+  },
+  {
+    path: "/bingoNonLockoutHighscore",
+    element: <BingoPage />,
+  },
+]);
+
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// Has to be called App
+// Instead of Rendering the App Component, it renders the Router, that in itself has all the different pages
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

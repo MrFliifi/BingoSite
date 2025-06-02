@@ -1,8 +1,9 @@
-import {socket} from "./websocket/socket.js"; 
-import "./styles/bingoField.css";
+import {socket} from "../websocket/socket.js"; 
+import "../styles/bingoField.css";
 
-function bingoSite(){
-    function buttonPressed(){console.log("Ich wurde geclicked ^///^")
+function BingoPage(){
+    function buttonPressed(){
+        console.log("Ich wurde geclicked ^///^")
         socket.emit("buttonPressed");
     }
     let buttonName = ["Enis 1", "Enis 2", "Enis 3", "Enis 4", "Enis 5", "Enis 6", "Enis 7", 
@@ -25,4 +26,4 @@ function bingoSite(){
     );
 }
 
-export default bingoSite;
+export default BingoPage;
