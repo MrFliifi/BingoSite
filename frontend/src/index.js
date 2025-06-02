@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import BingoPage from "./pages/bingoField.js";
 import HomePage from "./pages/homePage.js";
 import NotFoundPage from "./pages/notFoundPage.js";
+import Footer from "./pages/footer.js";
+import Empty from "./pages/empty.js";
 
 
 // React Components like HomePage or BingoSite Function HAVE to be in Pascal Case!!!
@@ -32,6 +34,19 @@ const router = createBrowserRouter([
     path: "/bingoNonLockoutHighscore",
     element: <BingoPage />,
   },
+  //The following routes are just for testing/placeholder pages
+  {
+    path: "/Impressum",
+    element: <Empty />,
+  },
+  {
+    path: "/privacy",
+    element: <Empty />,
+  },
+  {
+    path: "/contact",
+    element: <Empty />,
+  }
 ]);
 
 
@@ -42,6 +57,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Footer />
   </React.StrictMode>
 );
 

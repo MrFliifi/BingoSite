@@ -21,7 +21,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 600px;
 }
 
 .title {
@@ -31,8 +31,10 @@ a:hover {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border: solid 5px;
     border-color: purple;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.7);
     background-color: rgb(30, 30, 30);
     padding: 20px;
+    
 }
 
 .links-container {
@@ -49,6 +51,7 @@ a:hover {
     margin-top: 20px;
     border: solid 4px purple;
     background-color: rgb(30,30,30);
+    box-shadow: 12px 10px 5px rgba(0,0,0,0.7);
     padding: 10px;
     font-size: 50px;
     color: white;
