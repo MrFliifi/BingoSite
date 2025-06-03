@@ -1,29 +1,82 @@
-import {socket} from "../websocket/socket.js"; 
+import React, { useEffect, useState } from "react";
+import { socket } from "../websocket/socket.js";
 import "../styles/bingoField.css";
 
-function BingoPage(){
-    function buttonPressed(){
-        console.log("Ich wurde geclicked ^///^")
-        socket.emit("buttonPressed");
-    }
-    let buttonName = ["Enis 1", "Enis 2", "Enis 3", "Enis 4", "Enis 5", "Enis 6", "Enis 7", 
-                      "Enis 8", "Enis 9", "Enis 10", "Enis 11", "Enis 12", "Enis 13", 
-                      "Enis 14", "Enis 15", "Enis 16", "Enis 17", "Enis 18", "Enis 19", 
-                      "Enis 20", "Enis 21", "Enis 22", "Enis 23", "Enis 24", "Enis 25"];
-    return (
+function BingoPage() {
+  // Variables to store the button- and player name, the functions to update them and the color of the player
+  const [bingoChallenges, setBingoChallenges] = useState(Array(25).fill(""));
+  const [bingoColors, setBingoColors] = useState(Array(25).fill(""));
+  const [playerNames, setPlayerNames] = useState([]);
+  const [playercolor, setPlayercolor] = useState("");
+
+  useEffect(() => {
+    // On Socket-Event "sendBingoField" an Array of 25 strings will be received
+    socket.on("updateBingoField", (data) => {
+      console.log("Receiving Bingo Field:", data);
+      setBingoChallenges(data.challenges);
+      setBingoColors(data.colors);
+    });
+    /// On Socket-Event "sendPlayerNames" an Array of strings will be received
+    socket.on("updatePlayerNames", (data) => {
+      console.log("Receiving Player Names:", data);
+      setPlayerNames(data);
+    });
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      socket.off("sendBingoField");
+    };
+  }, []);
+
+  // Function to handle button clicks
+  const buttonPressed = (index) => {
+    const content = bingoChallenges[index];
+    console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
+    socket.emit("buttonPressed", { index, content, playercolor });
+  };
+
+
+  //dynamic rendering of the buttons based on the bingoChallenges array and the bingoColors array
+  const renderButtons = () => {
+    return bingoChallenges.map((name, index) => (
+      <button
+        key={index}
+        className="bingoFieldButton"
+        onClick={() => buttonPressed(index)}
+        style={{ backgroundColor: bingoColors[index] || "transparent" }}
+      >
+        {name}
+      </button>
+    ));
+  };
+
+  //dynamic playerNames rendering based on the playerNames array
+  const renderPlayerNames = () => {
+    return playerNames.map((name, index) => <div key={index}>{name}</div>);
+  };
+
+  return (
     <div>
-        <div className="Überschrift"> 
-            Players:
+      <div className="header">
+        <div className="playerNames">
+          <label for="playercolor">Playercolor: </label>
+          <select
+            id="playercolor"
+            value={playercolor}
+            onChange={(e) => setPlayercolor(e.target.value)}
+          >
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+            <option value="green">green</option>
+            <option value="yellow">yellow</option>
+            <option value="purple">purple</option>
+            <option value="white">white</option>
+          </select>
         </div>
-        <div>
-            <div><button className="bingoField" onClick={buttonPressed}>{buttonName[0]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[1]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[2]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[3]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[4]}</button></div>
-            <div><button className="bingoField" onClick={buttonPressed}>{buttonName[5]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[6]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[7]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[8]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[9]}</button></div>
-            <div><button className="bingoField" onClick={buttonPressed}>{buttonName[10]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[11]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[12]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[13]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[14]}</button></div>
-            <div><button className="bingoField" onClick={buttonPressed}>{buttonName[15]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[16]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[17]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[18]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[19]}</button></div>
-            <div><button className="bingoField" onClick={buttonPressed}>{buttonName[20]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[21]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[22]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[23]}</button><button className="bingoField" onClick={buttonPressed}>{buttonName[24]}</button></div>
-        </div>
+        <div className="playerNames">Players: {renderPlayerNames}</div>
+      </div>
+      <div className="bingoFieldButtonContainer">{renderButtons()}</div>
     </div>
-    );
+  );
 }
 
 export default BingoPage;

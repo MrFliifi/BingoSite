@@ -1,4 +1,41 @@
-.bingoField{
+.header {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height: 100px;
+    background-color: #333;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.playerNames {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #333;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.bingoFieldButtonContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bingoFieldButton{
     background-color: rgb(54, 53, 53);
     color: aliceblue;
 
@@ -7,14 +44,13 @@
     border-color:black;
     border-radius: 5px;
 
-
+    min-height: 100px;
+    min-width: 200px;
 
     margin-top: 20px;
     margin-bottom: 20px;
 
     cursor: pointer;
-    margin-right: 15px;
-    margin-left: 15px;
     font-size: bold;
     font-size: 20px;
     box-shadow: 8px 8px 15px rgba(0,0,0, 0.5);
