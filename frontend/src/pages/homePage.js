@@ -3,9 +3,8 @@ import "../styles/homePage.css";
 
 function HomePage() {
   return (
-  
-    <div className= "allContainer">
-      <div className= "title-container">
+    <div className="allContainer">
+      <div className="title-container">
         <div className="title">Orden der Bierbank Bingo</div>
       </div>
       <div className="links-container">
@@ -16,8 +15,11 @@ function HomePage() {
           <Link to="/bingoNonLockout">Non-Lockout</Link>
         </div>
         <div className="links">
-          <Link to="/bingoNonLockoutHighScore">Non-Lockout-HighScore</Link>
+          <Link to="/bingoNonLockoutHighScore">Time</Link>
         </div>
+      </div>
+      <div className="linkChallengeContainer">
+        <Link className= "linkChallenge" to="/challengeEditor">ChallengeEditor</Link>
       </div>
     </div>
   );

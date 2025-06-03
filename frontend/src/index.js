@@ -9,6 +9,7 @@ import HomePage from "./pages/homePage.js";
 import NotFoundPage from "./pages/notFoundPage.js";
 import Footer from "./pages/footer.js";
 import Empty from "./pages/empty.js";
+import ChallengeEditor from "./pages/challengeEditor.js"
 
 // React Components like HomePage or BingoSite Function HAVE to be in Pascal Case!!!
 
@@ -52,6 +53,15 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/challengeEditor",
+    element: (
+      <>
+        <ChallengeEditor />
+        <Footer />
+      </>
+    ),
+  },
   //The following routes are just for testing/placeholder pages
   {
     path: "/impressum",
@@ -75,7 +85,6 @@ const router = createBrowserRouter([
     path: "/contact",
     element: (
       <>
-        {" "}
         <Empty />
         <Footer />
       </>
