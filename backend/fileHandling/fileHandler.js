@@ -1,9 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-/* TODO: instances need to be terminated 
-         delete file
-         remove single entries
-*/
 
 class fileHandler{
     // needed to acces files in any way
@@ -56,20 +52,52 @@ class fileHandler{
         }
     }
 
+    async deleteFromSafeFile(toDelete) {
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        try {
+            let contentArr = await this.readFromSaveFile();
+            // Filter out the item to delete
+            // .filter adds every string to updatedContent that does not match toDelete
+            const updatedContent = contentArr.filter(
+                line => line.trim() !== toDelete.trim()
+            );
+
+            // Write updated content back to file
+            await fs.promises.writeFile(localFilePath, updatedContent.join("\n"), 'utf8');
+            console.log(`Deleted "${toDelete}" from file.`);
+        } catch (err) {
+            console.error("Error deleting from file:", err);
+        }
+    }
+
+    async deleteEntireSafeFile(){
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        fs.unlink(localFilePath, (err) => {
+            if (err) {
+                console.error('Fehler beim Löschen der Datei:', err);
+            } else {
+                console.log('Datei erfolgreich gelöscht');
+            }
+        });
+    }
+
 }
 
 // exampte for how to use the class. also for testing purposes
-const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
-//fileHandlerInst.createSaveFile();
+/*const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
+fileHandlerInst.createSaveFile();
 let challenges = "Hoden\npenis";
 
-//fileHandlerInst.writeToSaveFile(challenges);
+fileHandlerInst.writeToSaveFile(challenges);
 
 (async () => {
   const result = await fileHandlerInst.readFromSaveFile();
   console.log(result);
 })();
 
+fileHandlerInst.deleteFromSafeFile("jaguar47");
+fileHandlerInst.deleteEntireSafeFile();
+*/
 
 module.exports = {fileHandler};
 
