@@ -1,9 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-/* TODO: instances need to be terminated 
-         delete file
-         remove single entries
-*/
 
 class fileHandler{
     // needed to acces files in any way
@@ -16,7 +12,7 @@ class fileHandler{
     // before the file was created somehow
     async createSaveFile() {
         // Sets filepath, filename and file format using path class
-        const localFilePath = path.join(this.filePath, `${this.fileName}.json`);
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
         try {
             // creates file at specified location in write mode
             const creater = await fs.promises.open(localFilePath, 'w');
@@ -29,40 +25,60 @@ class fileHandler{
     }
 
     async writeToSaveFile(challenges) {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.json`);
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
         try {
-            // Try to read existing file content. That's needed if you 
-            // want to edit an existing file
-            // var that stores existing data from file
-            let existing = [];
-            try {
-                const data = await fs.promises.readFile(localFilePath, 'utf-8');
-                // writes existing data to array. we modify data here.
-                existing = JSON.parse(data);
-            } catch (readErr) {
-                // File doesn't exist or is invalid – treat as empty array
-                existing = [];
-            }
-            // Append new challenges
-            const merged = existing.concat(challenges);
-            // overwrite existing data to file. that's needed to keep .json structure
-            await fs.promises.writeFile(localFilePath, JSON.stringify(merged, null, 2), 'utf-8');
-
+            // Read existing data 
+            const content = await fs.promises.readFile(localFilePath, 'utf8');
+            // Merge with new data
+            const newData = content.concat(challenges.toString());
+            // Write merged content back to file
+            await fs.promises.writeFile(localFilePath, newData, 'utf-8');
             console.log("Challenges written successfully.");
         } catch (err) {
-            console.error("Error writing JSON file:", err);
+            console.error("Error writing to text file:", err);
         }
     }
-    
+
     async readFromSaveFile() {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.json`);
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
         try {
-            // writes data from file to var
+            // writes data from file to content
             const content = await fs.promises.readFile(localFilePath, 'utf8');
-            return content;
+            // splits each string from content into an array
+            const contentArr = content.split("\n");
+            return contentArr;
         } catch (err) {
             console.error("Error reading file at:", localFilePath, err);
         }
+    }
+
+    async deleteFromSafeFile(toDelete) {
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        try {
+            let contentArr = await this.readFromSaveFile();
+            // Filter out the item to delete
+            // .filter adds every string to updatedContent that does not match toDelete
+            const updatedContent = contentArr.filter(
+                line => line.trim() !== toDelete.trim()
+            );
+
+            // Write updated content back to file
+            await fs.promises.writeFile(localFilePath, updatedContent.join("\n"), 'utf8');
+            console.log(`Deleted "${toDelete}" from file.`);
+        } catch (err) {
+            console.error("Error deleting from file:", err);
+        }
+    }
+
+    async deleteEntireSafeFile(){
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        fs.unlink(localFilePath, (err) => {
+            if (err) {
+                console.error('Fehler beim Löschen der Datei:', err);
+            } else {
+                console.log('Datei erfolgreich gelöscht');
+            }
+        });
     }
 
 }
@@ -70,19 +86,18 @@ class fileHandler{
 // exampte for how to use the class. also for testing purposes
 /*const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
 fileHandlerInst.createSaveFile();
-let challenges = ["alpha01","beta02","gamma03","delta04","epsilon05","zeta06","eta07",
-"theta08","iota09","kappa10","lambda11","mu12","nu13","xi14","omicron15","pi16","rho17",
-"sigma18","tau19","upsilon20","phi21","chi22","psi23","omega24","crimson25","azure26",
-"jade27","amber28","onyx29","sapphire30","quartz31","topaz32","coral33","pearl34","ivory35",
-"ebony36","bronze37","silver38","gold39","platinum40","falcon41","lynx42","panther43",
-"wolf44","tiger45","leopard46","jaguar47","eagle48","hawk49","phoenix50"
-];
+let challenges = "Hoden\npenis";
+
 fileHandlerInst.writeToSaveFile(challenges);
+
 (async () => {
   const result = await fileHandlerInst.readFromSaveFile();
   console.log(result);
-})();*/
-//
+})();
+
+fileHandlerInst.deleteFromSafeFile("jaguar47");
+fileHandlerInst.deleteEntireSafeFile();
+*/
 
 module.exports = {fileHandler};
 
