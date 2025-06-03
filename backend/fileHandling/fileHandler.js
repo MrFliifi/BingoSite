@@ -16,7 +16,7 @@ class fileHandler{
     // before the file was created somehow
     async createSaveFile() {
         // Sets filepath, filename and file format using path class
-        const localFilePath = path.join(this.filePath, `${this.fileName}.json`);
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
         try {
             // creates file at specified location in write mode
             const creater = await fs.promises.open(localFilePath, 'w');
@@ -29,7 +29,7 @@ class fileHandler{
     }
 
     async writeToSaveFile(challenges) {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.json`);
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
         try {
             // Try to read existing file content. That's needed if you 
             // want to edit an existing file
@@ -38,7 +38,8 @@ class fileHandler{
             try {
                 const data = await fs.promises.readFile(localFilePath, 'utf-8');
                 // writes existing data to array. we modify data here.
-                existing = JSON.parse(data);
+                
+                existing = data;
             } catch (readErr) {
                 // File doesn't exist or is invalid – treat as empty array
                 existing = [];
@@ -55,10 +56,13 @@ class fileHandler{
     }
     
     async readFromSaveFile() {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.json`);
+        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
         try {
             // writes data from file to var
             const content = await fs.promises.readFile(localFilePath, 'utf8');
+
+            console.log(localFilePath);
+            console.log(content);
             return content;
         } catch (err) {
             console.error("Error reading file at:", localFilePath, err);
@@ -68,8 +72,8 @@ class fileHandler{
 }
 
 // exampte for how to use the class. also for testing purposes
-/*const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
-fileHandlerInst.createSaveFile();
+const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
+//fileHandlerInst.createSaveFile();
 let challenges = ["alpha01","beta02","gamma03","delta04","epsilon05","zeta06","eta07",
 "theta08","iota09","kappa10","lambda11","mu12","nu13","xi14","omicron15","pi16","rho17",
 "sigma18","tau19","upsilon20","phi21","chi22","psi23","omega24","crimson25","azure26",
@@ -77,11 +81,13 @@ let challenges = ["alpha01","beta02","gamma03","delta04","epsilon05","zeta06","e
 "ebony36","bronze37","silver38","gold39","platinum40","falcon41","lynx42","panther43",
 "wolf44","tiger45","leopard46","jaguar47","eagle48","hawk49","phoenix50"
 ];
-fileHandlerInst.writeToSaveFile(challenges);
+
+//fileHandlerInst.writeToSaveFile(challenges);
+
 (async () => {
   const result = await fileHandlerInst.readFromSaveFile();
   console.log(result);
-})();*/
+})();
 //
 
 module.exports = {fileHandler};
