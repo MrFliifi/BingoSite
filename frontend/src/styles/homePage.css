@@ -4,7 +4,7 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-    background-image: url("../assets/ds3map.jpg");
+    background-image: url("../assets/Recluse.png");
     background-size: 100%;
     font-family: Arial, sans-serif;
 }
@@ -30,7 +30,7 @@ a:hover {
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border: solid 2px;
-    border-color: cyan;
+    border-color: purple;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.7);
     background-color: rgb(30, 30, 30);
     padding: 20px;
@@ -49,7 +49,7 @@ a:hover {
 .links {
     
     margin-top: 20px;
-    border: solid 2px cyan;
+    border: solid 2px purple;
     background-color: rgb(30,30,30);
     box-shadow: 12px 10px 5px rgba(0,0,0,0.7);
     padding: 10px;
