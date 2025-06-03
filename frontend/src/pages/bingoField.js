@@ -61,7 +61,7 @@ function BingoPage() {
       <div className="header">
         <div className="playerNames">
           <label>Playercolor: </label>
-          <select
+          <select class="dropDown"
             id="playercolor"
             value={playerColor}
             onChange={(e) => setPlayercolor(e.target.value)}
