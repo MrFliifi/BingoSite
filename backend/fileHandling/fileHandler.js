@@ -82,7 +82,7 @@ fileHandlerInst.writeToSaveFile(challenges);
   const result = await fileHandlerInst.readFromSaveFile();
   console.log(result);
 })();*/
-
+//
 
 module.exports = {fileHandler};
 
