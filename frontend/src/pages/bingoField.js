@@ -7,7 +7,7 @@ function BingoPage() {
   const [bingoChallenges, setBingoChallenges] = useState(Array(25).fill(""));
   const [bingoColors, setBingoColors] = useState(Array(25).fill(""));
   const [playerNames, setPlayerNames] = useState([]);
-  const [playercolor, setPlayercolor] = useState("");
+  const [playerColor, setPlayercolor] = useState("");
 
   useEffect(() => {
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
@@ -15,15 +15,11 @@ function BingoPage() {
       console.log("Receiving Bingo Field:", data);
       setBingoChallenges(data.challenges);
       setBingoColors(data.colors);
-    });
-    /// On Socket-Event "sendPlayerNames" an Array of strings will be received
-    socket.on("updatePlayerNames", (data) => {
-      console.log("Receiving Player Names:", data);
-      setPlayerNames(data);
+      setPlayerNames(data.playerNames)
     });
     // Cleanup function to remove the event listener when the component unmounts
     return () => {
-      socket.off("sendBingoField");
+      socket.off("updateBingoField");
     };
   }, []);
 
@@ -31,7 +27,12 @@ function BingoPage() {
   const buttonPressed = (index) => {
     const content = bingoChallenges[index];
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
-    socket.emit("buttonPressed", { index, content, playercolor });
+    //Changing Colors temporary until Server overwrites it.
+    const newColors = [...bingoColors];
+    newColors[index] = playerColor;
+    setBingoColors(newColors);;
+    //Sending the Server all Data from the Buttonpress
+    socket.emit("buttonPressed", { colorIndex: index, playerColor: playerColor, socketId : socket.id });
   };
 
 
@@ -42,7 +43,7 @@ function BingoPage() {
         key={index}
         className="bingoFieldButton"
         onClick={() => buttonPressed(index)}
-        style={{ backgroundColor: bingoColors[index] || "transparent" }}
+        style={{ backgroundColor: bingoColors[index] || "black" }}
       >
         {name}
       </button>
@@ -55,13 +56,14 @@ function BingoPage() {
   };
 
   return (
-    <div>
+    
+    <div className ="allContainer">
       <div className="header">
         <div className="playerNames">
-          <label for="playercolor">Playercolor: </label>
+          <label>Playercolor: </label>
           <select
             id="playercolor"
-            value={playercolor}
+            value={playerColor}
             onChange={(e) => setPlayercolor(e.target.value)}
           >
             <option value="red">red</option>
@@ -72,7 +74,7 @@ function BingoPage() {
             <option value="white">white</option>
           </select>
         </div>
-        <div className="playerNames">Players: {renderPlayerNames}</div>
+        <div className="playerNames">Players: {renderPlayerNames()}</div>
       </div>
       <div className="bingoFieldButtonContainer">{renderButtons()}</div>
     </div>

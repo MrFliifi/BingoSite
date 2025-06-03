@@ -1,14 +1,12 @@
 
 
 body {
-    min-height: 100%;
     margin: 0;
     padding: 0;
     background-image: url("../assets/Recluse.png");
     background-size: 100%;
     font-family: Arial, sans-serif;
 }
-
 /* a stands for anchor tag. here i use it to color the links to white. */
 a{
     color : white
@@ -44,6 +42,7 @@ a:hover {
     margin-top: 20px;
     margin-left: 300px;
     margin-right: 300px;
+    
 }
 
 .links {

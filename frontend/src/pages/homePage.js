@@ -3,7 +3,8 @@ import "../styles/homePage.css";
 
 function HomePage() {
   return (
-    <div className>
+  
+    <div className= "allContainer">
       <div className= "title-container">
         <div className="title">Orden der Bierbank Bingo</div>
       </div>
