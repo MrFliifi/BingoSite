@@ -54,9 +54,9 @@ class lobbyHandler{
 }
 
 // for testing purposes
-const handler = new lobbyHandler("mode");
+/*const handler = new lobbyHandler("mode");
 
 (async () => {
     await handler.setBingoChallenges("testFile");
     console.log(handler.bingoChallenges); // Note: use handler, not this
-})();
+})();*/
