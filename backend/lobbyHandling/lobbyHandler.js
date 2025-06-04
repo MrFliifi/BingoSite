@@ -1,4 +1,6 @@
 const {fileHandler} = require("../fileHandling/fileHandler.js");
+const {playerHandler} = require("../lobbyHandling/playerHandler.js");
+
 
 class lobbyHandler{
 
@@ -6,13 +8,13 @@ class lobbyHandler{
         this.gameMode = gameMode;
         this.bingoChallenges = new Array(25);
         this.bingoColor = new Array(25);
-        this.player = [];
+        this.playerArr = [];
     }
 
     // TODO: write function that loops each second that updates the socket
     // setters for all but gameMode
 
-    getGameMode() {
+    async getGameMode() {
         return this.gameMode;
     }
 
@@ -32,24 +34,37 @@ class lobbyHandler{
         }
     }
 
-    getBingoChallenge() {
+    async getBingoChallenges() {
         return this.bingoChallenges;
     }
 
-    setBingoColor(i, color) {
+    async setBingoColor(i, color) {
         this.bingoColor[i] = color;
     }
 
-    getBingoColor() {
+    async getBingoColor() {
         return this.bingoColor;
     }
 
-    setPlayer(playerObj) {
-        this.player.push(playerObj);
+    async setPlayer(playerObj) {
+        this.playerArr.push(playerObj);
     }
 
-    getPlayer() {
-        return this.player;
+    async getPlayer(socketID) {
+        for (let i = 0; i < this.playerArr.length; i++) {
+            if (this.playerArr[i].socketID === socketID){
+                return this.playerArr[i];
+            }
+        }
+    }
+
+    async getPlayerArr() {
+        const nameArr = [];
+        for (let i = 0; i < this.playerArr.length - 1; i++) {
+            let name = this.playerArr[i].getPlayerName();
+            nameArr.push(name);
+        }
+        return nameArr;
     }
 }
 
@@ -59,4 +74,6 @@ class lobbyHandler{
 (async () => {
     await handler.setBingoChallenges("testFile");
     console.log(handler.bingoChallenges); // Note: use handler, not this
-})();*/
+})();
+*/
+module.exports = {lobbyHandler};
