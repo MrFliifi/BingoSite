@@ -30,3 +30,5 @@ class playerHandler{
         this.color = color;
     }
 }
+
+module.exports = {playerHandler};
