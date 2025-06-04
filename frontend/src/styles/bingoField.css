@@ -26,9 +26,10 @@
     margin-right: 40px;
 }
 
-.dropDown{
+.fields{
     font-size: 40px;
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 .bingoFieldButtonContainer {
@@ -66,3 +67,26 @@
     transition: opacity 0.2s,
     background-color 0.2;
 }
+
+.submitPlayerButton{
+    background-color: rgb(54, 53, 53);
+        color: aliceblue;
+    
+        border: solid;
+        border-width: 5px;
+        border-color: black;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 50px;
+
+}
+.submitPlayerButton:hover
+{
+ opacity: 0.8;
+ 
+}
+
+.submitPlayerButton:active{
+
+        background-color: #a2a2a2
+    }

@@ -7,15 +7,16 @@ function BingoPage() {
   const [bingoChallenges, setBingoChallenges] = useState(Array(25).fill(""));
   const [bingoColors, setBingoColors] = useState(Array(25).fill(""));
   const [playerNames, setPlayerNames] = useState([]);
-  const [playerColor, setPlayercolor] = useState("");
+  const [playerColor, setPlayerColor] = useState("");
+  const [currentPlayer, setCurrentPlayer] = useState("");
 
   useEffect(() => {
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
-    socket.on("updateBingoField", (data) => {
-      console.log("Receiving Bingo Field:", data);
-      setBingoChallenges(data.challenges);
-      setBingoColors(data.colors);
-      setPlayerNames(data.playerNames)
+    socket.on("updateBingoField", (colorArr, challengeArr, players) => {
+      console.log("Receiving Bingo Field:", colorArr, challengeArr, players );
+      setBingoChallenges(challengeArr);
+      setBingoColors(colorArr);
+      setPlayerNames(players)
     });
     // Cleanup function to remove the event listener when the component unmounts
     return () => {
@@ -24,7 +25,7 @@ function BingoPage() {
   }, []);
 
   // Function to handle button clicks
-  const buttonPressed = (index) => {
+  const challengeFieldPressed = (index) => {
     const content = bingoChallenges[index];
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
     //Changing Colors temporary until Server overwrites it.
@@ -32,8 +33,15 @@ function BingoPage() {
     newColors[index] = playerColor;
     setBingoColors(newColors);;
     //Sending the Server all Data from the Buttonpress
-    socket.emit("buttonPressed", { colorIndex: index, playerColor: playerColor, socketId : socket.id });
+    socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, });
   };
+
+  function sendPlayerData()
+  {
+    socket.emit("playerData",{playerColor: playerColor, playerName: currentPlayer, socketId: socket.id,  } );
+  }
+
+  
 
 
   //dynamic rendering of the buttons based on the bingoChallenges array and the bingoColors array
@@ -42,7 +50,7 @@ function BingoPage() {
       <button
         key={index}
         className="bingoFieldButton"
-        onClick={() => buttonPressed(index)}
+        onClick={() => challengeFieldPressed(index)}
         style={{ backgroundColor: bingoColors[index] || "black" }}
       >
         {name}
@@ -52,20 +60,29 @@ function BingoPage() {
 
   //dynamic playerNames rendering based on the playerNames array
   const renderPlayerNames = () => {
-    return playerNames.map((name, index) => <div key={index}>{name}</div>);
+    return playerNames.map((name, index) => <div className="playerNames" key={index}>{name}</div>);
   };
 
   return (
-    
-    <div className ="allContainer">
+    <div className="allContainer">
       <div className="header">
         <div className="playerNames">
+          <label>PlayerName:</label>
+          <input
+            className="fields"
+            type="text"
+            id="playerName"
+            value={currentPlayer}
+            onChange={(e) => setCurrentPlayer(e.target.value)}
+          ></input>
           <label>Playercolor: </label>
-          <select class="dropDown"
+          <select
+            className="fields"
             id="playercolor"
             value={playerColor}
-            onChange={(e) => setPlayercolor(e.target.value)}
+            onChange={(e) => setPlayerColor(e.target.value)}
           >
+            <option ></option>
             <option value="red">red</option>
             <option value="blue">blue</option>
             <option value="green">green</option>
@@ -73,6 +90,12 @@ function BingoPage() {
             <option value="purple">purple</option>
             <option value="white">white</option>
           </select>
+          <button
+            className="submitPlayerButton"
+            onClick={() => sendPlayerData()}
+          >
+            Confirm Name/Color
+          </button>
         </div>
         <div className="playerNames">Players: {renderPlayerNames()}</div>
       </div>
