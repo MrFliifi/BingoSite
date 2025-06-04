@@ -14,7 +14,13 @@ class lobbyHandler{
         this.bingoChallenges = x;
     }
 
+    setBingoColor (i, color) {
+        this.bingoColor[i] = color;
+    }
 
+    setPlayer () {
+        this.player = yield;
+    }
 
     
 
