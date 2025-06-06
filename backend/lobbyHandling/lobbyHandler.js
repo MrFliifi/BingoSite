@@ -60,7 +60,7 @@ class lobbyHandler{
             }
         }
     }
-
+    // should be renamed to getPlayerNames
     async getPlayerArr() {
         const nameArr = [];
         for (let i = 0; i < this.playerArr.length - 1; i++) {
@@ -69,6 +69,10 @@ class lobbyHandler{
         }
         return nameArr;
     }
+
+    getPlayerObj() {
+        return this.playerArr;
+     }
 
     async setUsedColor(playerColor) {
         this.usedColor.push(playerColor);

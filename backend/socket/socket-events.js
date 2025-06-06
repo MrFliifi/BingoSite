@@ -75,14 +75,24 @@ module.exports = function (io) {
     socket.on("disconnect", () => {
       console.log("Client disconnected", socket.id);
 
-      // removes color from lobby if player dc's
-      const player = lobby.getPlayer(socket.id) ;
+      // removes color and player from lobby if player dc's
+      const player = lobby.getPlayer(socket.id);
       const usedColor = lobby.getUsedColor();
-      const freeColor =  player.getColor();
+      const users = lobby.getPlayerObj();
+      const freeColor = player.getColor();
+      const goneUser = player.getPlayerName();
+      
+
       for (let i = 0; i < usedColor.length; i++) {
+        // remove color
         if (freeColor === usedColor[i]){
           usedColor.splice(i, 1);
           console.log(freeColor + " removed.")
+        }
+        // remove player
+        if (goneUser === users[i].getPlayerName()) {
+          console.log("Removed player " + player.getPlayerName());
+          users.splice(i, 1);
           break;
         }
       }
