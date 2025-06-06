@@ -61,16 +61,16 @@ class lobbyHandler{
         }
     }
     // should be renamed to getPlayerNames
-    async getPlayerArr() {
+    async getPlayerNames() {
         const nameArr = [];
-        for (let i = 0; i < this.playerArr.length - 1; i++) {
+        for (let i = 0; i < this.playerArr.length; i++) {
             let name = this.playerArr[i].getPlayerName();
             nameArr.push(name);
         }
         return nameArr;
     }
 
-    getPlayerObj() {
+    getPlayerArr() {
         return this.playerArr;
      }
 

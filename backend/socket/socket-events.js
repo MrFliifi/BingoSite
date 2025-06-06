@@ -68,7 +68,7 @@ module.exports = function (io) {
     //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
     setInterval(async() => {
         const colorArr = await lobby.getBingoColor();
-        const players = await lobby.getPlayerArr();
+        const players = await lobby.getPlayerNames();
         const bingoChallenges = await lobby.getBingoChallenges();
         
       io.emit("updateBingoField", colorArr, bingoChallenges, players);
