@@ -9,6 +9,9 @@ class lobbyHandler{
         this.bingoChallenges = new Array(25);
         this.bingoColor = new Array(25);
         this.playerArr = [];
+        // arr of colors used by players
+        this.usedColor = [];
+        this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
     }
 
     // TODO: write function that loops each second that updates the socket
@@ -50,14 +53,14 @@ class lobbyHandler{
         this.playerArr.push(playerObj);
     }
 
-    async getPlayer(socketID) {
+    getPlayer(socketID) {
         for (let i = 0; i < this.playerArr.length; i++) {
             if (this.playerArr[i].socketID === socketID){
                 return this.playerArr[i];
             }
         }
     }
-
+    // should be renamed to getPlayerNames
     async getPlayerArr() {
         const nameArr = [];
         for (let i = 0; i < this.playerArr.length - 1; i++) {
@@ -65,6 +68,22 @@ class lobbyHandler{
             nameArr.push(name);
         }
         return nameArr;
+    }
+
+    getPlayerObj() {
+        return this.playerArr;
+     }
+
+    async setUsedColor(playerColor) {
+        this.usedColor.push(playerColor);
+    }
+
+    getUsedColor() {
+        return this.usedColor;
+    }
+
+    getAllPossibleColors() {
+    return this.possibleColor;
     }
 }
 
