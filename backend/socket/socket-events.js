@@ -25,17 +25,42 @@ module.exports = function (io) {
     });
     
     //The Data when a player confirms his/her Color and Name.
-    socket.on("playerData", (data) =>{
-      // errorhandling when one player presses multiple times
-      const {playerColor, playerName, socketId} =data;
-      const playerInst = new playerHandler(socketId, playerName, playerColor)
+    socket.on("playerData", (data) => {
+      const { playerColor, playerName, socketId } = data;
+      const playerInst = new playerHandler(socketId, playerName, playerColor);
+
+      // used to exclude duplicate colors
+      const usedColors = lobby.getUsedColor();
+      const possibleColors = lobby.getAllPossibleColors();
+
+      // Check if the chosen color is already used
+      if (!usedColors.includes(playerColor)) {
+        lobby.setUsedColor(playerColor);
+      } else {
+        console.log(playerColor + " has already been used.");
+
+        // Find the first available unused color
+        for (let i = 0; i < possibleColors.length; i++) {
+          const candidateColor = possibleColors[i];
+          if (!usedColors.includes(candidateColor)) {
+            playerInst.setColor(candidateColor);
+            lobby.setUsedColor(candidateColor);
+            console.log("Assigned new color: " + candidateColor);
+            break;
+          }
+        }
+      }
+
+      // set player Obj to lobby after changes have been done
       lobby.setPlayer(playerInst);
+
       /*
       console.log(playerInst.getColor());
       console.log(playerInst.getPlayerName());
       console.log(playerInst.getSocketID());
       */
-      });
+    });
+
 
     //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
     setInterval(async() => {
@@ -49,6 +74,18 @@ module.exports = function (io) {
     
     socket.on("disconnect", () => {
       console.log("Client disconnected", socket.id);
+
+      // removes color from lobby if player dc's
+      const player = lobby.getPlayer(socket.id) ;
+      const usedColor = lobby.getUsedColor();
+      const freeColor =  player.getColor();
+      for (let i = 0; i < usedColor.length; i++) {
+        if (freeColor === usedColor[i]){
+          usedColor.splice(i, 1);
+          console.log(freeColor + " removed.")
+          break;
+        }
+      }
     });
 
   })}
