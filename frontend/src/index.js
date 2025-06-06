@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
+
+
+
 import reportWebVitals from "./reportWebVitals";
 
 //import pages
@@ -13,8 +16,10 @@ import ChallengeEditor from "./pages/challengeEditor.js"
 
 // React Components like HomePage or BingoSite Function HAVE to be in Pascal Case!!!
 
+
 // Creates the router for the frontend
 const router = createBrowserRouter([
+  
   {
     //This is the Homepage the player first lands on.
     path: "/",
@@ -27,28 +32,28 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/bingoLockout",
+    path: "/bingoLockout/:lobbyId",
     element: (
       <>
-        <BingoPage />
+        <BingoPage mode="lockout"/>
         <Footer />
       </>
     ),
   },
   {
-    path: "/bingoNonLockout",
+    path: "/bingoNonLockout/:lobbyId",
     element: (
       <>
-        <BingoPage />
+        <BingoPage mode="NonLockout"/>
         <Footer />
       </>
     ),
   },
   {
-    path: "/bingoNonLockoutHighscore",
+    path: "/bingoTimeTrial/:lobbyId",
     element: (
       <>
-        <BingoPage />
+        <BingoPage mode="timeTrial" />
         <Footer />
       </>
     ),
