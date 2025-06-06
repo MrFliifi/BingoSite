@@ -9,6 +9,7 @@ class lobbyHandler{
         this.bingoChallenges = new Array(25);
         this.bingoColor = new Array(25);
         this.playerArr = [];
+        this.usedColor = [];
     }
 
     // TODO: write function that loops each second that updates the socket

@@ -18,10 +18,10 @@ module.exports = function (io) {
       playerInst = lobby.getPlayer();
       const { colorIndex, socketId } = data;
       const playerObj = await lobby.getPlayer(socketId);
+      // problem!!!!!!
       lobby.setBingoColor(colorIndex, playerObj.getColor());
       // loop through each entry and compare for socketID
       console.log(data);
-      
     });
     
     //The Data when a player confirms his/her Color and Name.
@@ -30,7 +30,12 @@ module.exports = function (io) {
       const {playerColor, playerName, socketId} =data;
       const playerInst = new playerHandler(socketId, playerName, playerColor)
       lobby.setPlayer(playerInst);
-    });
+      /*
+      console.log(playerInst.getColor());
+      console.log(playerInst.getPlayerName());
+      console.log(playerInst.getSocketID());
+      */
+      });
 
     //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
     setInterval(async() => {
