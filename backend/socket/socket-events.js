@@ -4,6 +4,7 @@ const {lobbyHandler} = require("../lobbyHandling/lobbyHandler.js");
 const {playerHandler} = require("../lobbyHandling/playerHandler.js");
 
 // creates lobby instance that tracks state of the game
+
 const lobby = new lobbyHandler("mode");
 lobby.setBingoChallenges("testFile");
 
@@ -18,7 +19,6 @@ module.exports = function (io) {
       playerInst = lobby.getPlayer();
       const { colorIndex, socketId } = data;
       const playerObj = await lobby.getPlayer(socketId);
-      // problem!!!!!!
       lobby.setBingoColor(colorIndex, playerObj.getColor());
       // loop through each entry and compare for socketID
       console.log(data);
@@ -64,14 +64,15 @@ module.exports = function (io) {
       */
     });
 
-
+    
     //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
     setInterval(async() => {
+        const pickableColor = lobby.getPickableColor();
         const colorArr = await lobby.getBingoColor();
-        const players = await lobby.getPlayerArr();
+        const players = await lobby.getPlayerNames();
         const bingoChallenges = await lobby.getBingoChallenges();
         
-      io.emit("updateBingoField", colorArr, bingoChallenges, players);
+      io.emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor);
       
     }, 1000); 
     
@@ -81,7 +82,7 @@ module.exports = function (io) {
       // removes color and player from lobby if player dc's
       const player = lobby.getPlayer(socket.id);
       const usedColor = lobby.getUsedColor();
-      const users = lobby.getPlayerObj();
+      const users = lobby.getPlayerArr();
       const freeColor = player.getColor();
       const goneUser = player.getPlayerName();
       

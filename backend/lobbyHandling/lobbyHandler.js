@@ -4,7 +4,8 @@ const {playerHandler} = require("../lobbyHandling/playerHandler.js");
 
 class lobbyHandler{
 
-    constructor (gameMode) {
+    constructor (gameMode, lobbyId) {
+        this.lobbyId = lobbyId;
         this.gameMode = gameMode;
         this.bingoChallenges = new Array(25);
         this.bingoColor = new Array(25);
@@ -12,13 +13,19 @@ class lobbyHandler{
         // arr of colors used by players
         this.usedColor = [];
         this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
+        this.pickableColor = [];
     }
-
-    // TODO: write function that loops each second that updates the socket
-    // setters for all but gameMode
 
     async getGameMode() {
         return this.gameMode;
+    }
+
+    async getPickableColor() {
+        for (let i = 0; i < this.usedColor.length; i++) {
+            if (!this.possibleColor.includes(this.usedColor[i])) {
+                this.pickableColor.push(this.usedColor[i]);
+            }
+        }
     }
 
     async setBingoChallenges(fileName){
@@ -61,16 +68,16 @@ class lobbyHandler{
         }
     }
     // should be renamed to getPlayerNames
-    async getPlayerArr() {
+    async getPlayerNames() {
         const nameArr = [];
-        for (let i = 0; i < this.playerArr.length - 1; i++) {
+        for (let i = 0; i < this.playerArr.length; i++) {
             let name = this.playerArr[i].getPlayerName();
             nameArr.push(name);
         }
         return nameArr;
     }
 
-    getPlayerObj() {
+    getPlayerArr() {
         return this.playerArr;
      }
 
