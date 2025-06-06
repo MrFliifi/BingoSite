@@ -12,7 +12,7 @@ class fileHandler{
     // before the file was created somehow
     async createSaveFile() {
         // Sets filepath, filename and file format using path class
-        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
         try {
             // creates file at specified location in write mode
             const creater = await fs.promises.open(localFilePath, 'w');
@@ -25,7 +25,7 @@ class fileHandler{
     }
 
     async writeToSaveFile(challenges) {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
         try {
             // Read existing data 
             const content = await fs.promises.readFile(localFilePath, 'utf8');
@@ -40,12 +40,15 @@ class fileHandler{
     }
 
     async readFromSaveFile() {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
         try {
             // writes data from file to content
+            //console.log('trying to read file');
             const content = await fs.promises.readFile(localFilePath, 'utf8');
+            //console.log(content);
             // splits each string from content into an array
             const contentArr = content.split("\n");
+            //console.log(contentArr);
             return contentArr;
         } catch (err) {
             console.error("Error reading file at:", localFilePath, err);
@@ -53,7 +56,7 @@ class fileHandler{
     }
 
     async deleteFromSafeFile(toDelete) {
-        const localFilePath = path.join(this.filePath, `${this.fileName}.txt`);
+        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
         try {
             let contentArr = await this.readFromSaveFile();
             // Filter out the item to delete
@@ -84,8 +87,8 @@ class fileHandler{
 }
 
 // exampte for how to use the class. also for testing purposes
-/*const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
-fileHandlerInst.createSaveFile();
+// const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
+/*fileHandlerInst.createSaveFile();
 let challenges = "Hoden\npenis";
 
 fileHandlerInst.writeToSaveFile(challenges);
