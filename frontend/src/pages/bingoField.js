@@ -31,17 +31,25 @@ function BingoPage() {
     //Changing Colors temporary until Server overwrites it.
     const newColors = [...bingoColors];
     newColors[index] = playerColor;
-    setBingoColors(newColors);;
+    setBingoColors(newColors);
     //Sending the Server all Data from the Buttonpress
+    
     socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, });
   };
 
   function sendPlayerData()
   {
+    if(currentPlayer === "" || playerColor === "")
+    {
+      alert("Pick a Name and PlayerColor")
+    }
+    else if(currentPlayer.length > 15){
+      alert("Playername is longer than 15 characters")
+    }
+    else{
     socket.emit("playerData",{playerColor: playerColor, playerName: currentPlayer, socketId: socket.id,  } );
+    }
   }
-
-  
 
 
   //dynamic rendering of the buttons based on the bingoChallenges array and the bingoColors array
@@ -82,7 +90,7 @@ function BingoPage() {
             value={playerColor}
             onChange={(e) => setPlayerColor(e.target.value)}
           >
-            <option ></option>
+            <option value="">-- Choose color --</option>
             <option value="red">red</option>
             <option value="blue">blue</option>
             <option value="green">green</option>

@@ -19,11 +19,11 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 600px;
+    height: 300px;
 }
 
 .title {
-    font-size: 80px;
+    font-size: 40px;
     color: white;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -38,13 +38,13 @@ a:hover {
 .linkChallengeContainer{
         display: flex;
         justify-content: center;
-        margin-top: 500px;
-        margin-left: 300px;
-        margin-right: 300px;
+        margin-top: 250px;
+        margin-left: 150px;
+        margin-right: 150px;
 }
 
 .linkChallenge{
-        font-size: 30px;
+        font-size: 15px;
         color: white;
         text-align: center;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -62,8 +62,8 @@ a:hover {
     margin-top: 20px;
     background:rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
-    margin-left: 900px;
-    margin-right:900px;
+    margin-left: 450px;
+    margin-right:450px;
     
 }
 
@@ -74,14 +74,14 @@ a:hover {
     background-color: rgb(30,30,30);
     box-shadow: 12px 10px 5px rgba(0,0,0,0.7);
     padding: 10px;
-    font-size: 50px;
+    font-size: 25px;
     color: white;
     padding: 25px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    max-width: 800px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    max-width: 400px;
 }
 
 .links:hover {
