@@ -34,14 +34,17 @@ module.exports = function (io) {
       const possibleColors = lobby.getAllPossibleColors();
 
       // Check if the chosen color is already used
+      // if it isn't, it get's used as is
       if (!usedColors.includes(playerColor)) {
         lobby.setUsedColor(playerColor);
+      // if it is, find one that isn't
       } else {
         console.log(playerColor + " has already been used.");
-
         // Find the first available unused color
         for (let i = 0; i < possibleColors.length; i++) {
+          // loops through all possibleColors
           const candidateColor = possibleColors[i];
+          // checks if it is used already.if it isn't the color get's assined to the player
           if (!usedColors.includes(candidateColor)) {
             playerInst.setColor(candidateColor);
             lobby.setUsedColor(candidateColor);
@@ -82,7 +85,7 @@ module.exports = function (io) {
       const freeColor = player.getColor();
       const goneUser = player.getPlayerName();
       
-
+      // loop that removes a bunch of stuff from lobby on dc
       for (let i = 0; i < usedColor.length; i++) {
         // remove color
         if (freeColor === usedColor[i]){
