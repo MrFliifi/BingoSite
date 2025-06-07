@@ -20,6 +20,10 @@ class lobbyHandler{
         return this.gameMode;
     }
 
+    async getSocketId(){
+        return this.socketID;
+    }
+
     async getPickableColor() {
         for (let i = 0; i < this.usedColor.length; i++) {
             if (!this.possibleColor.includes(this.usedColor[i])) {
@@ -90,7 +94,7 @@ class lobbyHandler{
     }
 
     getAllPossibleColors() {
-    return this.possibleColor;
+        return this.possibleColor;
     }
 }
 
