@@ -4,7 +4,8 @@ const {playerHandler} = require("../lobbyHandling/playerHandler.js");
 
 class lobbyHandler{
 
-    constructor (gameMode, lobbyId) {
+    constructor (gameMode, lobbyId, socketID) {
+        this.socketID = socketID;
         this.lobbyId = lobbyId;
         this.gameMode = gameMode;
         this.bingoChallenges = new Array(25);
@@ -13,6 +14,7 @@ class lobbyHandler{
         // arr of colors used by players
         this.usedColor = [];
         this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
+        // need to write logic for it
         this.pickableColor = [];
     }
 
@@ -23,7 +25,10 @@ class lobbyHandler{
     async getSocketId(){
         return this.socketID;
     }
-
+    
+    async getLobbyId(){
+        return this.lobbyId;
+    }
     async getPickableColor() {
         for (let i = 0; i < this.usedColor.length; i++) {
             if (!this.possibleColor.includes(this.usedColor[i])) {

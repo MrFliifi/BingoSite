@@ -13,26 +13,36 @@ module.exports = function (io) {
     console.log("New client connected with ID:", socket.id);
     
     //The Data when a player confirms his/her Color and Name.
-    socket.on("sendLobbyData", (data) => {
-      const { playerName, gameMode, state, socketId } = data;
-      console.log(playerName, gameMode, state, socketId);
+    socket.on("sendLobbyData", async (data) => {
+      const { playerName, lobbyId, gameMode, state, socketId } = data;
+      // console.log(playerName, gameMode, state, socketId);
+
       if (state === "create"){
-        const lobby = new lobbyHandler(gameMode, socketId);
-        const player = new playerHandler(socketId, playerName);
+        const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
+        const player = new playerHandler(socketId, playerName, lobbyId);
+
+        await lobby.setBingoChallenges("testFile");
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
-        console.log("player" + player.getPlayerName() + "joined " + lobby.getSocketId());
+        // for testing
+        const nameOfLobby = await lobby.getLobbyId();
+        console.log("player " + player.getPlayerName() + " joined " + nameOfLobby);
+        console.log(listOfLobbies.getLobbies());
       
       } else if (state === "join") {
-        const player = new playerHandler(socketId, playerName);
-        for (let i = 0; i < listOfLobbies.length; i++){
-          const lobby = listOfLobbies[i];
-          if (lobby.getSocketId() === player.getSocketId()){
-            lobby.setPlayer(player);
-            console.log("player " + player.getPlayerName() + " joined " + lobby.getSocketId);
+          console.log("state = join");
+          const player = new playerHandler(socketId, playerName, lobbyId);
+          console.log(player);
+          // does not enter the loop here?!
+          for (let i = 0; i < listOfLobbies.length; i++) {
+            console.log("loop " + i);
+            const lobby = listOfLobbies[i]; 
+            console.log(player.getLobbyId() + lobby.getLobbyId() + "vvvv");
+            if (lobby.getLobbyId() === player.getLobbyId()){
+              lobby.setPlayer(player);
+              console.log("player " + player.getPlayerName() + " joined " + lobby.getSocketId);
+            }
           }
-        }
-        
       }
 
 

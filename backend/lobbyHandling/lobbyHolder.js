@@ -1,7 +1,7 @@
 class lobbyHolder{
 
-    constructor(lobbies){
-        this.lobbies = lobbies;
+    constructor(){
+        this.lobbies = [];
     }
 
     getLobbies(){
