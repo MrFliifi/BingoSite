@@ -1,6 +1,6 @@
 class playerHandler{
 
-    constructor(socketID, playerName, color) {
+    constructor(socketID, playerName) {
         this.socketID = socketID;
         this.playerName = playerName;
         this.color = color;

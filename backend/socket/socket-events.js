@@ -2,33 +2,41 @@
 
 const {lobbyHandler} = require("../lobbyHandling/lobbyHandler.js");
 const {playerHandler} = require("../lobbyHandling/playerHandler.js");
+const {lobbyHolder} = require("../lobbyHandling/lobbyHolder.js");
 
 // creates lobby instance that tracks state of the game
-
-const lobby = new lobbyHandler("mode");
-lobby.setBingoChallenges("testFile");
-
+const listOfLobbies = new lobbyHolder();
 
 // Every  Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
 module.exports = function (io) {
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
     
-    //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
-    socket.on("ChallengeField", async (data) => {
-      playerInst = lobby.getPlayer();
-      const { colorIndex, socketId } = data;
-      const playerObj = await lobby.getPlayer(socketId);
-      lobby.setBingoColor(colorIndex, playerObj.getColor());
-      // loop through each entry and compare for socketID
-      console.log(data);
-    });
-    
     //The Data when a player confirms his/her Color and Name.
-    socket.on("playerData", (data) => {
-      const { playerColor, playerName, socketId } = data;
-      const playerInst = new playerHandler(socketId, playerName, playerColor);
+    socket.on("sendLobbyData", (data) => {
+      const { playerName, gameMode, state, socketId } = data;
+      console.log(playerName, gameMode, state, socketId);
+      if (state === "create"){
+        const lobby = new lobbyHandler(gameMode, socketId);
+        const player = new playerHandler(socketId, playerName);
+        lobby.setPlayer(player);
+        listOfLobbies.setLobbies(lobby);
+        console.log("player" + player.getPlayerName() + "joined " + lobby.getSocketId());
+      
+      } else if (state === "join") {
+        const player = new playerHandler(socketId, playerName);
+        for (let i = 0; i < listOfLobbies.length; i++){
+          const lobby = listOfLobbies[i];
+          if (lobby.getSocketId() === player.getSocketId()){
+            lobby.setPlayer(player);
+            console.log("player " + player.getPlayerName() + " joined " + lobby.getSocketId);
+          }
+        }
+        
+      }
 
+
+      /*
       // used to exclude duplicate colors
       const usedColors = lobby.getUsedColor();
       const possibleColors = lobby.getAllPossibleColors();
@@ -56,7 +64,7 @@ module.exports = function (io) {
 
       // set player Obj to lobby after changes have been done
       lobby.setPlayer(playerInst);
-
+      */
       /*
       console.log(playerInst.getColor());
       console.log(playerInst.getPlayerName());
@@ -64,9 +72,18 @@ module.exports = function (io) {
       */
     });
 
+    //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
+    socket.on("ChallengeField", async (data) => {
+      playerInst = lobby.getPlayer();
+      const { colorIndex, socketId } = data;
+      const playerObj = await lobby.getPlayer(socketId);
+      lobby.setBingoColor(colorIndex, playerObj.getColor());
+      // loop through each entry and compare for socketID
+      console.log(data);
+    });
     
     //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
-    setInterval(async() => {
+ /*   setInterval(async() => {
         const pickableColor = lobby.getPickableColor();
         const colorArr = await lobby.getBingoColor();
         const players = await lobby.getPlayerNames();
@@ -75,7 +92,7 @@ module.exports = function (io) {
       io.emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor);
       
     }, 1000); 
-    
+    */
     socket.on("disconnect", () => {
       console.log("Client disconnected", socket.id);
 
