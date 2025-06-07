@@ -16,35 +16,34 @@ module.exports = function (io) {
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
       // console.log(playerName, gameMode, state, socketId);
-
+      // case where player creates a lobby
       if (state === "create"){
+        // create instance of lobby and player
         const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
         const player = new playerHandler(socketId, playerName, lobbyId);
-
+        // set up the bingo board
         await lobby.setBingoChallenges("testFile");
+        // assing player to lobby and lobby to lobby holder
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
-        // for testing
-        const nameOfLobby = await lobby.getLobbyId();
-        console.log("player " + player.getPlayerName() + " joined " + nameOfLobby);
-        console.log(listOfLobbies.getLobbies());
-      
+        console.log("Player " + player + " created lobby " + lobby);
+        // case where player want's to join existing lobby
       } else if (state === "join") {
-          console.log("state = join");
+          // create new player instance
           const player = new playerHandler(socketId, playerName, lobbyId);
-          console.log(player);
-          // does not enter the loop here?!
-          for (let i = 0; i < listOfLobbies.length; i++) {
-            console.log("loop " + i);
-            const lobby = listOfLobbies[i]; 
-            console.log(player.getLobbyId() + lobby.getLobbyId() + "vvvv");
-            if (lobby.getLobbyId() === player.getLobbyId()){
-              lobby.setPlayer(player);
-              console.log("player " + player.getPlayerName() + " joined " + lobby.getSocketId);
+          // get all lobbies from lobby holder
+          const lobby = listOfLobbies.getLobbies();
+
+          for (let i = 0; i < lobby.length; i++) {
+            // check wich lobby player belongs to by comparing lobbyId
+            if (lobby[i].getLobbyId() === player.getLobbyId()){
+              lobby[i].setPlayer(player);
+              console.log("player " + player.getPlayerName() + " joined " + lobby[i].getLobbyId());
+            } else {
+              console.log("No such Lobby exists");
             }
           }
       }
-
 
       /*
       // used to exclude duplicate colors

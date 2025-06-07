@@ -26,7 +26,7 @@ class lobbyHandler{
         return this.socketID;
     }
     
-    async getLobbyId(){
+    getLobbyId(){
         return this.lobbyId;
     }
     async getPickableColor() {

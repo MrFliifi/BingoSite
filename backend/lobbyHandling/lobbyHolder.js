@@ -5,8 +5,13 @@ class lobbyHolder{
     }
 
     getLobbies(){
-        return this.lobbies;
+        let lobbyList = [];
+        for (let i = 0; i < this.lobbies.length; i++){
+            lobbyList[i] = this.lobbies[i];
+        }
+        return lobbyList;
     }
+
     setLobbies(lobby){
         this.lobbies.push(lobby);
     }
