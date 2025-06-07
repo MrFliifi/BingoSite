@@ -62,7 +62,7 @@ useEffect(() => {
       }
       else
       {
-        socket.emit("sendPlayerData", {playerName:currentPlayer, gameMode: gameMode, state: state, socketId: socket.id })
+        socket.emit("sendLobbyData", {playerName:currentPlayer, lobbyId:lobbyId, gameMode: gameMode, state: state, socketId: socket.id })
         console.log(currentPlayer, gameMode, state, socket.id);
         
       }
