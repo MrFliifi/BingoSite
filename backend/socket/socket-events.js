@@ -12,7 +12,6 @@ module.exports = function (io) {
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
     
-    //The Data when a player confirms his/her Color and Name.
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
       // console.log(playerName, gameMode, state, socketId);
@@ -26,7 +25,7 @@ module.exports = function (io) {
         // assing player to lobby and lobby to lobby holder
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
-        console.log("Player " + player + " created lobby " + lobby);
+        console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
         // case where player want's to join existing lobby
       } else if (state === "join") {
           // create new player instance
@@ -38,14 +37,59 @@ module.exports = function (io) {
             // check wich lobby player belongs to by comparing lobbyId
             if (lobby[i].getLobbyId() === player.getLobbyId()){
               lobby[i].setPlayer(player);
-              console.log("player " + player.getPlayerName() + " joined " + lobby[i].getLobbyId());
+              console.log("Player " + player.getPlayerName() + " joined: " + lobby[i].getLobbyId());
             } else {
               console.log("No such Lobby exists");
             }
           }
       }
+  
+    // not sure if correct? should that not change the page?
+    socket.to(lobbyId).emit("lobbyRouting", {lobbyId, gameMode});
+    });
+    
+    
 
-      /*
+    //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
+    socket.on("ChallengeField", async (data) => {
+      playerInst = lobby.getPlayer();
+      const { colorIndex, socketId } = data;
+      const playerObj = await lobby.getPlayer(socketId);
+      lobby.setBingoColor(colorIndex, playerObj.getColor());
+      // loop through each entry and compare for socketID
+      console.log(data);
+    });
+    
+
+    socket.on("disconnect", () => {
+      console.log("Client disconnected", socket.id);
+
+      // removes color and player from lobby if player dc's
+      const player = lobby.getPlayer(socket.id);
+      const usedColor = lobby.getUsedColor();
+      const users = lobby.getPlayerArr();
+      const freeColor = player.getColor();
+      const goneUser = player.getPlayerName();
+      
+      // loop that removes a bunch of stuff from lobby on dc
+      for (let i = 0; i < usedColor.length; i++) {
+        // remove color
+        if (freeColor === usedColor[i]){
+          usedColor.splice(i, 1);
+          console.log(freeColor + " removed.")
+        }
+        // remove player
+        if (goneUser === users[i].getPlayerName()) {
+          console.log("Removed player " + player.getPlayerName());
+          users.splice(i, 1);
+          break;
+        }
+      }
+    });
+
+  })}
+
+ /* might still be usefull. has been put aside for late use
       // used to exclude duplicate colors
       const usedColors = lobby.getUsedColor();
       const possibleColors = lobby.getAllPossibleColors();
@@ -79,19 +123,8 @@ module.exports = function (io) {
       console.log(playerInst.getPlayerName());
       console.log(playerInst.getSocketID());
       */
-    });
 
-    //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
-    socket.on("ChallengeField", async (data) => {
-      playerInst = lobby.getPlayer();
-      const { colorIndex, socketId } = data;
-      const playerObj = await lobby.getPlayer(socketId);
-      lobby.setBingoColor(colorIndex, playerObj.getColor());
-      // loop through each entry and compare for socketID
-      console.log(data);
-    });
-    
-    //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
+          //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
  /*   setInterval(async() => {
         const pickableColor = lobby.getPickableColor();
         const colorArr = await lobby.getBingoColor();
@@ -102,31 +135,3 @@ module.exports = function (io) {
       
     }, 1000); 
     */
-    socket.on("disconnect", () => {
-      console.log("Client disconnected", socket.id);
-
-      // removes color and player from lobby if player dc's
-      const player = lobby.getPlayer(socket.id);
-      const usedColor = lobby.getUsedColor();
-      const users = lobby.getPlayerArr();
-      const freeColor = player.getColor();
-      const goneUser = player.getPlayerName();
-      
-      // loop that removes a bunch of stuff from lobby on dc
-      for (let i = 0; i < usedColor.length; i++) {
-        // remove color
-        if (freeColor === usedColor[i]){
-          usedColor.splice(i, 1);
-          console.log(freeColor + " removed.")
-        }
-        // remove player
-        if (goneUser === users[i].getPlayerName()) {
-          console.log("Removed player " + player.getPlayerName());
-          users.splice(i, 1);
-          break;
-        }
-      }
-    });
-
-  })}
-
