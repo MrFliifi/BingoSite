@@ -1,16 +1,21 @@
 class playerHandler{
 
-    constructor(socketID, playerName, color) {
-        this.socketID = socketID;
+    constructor(socketId, playerName, lobbyId) {
+        this.socketId = socketId;
         this.playerName = playerName;
-        this.color = color;
+        this.lobbyId = lobbyId;
+        this.color = "";
     }
 
-    getSocketID() {
+    getLobbyId(){
+        return this.lobbyId;
+    }
+    
+    getSocketId() {
         return this.socketID;
     }
 
-    setSocketID(socketID) {
+    setSocketId(socketID) {
         this.socketID = socketID;
     }
 

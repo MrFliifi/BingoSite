@@ -8,24 +8,46 @@ function BingoPage() {
   const [bingoColors, setBingoColors] = useState(Array(25).fill(""));
   const [playerNames, setPlayerNames] = useState([]);
   const [playerColor, setPlayerColor] = useState("");
-  const [currentPlayer, setCurrentPlayer] = useState("");
+  const [possibleColors, setPossibleColors]= useState([]);
 
   useEffect(() => {
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
-    socket.on("updateBingoField", (colorArr, challengeArr, players) => {
-      console.log("Receiving Bingo Field:", colorArr, challengeArr, players );
+    socket.on("updateBingoField", (bingoColorArr, challengeArr, players, possibleColors) => {
+      console.log(
+        "Receiving Bingo Field:",
+        bingoColorArr,
+        challengeArr,
+        players,
+        possibleColors
+      );
       setBingoChallenges(challengeArr);
-      setBingoColors(colorArr);
+      setBingoColors(bingoColorArr);
       setPlayerNames(players)
+      setPossibleColors(possibleColors);
     });
+
+    
+
+    socket.on("errorMsg", (message) => {
+
+      alert(message)
+    });
+ 
     // Cleanup function to remove the event listener when the component unmounts
     return () => {
       socket.off("updateBingoField");
+      socket.off("errorMsg");
+
     };
   }, []);
 
   // Function to handle button clicks
   const challengeFieldPressed = (index) => {
+
+    //if no color is picked, do nothing
+    if(!playerColor) return;
+
+
     const content = bingoChallenges[index];
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
     //Changing Colors temporary until Server overwrites it.
@@ -33,21 +55,20 @@ function BingoPage() {
     newColors[index] = playerColor;
     setBingoColors(newColors);
     //Sending the Server all Data from the Buttonpress
-    
     socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, });
   };
 
-  function sendPlayerData()
+  function sendPlayerColor()
   {
-    if(currentPlayer === "" || playerColor === "")
+    if(playerColor === "")
     {
-      alert("Pick a Name and PlayerColor")
-    }
-    else if(currentPlayer.length > 15){
-      alert("Playername is longer than 15 characters")
+      alert("Pick PlayerColor")
     }
     else{
-    socket.emit("playerData",{playerColor: playerColor, playerName: currentPlayer, socketId: socket.id,  } );
+      console.log("Send Data:  " );
+      console.log(playerColor);
+      
+    socket.emit("sendPlayerColor",{playerColor: playerColor, socketId: socket.id,  } );
     }
   }
 
@@ -75,14 +96,6 @@ function BingoPage() {
     <div className="allContainer">
       <div className="header">
         <div className="playerNames">
-          <label>PlayerName:</label>
-          <input
-            className="fields"
-            type="text"
-            id="playerName"
-            value={currentPlayer}
-            onChange={(e) => setCurrentPlayer(e.target.value)}
-          ></input>
           <label>Playercolor: </label>
           <select
             className="fields"
@@ -91,18 +104,18 @@ function BingoPage() {
             onChange={(e) => setPlayerColor(e.target.value)}
           >
             <option value="">-- Choose color --</option>
-            <option value="red">red</option>
-            <option value="blue">blue</option>
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="purple">purple</option>
-            <option value="white">white</option>
+            {possibleColors.map((color, index) => (
+              <option key={index} value={color}>
+                {color}
+              </option>
+            ))}
           </select>
+
           <button
-            className="submitPlayerButton"
-            onClick={() => sendPlayerData()}
+            className="submitColorButton"
+            onClick={() => sendPlayerColor()}
           >
-            Confirm Name/Color
+            Confirm Color
           </button>
         </div>
         <div className="playerNames">Players: {renderPlayerNames()}</div>

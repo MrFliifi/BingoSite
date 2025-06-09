@@ -4,13 +4,14 @@ const {playerHandler} = require("../lobbyHandling/playerHandler.js");
 
 class lobbyHandler{
 
-    constructor (gameMode, lobbyId) {
+    constructor (gameMode, lobbyId, socketID) {
+        this.socketID = socketID;
         this.lobbyId = lobbyId;
         this.gameMode = gameMode;
         this.bingoChallenges = new Array(25);
-        this.bingoColor = new Array(25);
         this.playerArr = [];
         // arr of colors used by players
+        this.bingoColor = new Array(25);
         this.usedColor = [];
         this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
         this.pickableColor = [];
@@ -20,6 +21,13 @@ class lobbyHandler{
         return this.gameMode;
     }
 
+    async getSocketId(){
+        return this.socketID;
+    }
+    
+    getLobbyId(){
+        return this.lobbyId;
+    }
     async getPickableColor() {
         for (let i = 0; i < this.usedColor.length; i++) {
             if (!this.possibleColor.includes(this.usedColor[i])) {
@@ -62,7 +70,8 @@ class lobbyHandler{
 
     getPlayer(socketID) {
         for (let i = 0; i < this.playerArr.length; i++) {
-            if (this.playerArr[i].socketID === socketID){
+            const playerSocketId = this.playerArr[i].getSocketId();
+            if (playerSocketId === socketID){
                 return this.playerArr[i];
             }
         }
@@ -90,7 +99,7 @@ class lobbyHandler{
     }
 
     getAllPossibleColors() {
-    return this.possibleColor;
+        return this.possibleColor;
     }
 }
 

@@ -22,6 +22,14 @@ a:hover {
     height: 300px;
 }
 
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 .title {
     font-size: 40px;
     color: white;
@@ -54,42 +62,27 @@ a:hover {
         background-color: rgb(30, 30, 30);
         padding: 20px;
 }
+.lobbyButton {
+    background-color: rgb(54, 53, 53);
+    color: aliceblue;
+    margin-left: 10px;
+    margin-right: 10px;
 
-.links-container {
+    border: solid;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
 
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    background:rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-    margin-left: 450px;
-    margin-right:450px;
-    
 }
 
-.links {
-    
-    
-    border: solid 2px purple;
-    background-color: rgb(30,30,30);
-    box-shadow: 12px 10px 5px rgba(0,0,0,0.7);
-    padding: 10px;
-    font-size: 25px;
-    color: white;
-    padding: 25px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    max-width: 400px;
-}
-
-.links:hover {
+.lobbyButton:hover {
     opacity: 0.8;
 
 }
 
-.links:active {
+.lobbyButton:active {
 
     background-color: #a2a2a2
 }
