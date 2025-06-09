@@ -18,9 +18,13 @@ useEffect(() => {
   });
 
   //Routing based on the Gamemode NEEDS TESTING!!!!
-  socket.on("lobbyRouting", (lobbyId,gameMode) => {
-    if (!gameMode || !lobbyId) return;
+  socket.on("lobbyRouting", (data) => {
+    const { lobbyId, gameMode } = data;
+
     let route = "";
+    console.log(gameMode);
+    console.log("typeof gameMode:", typeof gameMode);
+    console.log("gameMode raw:", JSON.stringify(gameMode));
 
     switch (gameMode) {
       case "Lockout":

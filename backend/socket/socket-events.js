@@ -25,6 +25,7 @@ module.exports = function (io) {
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
         console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
+        
         // case where player want's to join existing lobby
       } else if (state === "join") {
           // create new player instance
@@ -42,9 +43,11 @@ module.exports = function (io) {
             }
           }
       }
-  
+      
       // not sure if correct? should that not change the page?
-      socket.to(lobbyId).emit("lobbyRouting", {lobbyId, gameMode});
+      io.to(socketId).emit("lobbyRouting", {lobbyId, gameMode});
+      console.log(gameMode);
+      
     });
 
     // needs to be updated
