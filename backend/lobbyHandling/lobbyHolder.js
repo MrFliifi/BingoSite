@@ -4,7 +4,7 @@ class lobbyHolder{
         this.lobbies = [];
     }
 
-    getLobbies(){
+    async getLobbies(){
         let lobbyList = [];
         for (let i = 0; i < this.lobbies.length; i++){
             lobbyList[i] = this.lobbies[i];

@@ -14,7 +14,6 @@ module.exports = function (io) {
     
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
-      // console.log(playerName, gameMode, state, socketId);
       // case where player creates a lobby
       if (state === "create"){
         // create instance of lobby and player
@@ -31,7 +30,7 @@ module.exports = function (io) {
           // create new player instance
           const player = new playerHandler(socketId, playerName, lobbyId);
           // get all lobbies from lobby holder
-          const lobby = listOfLobbies.getLobbies();
+          const lobby = await listOfLobbies.getLobbies();
 
           for (let i = 0; i < lobby.length; i++) {
             // check wich lobby player belongs to by comparing lobbyId
@@ -124,14 +123,19 @@ module.exports = function (io) {
       console.log(playerInst.getSocketID());
       */
 
-          //1 sec interval, that gives all player those 3 arrays with the necessary information. EXAMPLE!
- /*   setInterval(async() => {
-        const pickableColor = lobby.getPickableColor();
-        const colorArr = await lobby.getBingoColor();
-        const players = await lobby.getPlayerNames();
-        const bingoChallenges = await lobby.getBingoChallenges();
-        
-      io.emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor);
-      
-    }, 1000); 
-    */
+  // 1 sec interval, that gives all clients the neccesary data
+  setInterval(async() => {
+    // fetch existing lobbies
+    const lobby = await listOfLobbies.getLobbies();
+    // send data to each coressponding lobby
+    for (let i = 0; i < listOfLobbies.length; i++) {
+      // do we need socketId or lobbyId to address specific lobby?
+      const lobbyId = await lobby.getLobbyId();
+      const pickableColor = await lobby.getPickableColor();
+      const colorArr = await lobby.getBingoColor();
+      const players = await lobby.getPlayerNames();
+      const bingoChallenges = await lobby.getBingoChallenges();
+      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor);
+    }
+  }, 1000); 
+  
