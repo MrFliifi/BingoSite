@@ -9,12 +9,11 @@ class lobbyHandler{
         this.lobbyId = lobbyId;
         this.gameMode = gameMode;
         this.bingoChallenges = new Array(25);
-        this.bingoColor = new Array(25);
         this.playerArr = [];
         // arr of colors used by players
+        this.bingoColor = new Array(25);
         this.usedColor = [];
         this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
-        // need to write logic for it
         this.pickableColor = [];
     }
 
@@ -71,7 +70,8 @@ class lobbyHandler{
 
     getPlayer(socketID) {
         for (let i = 0; i < this.playerArr.length; i++) {
-            if (this.playerArr[i].socketID === socketID){
+            const playerSocketId = this.playerArr[i].getSocketId();
+            if (playerSocketId === socketID){
                 return this.playerArr[i];
             }
         }

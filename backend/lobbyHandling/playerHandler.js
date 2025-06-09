@@ -6,6 +6,7 @@ class playerHandler{
         this.lobbyId = lobbyId;
         this.color = "";
     }
+
     getLobbyId(){
         return this.lobbyId;
     }
