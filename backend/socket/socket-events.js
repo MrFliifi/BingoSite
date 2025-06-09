@@ -9,6 +9,23 @@ const listOfLobbies = new lobbyHolder();
 
 // Every  Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
 module.exports = function (io) {
+
+  // 1 sec interval, that gives all clients the neccesary data
+  setInterval(async() => {
+    // fetch existing lobbies
+    const lobby = await listOfLobbies.getLobbies();
+    
+    // send data to each coressponding lobby
+    for (let i = 0; i < lobby.length; i++) {
+      const lobbyId = await lobby[i].getLobbyId();
+      const pickableColor = await lobby[i].getPickableColor();
+      const colorArr = await lobby[i].getBingoColor();
+      const players = await lobby[i].getPlayerNames();
+      const bingoChallenges = await lobby[i].getBingoChallenges();
+      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor); 
+    }
+  }, 2000); 
+
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
     
@@ -24,6 +41,7 @@ module.exports = function (io) {
         // assing player to lobby and lobby to lobby holder
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
+        socket.join(lobbyId);
         console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
         
         // case where player want's to join existing lobby
@@ -37,18 +55,25 @@ module.exports = function (io) {
             // check wich lobby player belongs to by comparing lobbyId
             if (lobby[i].getLobbyId() === player.getLobbyId()){
               lobby[i].setPlayer(player);
+              socket.join(lobbyId);
               console.log("Player " + player.getPlayerName() + " joined: " + lobby[i].getLobbyId());
+              break;
             } else {
-              console.log("No such Lobby exists");
+              // needs work
+              const message = "No such Lobby exists";
+              console.log(message);
+              socket.to(socketId).emit("errorMsg", message);
+              break;
             }
           }
       }
       
       // not sure if correct? should that not change the page?
       io.to(socketId).emit("lobbyRouting", {lobbyId, gameMode});
-      console.log(gameMode);
+      //console.log(gameMode);
       
     });
+
 
     // needs to be updated
     //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
@@ -96,24 +121,11 @@ module.exports = function (io) {
           }
         }
       }
+      socket.leave(socket.id);
     });
   })}
 
-  // 1 sec interval, that gives all clients the neccesary data
-  setInterval(async() => {
-    // fetch existing lobbies
-    const lobby = await listOfLobbies.getLobbies();
-    // send data to each coressponding lobby
-    for (let i = 0; i < listOfLobbies.length; i++) {
-      // do we need socketId or lobbyId to address specific lobby?
-      const lobbyId = await lobby.getLobbyId();
-      const pickableColor = await lobby.getPickableColor();
-      const colorArr = await lobby.getBingoColor();
-      const players = await lobby.getPlayerNames();
-      const bingoChallenges = await lobby.getBingoChallenges();
-      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor);
-    }
-  }, 1000); 
+
   
    /* might still be usefull. has been put aside for late use
       // used to exclude duplicate colors
