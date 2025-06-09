@@ -70,7 +70,8 @@ class lobbyHandler{
 
     getPlayer(socketID) {
         for (let i = 0; i < this.playerArr.length; i++) {
-            if (this.playerArr[i].socketID === socketID){
+            const playerSocketId = this.playerArr[i].getSocketId();
+            if (playerSocketId === socketID){
                 return this.playerArr[i];
             }
         }
