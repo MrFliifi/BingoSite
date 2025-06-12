@@ -9,10 +9,11 @@ function BingoPage() {
   const [playerNames, setPlayerNames] = useState([]);
   const [playerColor, setPlayerColor] = useState("");
   const [possibleColors, setPossibleColors]= useState([]);
+  const [lobbyId, setLobbyId] = useState("");
 
   useEffect(() => {
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
-    socket.on("updateBingoField", (bingoColorArr, challengeArr, players, possibleColors) => {
+    socket.on("updateBingoField", (bingoColorArr, challengeArr, players, possibleColors, lobbyId) => {
       console.log(
         "Receiving Bingo Field:",
         bingoColorArr,
@@ -24,10 +25,11 @@ function BingoPage() {
       setBingoColors(bingoColorArr);
       setPlayerNames(players)
       setPossibleColors(possibleColors);
+      setLobbyId(lobbyId);
     });
 
     
-
+//Socket event for Error Messages from the SErver
     socket.on("errorMsg", (message) => {
 
       alert(message)
@@ -47,15 +49,16 @@ function BingoPage() {
     //if no color is picked, do nothing
     if(!playerColor) return;
 
-
     const content = bingoChallenges[index];
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
+
     //Changing Colors temporary until Server overwrites it.
     const newColors = [...bingoColors];
     newColors[index] = playerColor;
     setBingoColors(newColors);
+
     //Sending the Server all Data from the Buttonpress
-    socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, });
+    socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, lobbyId: lobbyId });
   };
 
   function sendPlayerColor()
