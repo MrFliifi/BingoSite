@@ -110,6 +110,7 @@ module.exports = function (io) {
 
           if (id === socketId){
             players[i].setColor(playerColor);
+            lobby[i].setUsedColor(playerColor);
             console.log("Set Color " + playerColor + " for player " + players[i].getPlayerName());
           }
         }
@@ -146,7 +147,7 @@ module.exports = function (io) {
         // remove player
         for (let i = 0; i < players.length; i++) {
           if (goneUser === players[i].getPlayerName()) {
-            console.log("Removed player " + goneUser + " from lobby: " + lobby[i].getLobbyId());
+            //console.log("Removed player " + goneUser + " from lobby: " + lobby[i].getLobbyId());
             players.splice(i, 1);
             break;
           }
@@ -155,4 +156,5 @@ module.exports = function (io) {
       socket.leave(socket.id);
     });
   })}
+
 
