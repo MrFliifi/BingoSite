@@ -9,6 +9,25 @@ const listOfLobbies = new lobbyHolder();
 
 // Every  Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
 module.exports = function (io) {
+
+  // 1 sec interval, that gives all clients the neccesary data
+  setInterval(async() => {
+    // fetch existing lobbies
+    const lobby = await listOfLobbies.getLobbies();
+    
+    // send data to each coressponding lobby
+    for (let i = 0; i < lobby.length; i++) {
+      const lobbyId = await lobby[i].getLobbyId();
+      const pickableColor = await lobby[i].getPickableColor();
+      const colorArr = await lobby[i].getBingoColor();
+      const players = await lobby[i].getPlayerNames();
+      const bingoChallenges = await lobby[i].getBingoChallenges();
+
+      console.log(colorArr);
+      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor); 
+    }
+  }, 2000); 
+
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
     
@@ -24,6 +43,7 @@ module.exports = function (io) {
         // assing player to lobby and lobby to lobby holder
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
+        socket.join(lobbyId);
         console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
         
         // case where player want's to join existing lobby
@@ -37,28 +57,73 @@ module.exports = function (io) {
             // check wich lobby player belongs to by comparing lobbyId
             if (lobby[i].getLobbyId() === player.getLobbyId()){
               lobby[i].setPlayer(player);
+              socket.join(lobbyId);
               console.log("Player " + player.getPlayerName() + " joined: " + lobby[i].getLobbyId());
+              break;
             } else {
-              console.log("No such Lobby exists");
+              // needs work
+              const message = "No such Lobby exists";
+              console.log(message);
+              socket.to(socketId).emit("errorMsg", message);
+              break;
             }
           }
       }
       
-      // not sure if correct? should that not change the page?
       io.to(socketId).emit("lobbyRouting", {lobbyId, gameMode});
-      console.log(gameMode);
+      //console.log(gameMode);
       
     });
 
-    // needs to be updated
     //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
     socket.on("ChallengeField", async (data) => {
-      playerInst = lobby.getPlayer();
-      const { colorIndex, socketId } = data;
-      const playerObj = lobby.getPlayer(socketId);
-      lobby.setBingoColor(colorIndex, playerObj.getColor());
-      // loop through each entry and compare for socketID
-      console.log(data);
+      const { colorIndex, socketId, lobbyId } = data;
+
+      const lobby = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobby.length; i++){
+        const id = await lobby[i].getLobbyId();
+        console.log(id);
+        
+        if (id === lobbyId) {
+          const players = await lobby[i].getPlayerArr();
+          console.log(players);
+
+          for (let j = 0; j < players.length; j++) {
+            const id = await players[j].getSocketId();
+            console.log(id);
+            
+            if(id === socketId){
+              const color = await players[j].getColor();
+              console.log(color);
+              
+              lobby[i].setBingoColor(colorIndex, color);
+              console.log(lobby[i]);
+              
+
+            }
+          }
+        }
+      }
+    });
+
+
+    socket.on("sendPlayerColor", async (data) => {
+      const { playerColor, socketId } = data;
+      const lobby = await listOfLobbies.getLobbies();
+
+      for (let i = 0; i < lobby.length; i++) {
+        const players = await lobby[i].getPlayerArr();
+    
+        for (let i = 0; i < players.length; i++) {
+          const id = await players[i].getSocketId();
+
+          if (id === socketId){
+            players[i].setColor(playerColor);
+            console.log("Set Color " + playerColor + " for player " + players[i].getPlayerName());
+          }
+        }
+      }
+
     });
 
     socket.on("disconnect", async() => {
@@ -96,56 +161,7 @@ module.exports = function (io) {
           }
         }
       }
+      socket.leave(socket.id);
     });
   })}
 
-  // 1 sec interval, that gives all clients the neccesary data
-  setInterval(async() => {
-    // fetch existing lobbies
-    const lobby = await listOfLobbies.getLobbies();
-    // send data to each coressponding lobby
-    for (let i = 0; i < listOfLobbies.length; i++) {
-      // do we need socketId or lobbyId to address specific lobby?
-      const lobbyId = await lobby.getLobbyId();
-      const pickableColor = await lobby.getPickableColor();
-      const colorArr = await lobby.getBingoColor();
-      const players = await lobby.getPlayerNames();
-      const bingoChallenges = await lobby.getBingoChallenges();
-      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor);
-    }
-  }, 1000); 
-  
-   /* might still be usefull. has been put aside for late use
-      // used to exclude duplicate colors
-      const usedColors = lobby.getUsedColor();
-      const possibleColors = lobby.getAllPossibleColors();
-
-      // Check if the chosen color is already used
-      // if it isn't, it get's used as is
-      if (!usedColors.includes(playerColor)) {
-        lobby.setUsedColor(playerColor);
-      // if it is, find one that isn't
-      } else {
-        console.log(playerColor + " has already been used.");
-        // Find the first available unused color
-        for (let i = 0; i < possibleColors.length; i++) {
-          // loops through all possibleColors
-          const candidateColor = possibleColors[i];
-          // checks if it is used already.if it isn't the color get's assined to the player
-          if (!usedColors.includes(candidateColor)) {
-            playerInst.setColor(candidateColor);
-            lobby.setUsedColor(candidateColor);
-            console.log("Assigned new color: " + candidateColor);
-            break;
-          }
-        }
-      }
-
-      // set player Obj to lobby after changes have been done
-      lobby.setPlayer(playerInst);
-      */
-      /*
-      console.log(playerInst.getColor());
-      console.log(playerInst.getPlayerName());
-      console.log(playerInst.getSocketID());
-      */

@@ -28,12 +28,12 @@ class lobbyHandler{
     getLobbyId(){
         return this.lobbyId;
     }
+
     async getPickableColor() {
-        for (let i = 0; i < this.usedColor.length; i++) {
-            if (!this.possibleColor.includes(this.usedColor[i])) {
-                this.pickableColor.push(this.usedColor[i]);
-            }
-        }
+        this.pickableColor = this.possibleColor.filter(color => 
+            !this.usedColor.includes(color)
+        );
+        return this.pickableColor;
     }
 
     async setBingoChallenges(fileName){
