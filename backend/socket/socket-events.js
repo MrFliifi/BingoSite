@@ -22,6 +22,8 @@ module.exports = function (io) {
       const colorArr = await lobby[i].getBingoColor();
       const players = await lobby[i].getPlayerNames();
       const bingoChallenges = await lobby[i].getBingoChallenges();
+
+      console.log(colorArr);
       io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor); 
     }
   }, 2000); 
@@ -68,22 +70,40 @@ module.exports = function (io) {
           }
       }
       
-      // not sure if correct? should that not change the page?
       io.to(socketId).emit("lobbyRouting", {lobbyId, gameMode});
       //console.log(gameMode);
       
     });
 
-
-    // needs to be updated
     //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
     socket.on("ChallengeField", async (data) => {
-      playerInst = lobby.getPlayer();
-      const { colorIndex, socketId } = data;
-      const playerObj = lobby.getPlayer(socketId);
-      lobby.setBingoColor(colorIndex, playerObj.getColor());
-      // loop through each entry and compare for socketID
-      console.log(data);
+      const { colorIndex, socketId, lobbyId } = data;
+
+      const lobby = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobby.length; i++){
+        const id = await lobby[i].getLobbyId();
+        console.log(id);
+        
+        if (id === lobbyId) {
+          const players = await lobby[i].getPlayerArr();
+          console.log(players);
+
+          for (let j = 0; j < players.length; j++) {
+            const id = await players[j].getSocketId();
+            console.log(id);
+            
+            if(id === socketId){
+              const color = await players[j].getColor();
+              console.log(color);
+              
+              lobby[i].setBingoColor(colorIndex, color);
+              console.log(lobby[i]);
+              
+
+            }
+          }
+        }
+      }
     });
 
 
@@ -96,10 +116,9 @@ module.exports = function (io) {
     
         for (let i = 0; i < players.length; i++) {
           const id = await players[i].getSocketId();
-          
+
           if (id === socketId){
             players[i].setColor(playerColor);
-
             console.log("Set Color " + playerColor + " for player " + players[i].getPlayerName());
           }
         }
@@ -146,39 +165,3 @@ module.exports = function (io) {
     });
   })}
 
-
-  
-   /* might still be usefull. has been put aside for late use
-      // used to exclude duplicate colors
-      const usedColors = lobby.getUsedColor();
-      const possibleColors = lobby.getAllPossibleColors();
-
-      // Check if the chosen color is already used
-      // if it isn't, it get's used as is
-      if (!usedColors.includes(playerColor)) {
-        lobby.setUsedColor(playerColor);
-      // if it is, find one that isn't
-      } else {
-        console.log(playerColor + " has already been used.");
-        // Find the first available unused color
-        for (let i = 0; i < possibleColors.length; i++) {
-          // loops through all possibleColors
-          const candidateColor = possibleColors[i];
-          // checks if it is used already.if it isn't the color get's assined to the player
-          if (!usedColors.includes(candidateColor)) {
-            playerInst.setColor(candidateColor);
-            lobby.setUsedColor(candidateColor);
-            console.log("Assigned new color: " + candidateColor);
-            break;
-          }
-        }
-      }
-
-      // set player Obj to lobby after changes have been done
-      lobby.setPlayer(playerInst);
-      */
-      /*
-      console.log(playerInst.getColor());
-      console.log(playerInst.getPlayerName());
-      console.log(playerInst.getSocketID());
-      */
