@@ -86,6 +86,27 @@ module.exports = function (io) {
       console.log(data);
     });
 
+
+    socket.on("sendPlayerColor", async (data) => {
+      const { playerColor, socketId } = data;
+      const lobby = await listOfLobbies.getLobbies();
+
+      for (let i = 0; i < lobby.length; i++) {
+        const players = await lobby[i].getPlayerArr();
+    
+        for (let i = 0; i < players.length; i++) {
+          const id = await players[i].getSocketId();
+          
+          if (id === socketId){
+            players[i].setColor(playerColor);
+
+            console.log("Set Color " + playerColor + " for player " + players[i].getPlayerName());
+          }
+        }
+      }
+
+    });
+
     socket.on("disconnect", async() => {
       console.log("Client disconnected", socket.id);
       const lobby = await listOfLobbies.getLobbies();

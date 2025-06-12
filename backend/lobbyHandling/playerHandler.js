@@ -11,12 +11,12 @@ class playerHandler{
         return this.lobbyId;
     }
     
-    getSocketId() {
-        return this.socketID;
+    async getSocketId() {
+        return this.socketId;
     }
 
-    setSocketId(socketID) {
-        this.socketID = socketID;
+    setSocketId(socketId) {
+        this.socketId = socketId;
     }
 
     getPlayerName() {
