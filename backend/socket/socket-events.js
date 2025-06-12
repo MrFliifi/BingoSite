@@ -23,8 +23,7 @@ module.exports = function (io) {
       const players = await lobby[i].getPlayerNames();
       const bingoChallenges = await lobby[i].getBingoChallenges();
 
-      console.log(colorArr);
-      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor); 
+      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor, lobbyId); 
     }
   }, 2000); 
 
@@ -82,24 +81,16 @@ module.exports = function (io) {
       const lobby = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobby.length; i++){
         const id = await lobby[i].getLobbyId();
-        console.log(id);
         
         if (id === lobbyId) {
           const players = await lobby[i].getPlayerArr();
-          console.log(players);
 
           for (let j = 0; j < players.length; j++) {
             const id = await players[j].getSocketId();
-            console.log(id);
             
             if(id === socketId){
               const color = await players[j].getColor();
-              console.log(color);
-              
               lobby[i].setBingoColor(colorIndex, color);
-              console.log(lobby[i]);
-              
-
             }
           }
         }
