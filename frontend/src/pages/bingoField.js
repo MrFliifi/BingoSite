@@ -92,13 +92,13 @@ function BingoPage() {
 
   //dynamic playerNames rendering based on the playerNames array
   const renderPlayerNames = () => {
-    return playerNames.map((name, index) => <div className="playerNames" key={index}>{name}</div>);
+    return playerNames.map((name, index) => <div className="playerList" key={index}>{name}</div>);
   };
 
   return (
     <div className="allContainer">
       <div className="header">
-        <div className="playerNames">
+        <div className="headerContainer">
           <label>Playercolor: </label>
           <select
             className="fields"
@@ -121,7 +121,7 @@ function BingoPage() {
             Confirm Color
           </button>
         </div>
-        <div className="playerNames">Players: {renderPlayerNames()}</div>
+        <div className = "playerListContainer">Players: {renderPlayerNames()}</div>
       </div>
       <div className="bingoFieldButtonContainer">{renderButtons()}</div>
     </div>

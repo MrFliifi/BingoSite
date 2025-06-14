@@ -15,6 +15,9 @@ const navigate = useNavigate();
 useEffect(() => {
   socket.on("errorMsg", (message) => {
     alert(message);
+     console.log("Error incoming:");
+    
+    
   });
 
   //Routing based on the Gamemode NEEDS TESTING!!!!
@@ -63,6 +66,11 @@ useEffect(() => {
       else if (lobbyId.length > 15)
       {
         alert("LobbyId cannot be longer than 15 characters")
+      }
+      else if (gameMode === "")
+      {
+        alert("Pick a GameMode")
+
       }
       else
       {

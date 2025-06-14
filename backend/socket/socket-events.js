@@ -7,14 +7,18 @@ const {lobbyHolder} = require("../lobbyHandling/lobbyHolder.js");
 // creates lobby instance that tracks state of the game
 const listOfLobbies = new lobbyHolder();
 
+
+
 // Every  Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
 module.exports = function (io) {
-
   // 1 sec interval, that gives all clients the neccesary data
-  setInterval(async() => {
+  setInterval(async () => {
     // fetch existing lobbies
     const lobby = await listOfLobbies.getLobbies();
-    
+    console.log("Periodic lobby Log: ");
+
+    console.log(lobby);
+
     // send data to each coressponding lobby
     for (let i = 0; i < lobby.length; i++) {
       const lobbyId = await lobby[i].getLobbyId();
@@ -23,17 +27,48 @@ module.exports = function (io) {
       const players = await lobby[i].getPlayerNames();
       const bingoChallenges = await lobby[i].getBingoChallenges();
 
-      io.to(lobbyId).emit("updateBingoField", colorArr, bingoChallenges, players, pickableColor, lobbyId); 
+      io.to(lobbyId).emit(
+        "updateBingoField",
+        colorArr,
+        bingoChallenges,
+        players,
+        pickableColor,
+        lobbyId
+      );
     }
-  }, 2000); 
+  }, 2000);
+
+  // logic to remove empty lobbys
+  setInterval(async () => {
+    console.log("Deleting empty Lobbys....");
+
+    const lobbies = await listOfLobbies.getLobbies();
+
+    console.log("Lobbies aus der Delete function!:");
+    
+    console.log(lobbies);
+    
+    for (let i = 0; i < lobbies.length; i++) {
+      const players = await lobbies[i].getPlayerArr();
+   
+      if (players.length === 0) {
+         console.log("Players in der Lobby, die ich löschen will: ");
+         console.log(players);
+        console.log("Deleted Lobby :" + lobbies[i]);
+        listOfLobbies.deleteLobby(i)
+      }
+    }
+  }, 10000);
 
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
-    
+
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
+      console.log("received Data: " + data);
+
       // case where player creates a lobby
-      if (state === "create"){
+      if (state === "create") {
         // create instance of lobby and player
         const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
         const player = new playerHandler(socketId, playerName, lobbyId);
@@ -43,35 +78,61 @@ module.exports = function (io) {
         lobby.setPlayer(player);
         listOfLobbies.setLobbies(lobby);
         socket.join(lobbyId);
-        console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
-        
+        console.log(
+          "Player " +
+            player.getPlayerName() +
+            " created lobby: " +
+            lobby.getLobbyId()
+        );
+        io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
+
         // case where player want's to join existing lobby
       } else if (state === "join") {
-          // create new player instance
-          const player = new playerHandler(socketId, playerName, lobbyId);
-          // get all lobbies from lobby holder
-          const lobby = await listOfLobbies.getLobbies();
+        // get all lobbies from lobby holder
+        const lobby = await listOfLobbies.getLobbies();
 
-          for (let i = 0; i < lobby.length; i++) {
-            // check wich lobby player belongs to by comparing lobbyId
-            if (lobby[i].getLobbyId() === player.getLobbyId()){
-              lobby[i].setPlayer(player);
-              socket.join(lobbyId);
-              console.log("Player " + player.getPlayerName() + " joined: " + lobby[i].getLobbyId());
-              break;
-            } else {
-              // needs work
-              const message = "No such Lobby exists";
-              console.log(message);
-              socket.to(socketId).emit("errorMsg", message);
-              break;
-            }
+        // setting false, so that i can set to true, if there was already a lobby
+        let lobbyFound = false;
+
+        for (let i = 0; i < lobby.length; i++) {
+          // check wich lobby player belongs to by comparing lobbyId
+          if (lobby[i].getLobbyId() === lobbyId) {
+            // create new player instance, when a lobby is found
+            const player = new playerHandler(socketId, playerName, lobbyId);
+            lobby[i].setPlayer(player);
+            socket.join(lobbyId);
+            console.log(
+              "Player " +
+                player.getPlayerName() +
+                " joined: " +
+                lobby[i].getLobbyId()
+            );
+            //Send the Routing information, when player was assigned to a lobby
+            io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
+            lobbyFound = true;
+            break;
           }
+        }
+        //If no Lobby was found, send error Message
+        if (!lobbyFound) {
+          console.log("sending player errorMsg");
+          io.to(socketId).emit("errorMsg", "Lobby doesn’t exist");
+        }
       }
-      
-      io.to(socketId).emit("lobbyRouting", {lobbyId, gameMode});
-      //console.log(gameMode);
-      
+    });
+
+    // request from the FrontEnd to send the Challenges from the ChallengeFile NEEDS TESTING!
+    socket.on("requestChallenges", async (data)=>{
+      const socketId = data;
+
+       const fileHandlerInst = new fileHandler(
+         "../fileHandling/saveFileLocation",
+         fileName
+       );
+       // fill array with data from file
+       let contentArr = await fileHandlerInst.readFromSaveFile();
+
+      io.to(socketId).emit("updateChallengeEditor", contentArr );
     });
 
     //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
@@ -79,16 +140,16 @@ module.exports = function (io) {
       const { colorIndex, socketId, lobbyId } = data;
 
       const lobby = await listOfLobbies.getLobbies();
-      for (let i = 0; i < lobby.length; i++){
+      for (let i = 0; i < lobby.length; i++) {
         const id = await lobby[i].getLobbyId();
-        
+
         if (id === lobbyId) {
           const players = await lobby[i].getPlayerArr();
 
           for (let j = 0; j < players.length; j++) {
             const id = await players[j].getSocketId();
-            
-            if(id === socketId){
+
+            if (id === socketId) {
               const color = await players[j].getColor();
               lobby[i].setBingoColor(colorIndex, color);
             }
@@ -97,28 +158,31 @@ module.exports = function (io) {
       }
     });
 
-
     socket.on("sendPlayerColor", async (data) => {
       const { playerColor, socketId } = data;
       const lobby = await listOfLobbies.getLobbies();
 
       for (let i = 0; i < lobby.length; i++) {
         const players = await lobby[i].getPlayerArr();
-    
-        for (let i = 0; i < players.length; i++) {
-          const id = await players[i].getSocketId();
 
-          if (id === socketId){
-            players[i].setColor(playerColor);
+        for (let j = 0; j < players.length; j++) {
+          const id = await players[j].getSocketId();
+
+          if (id === socketId) {
+            players[j].setColor(playerColor);
             lobby[i].setUsedColor(playerColor);
-            console.log("Set Color " + playerColor + " for player " + players[i].getPlayerName());
+            console.log(
+              "Set Color " +
+                playerColor +
+                " for player " +
+                players[j].getPlayerName()
+            );
           }
         }
       }
-
     });
 
-    socket.on("disconnect", async() => {
+    socket.on("disconnect", async () => {
       console.log("Client disconnected", socket.id);
       const lobby = await listOfLobbies.getLobbies();
 
@@ -126,35 +190,41 @@ module.exports = function (io) {
       for (let i = 0; i < lobby.length; i++) {
         const players = lobby[i].getPlayerArr();
         let freeColor = "";
-        let goneUser = ""
+        let goneUser = "";
 
-        for (let i = 0; i < players.length; i++) {
-          freeColor = players[i].getColor();
-          goneUser = players[i].getPlayerName();
+        for (let j = 0; j < players.length; j++) {
+          freeColor = players[j].getColor();
+          goneUser = players[j].getPlayerName();
         }
         const usedColor = lobby[i].getUsedColor();
 
         // loop that removes a bunch of stuff from lobby on dc
         // remove color
-        for (let i = 0; i < usedColor.length; i++) {
-          if (freeColor === usedColor[i]){
-            usedColor.splice(i, 1);
-            console.log(freeColor + " removed.")
+        for (let k = 0; k < usedColor.length; k++) {
+          if (freeColor === usedColor[k]) {
+            usedColor.splice(k, 1);
+            console.log(freeColor + " removed.");
             break;
           }
         }
 
         // remove player
-        for (let i = 0; i < players.length; i++) {
-          if (goneUser === players[i].getPlayerName()) {
-            //console.log("Removed player " + goneUser + " from lobby: " + lobby[i].getLobbyId());
-            players.splice(i, 1);
+        for (let h = 0; h < players.length; h++) {
+          if (goneUser === players[h].getPlayerName()) {
+            console.log(
+              "Removed player " +
+                goneUser +
+                " from lobby: " +
+                lobby[i].getLobbyId()
+            );
+            players.splice(h, 1);
             break;
           }
         }
       }
       socket.leave(socket.id);
     });
-  })}
+  });
+}
 
 
