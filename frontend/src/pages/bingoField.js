@@ -98,7 +98,7 @@ function BingoPage() {
   return (
     <div className="allContainer">
       <div className="header">
-        <div className="headerContainer">
+        <div className="inputGroup">
           <label>Playercolor: </label>
           <select
             className="fields"
@@ -113,16 +113,17 @@ function BingoPage() {
               </option>
             ))}
           </select>
-
-          <button
-            className="submitColorButton"
-            onClick={() => sendPlayerColor()}
-          >
-            Confirm Color
-          </button>
         </div>
-        <div className = "playerListContainer">Players: {renderPlayerNames()}</div>
+
+        <button className="submitColorButton" onClick={() => sendPlayerColor()}>
+          Confirm Color
+        </button>
+        <div>Lobby: {lobbyId}</div>
+        <div className="playerListContainer">
+          Players: {renderPlayerNames()}
+        </div>
       </div>
+
       <div className="bingoFieldButtonContainer">{renderButtons()}</div>
     </div>
   );

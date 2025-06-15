@@ -1,8 +1,8 @@
 
 import { Link, useNavigate } from "react-router";
-import "../styles/homePage.css";
 import { useState, useEffect } from "react";
 import {socket} from "../websocket/socket.js";
+import "../styles/homePage.css";
 
 function HomePage() {
 const [currentPlayer, setCurrentPlayer] = useState("");
@@ -87,7 +87,7 @@ useEffect(() => {
   return (
     <div className="allContainer">
       <div className="header">
-        <div>
+       <div className="inputGroup">
           <label>PlayerName:</label>
           <input
             className="fields"
@@ -117,7 +117,9 @@ useEffect(() => {
             value={lobbyId}
             onChange={(e) => setLobbyId(e.target.value)}
           ></input>
-        </div>
+          </div>
+       
+       <div className= "buttonGroup">
         <button
           className="lobbyButton"
           onClick={() => sendPlayerData("create")}
@@ -132,6 +134,7 @@ useEffect(() => {
         >
           Join Lobby
         </button>
+        </div>
       </div>
       <div className="title-container">
         <div className="title">Orden der Bierbank Bingo</div>

@@ -1,13 +1,12 @@
 // File for all the Socket.io Events
 
-const {lobbyHandler} = require("../lobbyHandling/lobbyHandler.js");
-const {playerHandler} = require("../lobbyHandling/playerHandler.js");
-const {lobbyHolder} = require("../lobbyHandling/lobbyHolder.js");
+const { lobbyHandler } = require("../lobbyHandling/lobbyHandler.js");
+const { playerHandler } = require("../lobbyHandling/playerHandler.js");
+const { lobbyHolder } = require("../lobbyHandling/lobbyHolder.js");
+const { fileHandler } = require("../fileHandling/fileHandler.js");
 
 // creates lobby instance that tracks state of the game
 const listOfLobbies = new lobbyHolder();
-
-
 
 // Every  Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
 module.exports = function (io) {
@@ -36,33 +35,33 @@ module.exports = function (io) {
         lobbyId
       );
     }
+
+    //1000 equals 1 second. Right now 2 secs.
   }, 2000);
 
-  // logic to remove empty lobbys
+  // logic to remove empty lobbys every 20 secs.
   setInterval(async () => {
     console.log("Deleting empty Lobbys....");
 
     const lobbies = await listOfLobbies.getLobbies();
-
-    console.log("Lobbies aus der Delete function!:");
-    
-    console.log(lobbies);
-    
     for (let i = 0; i < lobbies.length; i++) {
       const players = await lobbies[i].getPlayerArr();
-   
+
       if (players.length === 0) {
-         console.log("Players in der Lobby, die ich löschen will: ");
-         console.log(players);
+        console.log(
+          "Players in the lobby that is about to get wiped (Should be empty) "
+        );
+        console.log(players);
         console.log("Deleted Lobby :" + lobbies[i]);
-        listOfLobbies.deleteLobby(i)
+        listOfLobbies.deleteLobby(i);
       }
     }
-  }, 10000);
+  }, 20000);
 
   io.on("connection", (socket) => {
     console.log("New client connected with ID:", socket.id);
 
+    // Data from Frontend when a Player creates or joins a lobby
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
       console.log("received Data: " + data);
@@ -122,17 +121,32 @@ module.exports = function (io) {
     });
 
     // request from the FrontEnd to send the Challenges from the ChallengeFile NEEDS TESTING!
-    socket.on("requestChallenges", async (data)=>{
+    socket.on("requestChallenges", async (data) => {
       const socketId = data;
 
-       const fileHandlerInst = new fileHandler(
-         "../fileHandling/saveFileLocation",
-         fileName
-       );
-       // fill array with data from file
-       let contentArr = await fileHandlerInst.readFromSaveFile();
+      const fileHandlerInst = new fileHandler(
+        "../fileHandling/saveFileLocation",
+        "testFile"
+      );
+      // fill array with data from file
+      let contentArr = await fileHandlerInst.readFromSaveFile();
+      console.log("ChallengesArr fürs Frontend: ");
 
-      io.to(socketId).emit("updateChallengeEditor", contentArr );
+      console.log(contentArr);
+
+      io.to(socketId).emit("updateChallengeEditor", contentArr);
+    });
+
+    // needs to be implemented!
+    socket.on("deleteChallenges", async (data) => {
+      const deletedChallenges = data;
+      console.log(deletedChallenges);
+    });
+
+    // needs to be implemented!
+    socket.on("addChallenge", async (data) => {
+      const addedChallenge = data;
+      console.log(addedChallenge);
     });
 
     //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
@@ -158,6 +172,7 @@ module.exports = function (io) {
       }
     });
 
+    // PlayerColor from the Frontend Bingopage
     socket.on("sendPlayerColor", async (data) => {
       const { playerColor, socketId } = data;
       const lobby = await listOfLobbies.getLobbies();
@@ -225,6 +240,4 @@ module.exports = function (io) {
       socket.leave(socket.id);
     });
   });
-}
-
-
+};

@@ -1,7 +1,10 @@
 .allContainer{
     min-height: 100vh;
 }
-.header {
+
+
+.headerContainer {
+
     display: flex;
     justify-content: left;
     align-items: center;
@@ -12,14 +15,10 @@
     font-size: 20px;
 }
 
-.headerContainer {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
 .playerListContainer
 {
   display: flex;
+  margin-left: 10px;
 }
 
 .playerList
@@ -28,10 +27,7 @@
   margin-right: 10px;
 }
 
-.playerColorBox
-{
 
-}
 
 .fields{
     font-size: 20px;
@@ -81,7 +77,6 @@
 .submitColorButton{
     background-color: rgb(54, 53, 53);
         color: aliceblue;
-    
         border: solid;
         border-width: 5px;
         border-color: black;

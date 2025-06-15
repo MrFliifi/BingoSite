@@ -4,14 +4,17 @@ import { socket } from "../websocket/socket.js";
 
 function ChallengeEditor() {
   const [addChallengeVar, setAddChallenge] = useState("");
-  const [deleteChallengeVar, setDeleteChallenge] = useState("");
-  const [currentChallenges, setCurrentChallenges] = useState("");
-
-  socket.emit("requestChallenges", socket.id);
+  const [currentChallenges, setCurrentChallenges] = useState([]);
+  const [selectedChallenges, setSelectedChallenges] = useState(new Set());
 
   useEffect(() => {
+    socket.emit("requestChallenges", socket.id);
+
     socket.on("updateChallengeEditor", (challenges) => {
       setCurrentChallenges(challenges);
+      //reset checkboxes when a new set comes
+      setSelectedChallenges(new Set()); 
+      console.log(challenges);
     });
 
     socket.on("errorMsg", (message) => {
@@ -24,15 +27,51 @@ function ChallengeEditor() {
     };
   }, []);
 
-  function deleteChallenge() {}
+  function sendChallenge() {
+    if (addChallengeVar.trim() === "") {
+      alert("Field can´t be empty");
+      return;
+    }
 
-  function sendChallenge() {}
+    console.log(addChallengeVar);
+    
+    socket.emit("addChallenge", addChallengeVar.trim());
+    //Clear the input field
+    setAddChallenge(""); 
+  }
+
+  function deleteChallenge() {
+    if (selectedChallenges.size === 0) {
+      alert("Pick at least 1 Challenge to be deleted");
+      return;
+    }
+    
+    console.log(selectedChallenges);
+    
+    socket.emit("deleteChallenges", Array.from(selectedChallenges));
+  }
+
+  const toggleChallengeSelection = (challengeName) => {
+    const newSelection = new Set(selectedChallenges);
+    if (newSelection.has(challengeName)) {
+      newSelection.delete(challengeName);
+    } else {
+      newSelection.add(challengeName);
+    }
+    setSelectedChallenges(newSelection);
+  };
 
   const renderChallenges = () => {
     return currentChallenges.map((name, index) => (
-      <input key={index} className="checkboxChallenges" type="checkbox">
+      <label key={index}>
+        <input
+          type="checkbox"
+          className="checkboxChallenges"
+          checked={selectedChallenges.has(name)}
+          onChange={() => toggleChallengeSelection(name)}
+        />
         {name}
-      </input>
+      </label>
     ));
   };
 
@@ -46,25 +85,16 @@ function ChallengeEditor() {
           id="addChallenge"
           value={addChallengeVar}
           onChange={(e) => setAddChallenge(e.target.value)}
-        ></input>
-        <button
-          className="button"
-          id="sendButton"
-          onClick={() => sendChallenge()}
-        >
+        />
+        <button className="button" id="sendButton" onClick={sendChallenge}>
           Send Challenge
         </button>
       </div>
       <div className="deleteChallengesContainer">
         <div className="text">DeleteChallenge:</div>
-        <input>
-          {renderChallenges()}
-        </input>
-        <button
-          className="button"
-          id="deleteButton"
-          onClick={() => deleteChallenge()}
-        >
+        <div className="checkboxContainer">{renderChallenges()}</div>
+
+        <button className="button" id="deleteButton" onClick={deleteChallenge}>
           Delete Challenges
         </button>
       </div>
