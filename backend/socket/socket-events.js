@@ -137,15 +137,20 @@ module.exports = function (io) {
       io.to(socketId).emit("updateChallengeEditor", contentArr);
     });
 
-    // needs to be implemented!
     socket.on("deleteChallenges", async (data) => {
-      const deletedChallenges = data;
-      console.log(deletedChallenges);
+      const { deletedChallenges, filePath, fileName } = data;
+      const fileHandlerInst = new fileHandler(filePath, fileName);
+      for (let i = 0; i < deletedChallenges.length; i++) {
+        await fileHandlerInst.deleteFromSafeFile(deletedChallenges[i]);
+      }
+      fileHandler.close();
     });
 
-    // needs to be implemented!
     socket.on("addChallenge", async (data) => {
-      const addedChallenge = data;
+      const { addedChallenge, filePath, fileName } = data;
+      const fileHandlerInst = new fileHandler(filePath, fileName);
+      await fileHandlerInst.writeToSaveFile(addedChallenge);
+      fileHandlerInst.close();
       console.log(addedChallenge);
     });
 
