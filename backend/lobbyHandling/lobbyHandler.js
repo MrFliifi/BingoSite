@@ -54,7 +54,7 @@ class lobbyHandler{
         return this.fileDirectory;
     }
     
-    async setBingoChallenges(directory, fileName){
+    async setBingoChallenges(fileName, directory){
         const fileHandlerInst = new fileHandler(directory, fileName);
         // fill array with data from file
         let contentArr = await fileHandlerInst.readFromSaveFile();

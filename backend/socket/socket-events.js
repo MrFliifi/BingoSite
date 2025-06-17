@@ -71,7 +71,7 @@ module.exports = function (io) {
         // create instance of lobby and player
         const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
         const player = new playerHandler(socketId, playerName, lobbyId);
-        // set up the bingo board
+        // set up the bingo board with default value
         await lobby.setBingoChallenges("testFile");
         // assing player to lobby and lobby to lobby holder
         lobby.setPlayer(player);
@@ -120,6 +120,25 @@ module.exports = function (io) {
       }
     });
 
+    // event that assings safefile to lobby
+    socket.on("loadSaveFile", async (data) => {
+      const { fileName, fileDir, lobbyId } = data;
+      console.log("received Data: " + data);
+      
+      const lobbies = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if(id === lobbyId) {
+          // set file location
+          await lobbies[i].setFileName(fileName);
+          await lobbies[i].setFileDir(fileDir);
+          // replace default value with values from file
+          await lobbies[i].setBingoChallenges(fileName, fileDir);
+          break;
+        }
+      }
+    });
+
     // request from the FrontEnd to send the Challenges from the ChallengeFile NEEDS TESTING!
     socket.on("requestChallenges", async (data) => {
       const socketId = data;
@@ -143,18 +162,19 @@ module.exports = function (io) {
       let fileName = "";
       let fileDir = "";
 
-      const lobbies = listOfLobbies;
+      const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
         const id = lobbies[i].getLobbyId();
         if (id === lobbyId){
           // fetch components of file path from lobby
           fileName = await lobbies[i].getFileName();
           fileDir = await lobbies[i].getFileDir();
+          break;
         }
       }
       // use filepath to create filehanderinstance. is used to delete challenges
       const fileHandlerInst = new fileHandler(filePath, fileName);
-      for (let i = 0; i < deletedChallenges.length; i++) {
+      for (let j = 0; j < deletedChallenges.length; j++) {
         await fileHandlerInst.deleteFromSafeFile(deletedChallenges[i]);
       }
       fileHandler.close();
@@ -166,13 +186,14 @@ module.exports = function (io) {
       let fileName = "";
       let fileDir = "";
 
-      const lobbies = listOfLobbies;
+      const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
         const id = lobbies[i].getLobbyId();
         if (id === lobbyId){
           // fetch components of file path from lobby
           fileName = await lobbies[i].getFileName();
           fileDir = await lobbies[i].getFileDir();
+          break;
         }
       }
       const fileHandlerInst = new fileHandler(fileDir, fileName);
