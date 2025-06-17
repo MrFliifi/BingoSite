@@ -177,7 +177,7 @@ module.exports = function (io) {
       for (let j = 0; j < deletedChallenges.length; j++) {
         await fileHandlerInst.deleteFromSafeFile(deletedChallenges[i]);
       }
-      fileHandler.close();
+      fileHandlerInst.close();
     });
 
     socket.on("addChallenge", async (data) => {
