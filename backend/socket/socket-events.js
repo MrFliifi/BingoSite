@@ -138,7 +138,21 @@ module.exports = function (io) {
     });
 
     socket.on("deleteChallenges", async (data) => {
-      const { deletedChallenges, filePath, fileName } = data;
+      const { deletedChallenges, lobbyId } = data;
+
+      let fileName = "";
+      let fileDir = "";
+
+      const lobbies = listOfLobbies;
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if (id === lobbyId){
+          // fetch components of file path from lobby
+          fileName = await lobbies[i].getFileName();
+          fileDir = await lobbies[i].getFileDir();
+        }
+      }
+      // use filepath to create filehanderinstance. is used to delete challenges
       const fileHandlerInst = new fileHandler(filePath, fileName);
       for (let i = 0; i < deletedChallenges.length; i++) {
         await fileHandlerInst.deleteFromSafeFile(deletedChallenges[i]);
@@ -147,8 +161,21 @@ module.exports = function (io) {
     });
 
     socket.on("addChallenge", async (data) => {
-      const { addedChallenge, filePath, fileName } = data;
-      const fileHandlerInst = new fileHandler(filePath, fileName);
+      const { addedChallenge, lobbyId } = data;
+
+      let fileName = "";
+      let fileDir = "";
+
+      const lobbies = listOfLobbies;
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if (id === lobbyId){
+          // fetch components of file path from lobby
+          fileName = await lobbies[i].getFileName();
+          fileDir = await lobbies[i].getFileDir();
+        }
+      }
+      const fileHandlerInst = new fileHandler(fileDir, fileName);
       await fileHandlerInst.writeToSaveFile(addedChallenge);
       fileHandlerInst.close();
       console.log(addedChallenge);
