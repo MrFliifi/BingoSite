@@ -52,7 +52,7 @@ module.exports = function (io) {
           "Players in the lobby that is about to get wiped (Should be empty) "
         );
         console.log(players);
-        console.log("Deleted Lobby :" + lobbies[i]);
+        console.log("Deleted Lobby: " + await lobbies[i].getLobbyId());
         listOfLobbies.deleteLobby(i);
       }
     }
@@ -65,46 +65,56 @@ module.exports = function (io) {
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
       console.log("received Data: " + data);
-
+    
       // case where player creates a lobby
       if (state === "create") {
-        // create instance of lobby and player
-        const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
-        const player = new playerHandler(socketId, playerName, lobbyId);
-        // set up the bingo board with default value
-        await lobby.setBingoChallenges("testFile");
-        // assing player to lobby and lobby to lobby holder
-        lobby.setPlayer(player);
-        listOfLobbies.setLobbies(lobby);
-        socket.join(lobbyId);
-        console.log(
-          "Player " +
-            player.getPlayerName() +
-            " created lobby: " +
-            lobby.getLobbyId()
-        );
-        io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
-
+        const lobbies = await listOfLobbies.getLobbies();
+        for (let i = 0; i < lobbies.length; i++) {
+          // prevent duplicate lobbyId
+          // if lobbyId is not included in any lobby
+          if (!lobbies[i].includes(lobbyId)) {
+            // create instance of lobby and player
+            const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
+            const player = new playerHandler(socketId, playerName, lobbyId);
+            // set up the bingo board with default value
+            await lobby.setBingoChallenges("testFile");
+            // assing player to lobby and lobby to lobby holder
+            lobby.setPlayer(player);
+            listOfLobbies.setLobbies(lobby);
+            socket.join(lobbyId);
+            console.log(
+              "Player " +
+                player.getPlayerName() +
+                " created lobby: " +
+                lobby.getLobbyId()
+            );
+            io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
+            break;
+          } else {
+            io.to(socketId).emit("errorMsg", "Lobby already exist");
+          }
+        }
+        
         // case where player want's to join existing lobby
       } else if (state === "join") {
         // get all lobbies from lobby holder
-        const lobby = await listOfLobbies.getLobbies();
+        const lobbies = await listOfLobbies.getLobbies();
 
         // setting false, so that i can set to true, if there was already a lobby
         let lobbyFound = false;
 
-        for (let i = 0; i < lobby.length; i++) {
+        for (let i = 0; i < lobbies.length; i++) {
           // check wich lobby player belongs to by comparing lobbyId
-          if (lobby[i].getLobbyId() === lobbyId) {
+          if (lobbies[i].getLobbyId() === lobbyId) {
             // create new player instance, when a lobby is found
             const player = new playerHandler(socketId, playerName, lobbyId);
-            lobby[i].setPlayer(player);
+            lobbies[i].setPlayer(player);
             socket.join(lobbyId);
             console.log(
               "Player " +
                 player.getPlayerName() +
                 " joined: " +
-                lobby[i].getLobbyId()
+                lobbies[i].getLobbyId()
             );
             //Send the Routing information, when player was assigned to a lobby
             io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
