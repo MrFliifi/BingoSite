@@ -23,14 +23,22 @@ module.exports = function (io) {
       const lobbyId = await lobby[i].getLobbyId();
       const pickableColor = await lobby[i].getPickableColor();
       const colorArr = await lobby[i].getBingoColor();
-      const players = await lobby[i].getPlayerNames();
       const bingoChallenges = await lobby[i].getBingoChallenges();
-
+      // we need to fetch a dict of name and color for each member of the lobby and write that to an arr (nameColorArr)
+      // we send this arr to the website 
+      // get all players from lobby
+      const playerArr = await lobby[i].getPlayerArr();
+      let nameColorArr = [];
+      for (let j = 0; j < playerArr.length; j++) {
+        // for each player, get the dict
+        nameColorArr[j] = await playerArr[j].getNameColorPair();
+      }
+      
       io.to(lobbyId).emit(
         "updateBingoField",
         colorArr,
         bingoChallenges,
-        players,
+        nameColorArr,
         pickableColor,
         lobbyId
       );
