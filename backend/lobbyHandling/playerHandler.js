@@ -11,6 +11,14 @@ class playerHandler{
         return this.lobbyId;
     }
     
+    async getNameColorPair(){
+        colorName = {
+           playerName: this.playerName,
+           playerColor: this.color
+        };
+        return colorName;
+    }
+
     async getSocketId() {
         return this.socketId;
     }

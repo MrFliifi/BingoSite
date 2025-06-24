@@ -94,7 +94,7 @@ class lobbyHandler{
             }
         }
     }
-    // should be renamed to getPlayerNames
+    
     async getPlayerNames() {
         const nameArr = [];
         for (let i = 0; i < this.playerArr.length; i++) {
