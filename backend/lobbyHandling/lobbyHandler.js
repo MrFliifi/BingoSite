@@ -5,6 +5,8 @@ const {playerHandler} = require("../lobbyHandling/playerHandler.js");
 class lobbyHandler{
 
     constructor (gameMode, lobbyId, socketID) {
+        this.fileName = "";
+        this.fileDirectory = "";
         this.socketID = socketID;
         this.lobbyId = lobbyId;
         this.gameMode = gameMode;
@@ -36,8 +38,24 @@ class lobbyHandler{
         return this.pickableColor;
     }
 
-    async setBingoChallenges(fileName){
-        const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", fileName);
+    async setFileName(fileName){
+        this.fileName = fileName;
+    }
+    
+    async getFileName(){
+        return this.fileName;
+    }
+
+    async setFileDir(fileDirectory){
+        this.fileDirectory = fileDirectory;
+    }
+    
+    async getFileDir(){
+        return this.fileDirectory;
+    }
+    
+    async setBingoChallenges(fileName, directory){
+        const fileHandlerInst = new fileHandler(directory, fileName);
         // fill array with data from file
         let contentArr = await fileHandlerInst.readFromSaveFile();
 
@@ -76,7 +94,7 @@ class lobbyHandler{
             }
         }
     }
-    // should be renamed to getPlayerNames
+    
     async getPlayerNames() {
         const nameArr = [];
         for (let i = 0; i < this.playerArr.length; i++) {

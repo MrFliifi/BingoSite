@@ -23,14 +23,22 @@ module.exports = function (io) {
       const lobbyId = await lobby[i].getLobbyId();
       const pickableColor = await lobby[i].getPickableColor();
       const colorArr = await lobby[i].getBingoColor();
-      const players = await lobby[i].getPlayerNames();
       const bingoChallenges = await lobby[i].getBingoChallenges();
-
+      // we need to fetch a dict of name and color for each member of the lobby and write that to an arr (nameColorArr)
+      // we send this arr to the website 
+      // get all players from lobby
+      const playerArr = await lobby[i].getPlayerArr();
+      let nameColorArr = [];
+      for (let j = 0; j < playerArr.length; j++) {
+        // for each player, get the dict
+        nameColorArr[j] = await playerArr[j].getNameColorPair();
+      }
+      
       io.to(lobbyId).emit(
         "updateBingoField",
         colorArr,
         bingoChallenges,
-        players,
+        nameColorArr,
         pickableColor,
         lobbyId
       );
@@ -52,7 +60,7 @@ module.exports = function (io) {
           "Players in the lobby that is about to get wiped (Should be empty) "
         );
         console.log(players);
-        console.log("Deleted Lobby :" + lobbies[i]);
+        console.log("Deleted Lobby: " + await lobbies[i].getLobbyId());
         listOfLobbies.deleteLobby(i);
       }
     }
@@ -65,46 +73,56 @@ module.exports = function (io) {
     socket.on("sendLobbyData", async (data) => {
       const { playerName, lobbyId, gameMode, state, socketId } = data;
       console.log("received Data: " + data);
-
+    
       // case where player creates a lobby
       if (state === "create") {
-        // create instance of lobby and player
-        const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
-        const player = new playerHandler(socketId, playerName, lobbyId);
-        // set up the bingo board
-        await lobby.setBingoChallenges("testFile");
-        // assing player to lobby and lobby to lobby holder
-        lobby.setPlayer(player);
-        listOfLobbies.setLobbies(lobby);
-        socket.join(lobbyId);
-        console.log(
-          "Player " +
-            player.getPlayerName() +
-            " created lobby: " +
-            lobby.getLobbyId()
-        );
-        io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
-
+        const lobbies = await listOfLobbies.getLobbies();
+        for (let i = 0; i < lobbies.length; i++) {
+          // prevent duplicate lobbyId
+          // if lobbyId is not included in any lobby
+          if (!lobbies[i].includes(lobbyId)) {
+            // create instance of lobby and player
+            const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
+            const player = new playerHandler(socketId, playerName, lobbyId);
+            // set up the bingo board with default value
+            await lobby.setBingoChallenges("testFile");
+            // assing player to lobby and lobby to lobby holder
+            lobby.setPlayer(player);
+            listOfLobbies.setLobbies(lobby);
+            socket.join(lobbyId);
+            console.log(
+              "Player " +
+                player.getPlayerName() +
+                " created lobby: " +
+                lobby.getLobbyId()
+            );
+            io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
+            break;
+          } else {
+            io.to(socketId).emit("errorMsg", "Lobby already exist");
+          }
+        }
+        
         // case where player want's to join existing lobby
       } else if (state === "join") {
         // get all lobbies from lobby holder
-        const lobby = await listOfLobbies.getLobbies();
+        const lobbies = await listOfLobbies.getLobbies();
 
         // setting false, so that i can set to true, if there was already a lobby
         let lobbyFound = false;
 
-        for (let i = 0; i < lobby.length; i++) {
+        for (let i = 0; i < lobbies.length; i++) {
           // check wich lobby player belongs to by comparing lobbyId
-          if (lobby[i].getLobbyId() === lobbyId) {
+          if (lobbies[i].getLobbyId() === lobbyId) {
             // create new player instance, when a lobby is found
             const player = new playerHandler(socketId, playerName, lobbyId);
-            lobby[i].setPlayer(player);
+            lobbies[i].setPlayer(player);
             socket.join(lobbyId);
             console.log(
               "Player " +
                 player.getPlayerName() +
                 " joined: " +
-                lobby[i].getLobbyId()
+                lobbies[i].getLobbyId()
             );
             //Send the Routing information, when player was assigned to a lobby
             io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
@@ -116,6 +134,25 @@ module.exports = function (io) {
         if (!lobbyFound) {
           console.log("sending player errorMsg");
           io.to(socketId).emit("errorMsg", "Lobby doesn’t exist");
+        }
+      }
+    });
+
+    // event that assings safefile to lobby
+    socket.on("loadSaveFile", async (data) => {
+      const { fileName, fileDir, lobbyId } = data;
+      console.log("received Data: " + data);
+      
+      const lobbies = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if(id === lobbyId) {
+          // set file location
+          await lobbies[i].setFileName(fileName);
+          await lobbies[i].setFileDir(fileDir);
+          // replace default value with values from file
+          await lobbies[i].setBingoChallenges(fileName, fileDir);
+          break;
         }
       }
     });
@@ -138,17 +175,46 @@ module.exports = function (io) {
     });
 
     socket.on("deleteChallenges", async (data) => {
-      const { deletedChallenges, filePath, fileName } = data;
+      const { deletedChallenges, lobbyId } = data;
+
+      let fileName = "";
+      let fileDir = "";
+
+      const lobbies = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if (id === lobbyId){
+          // fetch components of file path from lobby
+          fileName = await lobbies[i].getFileName();
+          fileDir = await lobbies[i].getFileDir();
+          break;
+        }
+      }
+      // use filepath to create filehanderinstance. is used to delete challenges
       const fileHandlerInst = new fileHandler(filePath, fileName);
-      for (let i = 0; i < deletedChallenges.length; i++) {
+      for (let j = 0; j < deletedChallenges.length; j++) {
         await fileHandlerInst.deleteFromSafeFile(deletedChallenges[i]);
       }
-      fileHandler.close();
+      fileHandlerInst.close();
     });
 
     socket.on("addChallenge", async (data) => {
-      const { addedChallenge, filePath, fileName } = data;
-      const fileHandlerInst = new fileHandler(filePath, fileName);
+      const { addedChallenge, lobbyId } = data;
+
+      let fileName = "";
+      let fileDir = "";
+
+      const lobbies = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if (id === lobbyId){
+          // fetch components of file path from lobby
+          fileName = await lobbies[i].getFileName();
+          fileDir = await lobbies[i].getFileDir();
+          break;
+        }
+      }
+      const fileHandlerInst = new fileHandler(fileDir, fileName);
       await fileHandlerInst.writeToSaveFile(addedChallenge);
       fileHandlerInst.close();
       console.log(addedChallenge);
