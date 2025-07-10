@@ -77,11 +77,12 @@ module.exports = function (io) {
       // case where player creates a lobby
       if (state === "create") {
         const lobbies = await listOfLobbies.getLobbies();
+
         if (lobbies.length == 0) {
           const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
           const player = new playerHandler(socketId, playerName, lobbyId);
           // set up the bingo board with default value
-          await lobby.setBingoChallenges("testFile", "./saveFileLocation");
+          await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation");
           // assing player to lobby and lobby to lobby holder
           lobby.setPlayer(player);
           listOfLobbies.setLobbies(lobby);
@@ -98,7 +99,7 @@ module.exports = function (io) {
               const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
               const player = new playerHandler(socketId, playerName, lobbyId);
               // set up the bingo board with default value
-              await lobby.setBingoChallenges("testFile");
+              await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation");
               // assing player to lobby and lobby to lobby holder
               lobby.setPlayer(player);
               listOfLobbies.setLobbies(lobby);
@@ -146,6 +147,23 @@ module.exports = function (io) {
       }
     });
 
+    
+    // event that allows user to pick a safefile and the length of the challenge
+    socket.on("setBingoGameAndLength", async (data) => {
+      const { challengeGame, challengeLength, lobbyId } = data;
+      console.log("recieved Data: " + challengeGame + challengeLength + lobbyId);  
+
+      const lobbies = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = lobbies[i].getLobbyId();
+        if(id === lobbyId) {
+          lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation");
+          break;
+        }
+      }
+    });
+    
+    // ToDo: Figure out if this is still usefull?
     // event that assings safefile to lobby
     socket.on("loadSaveFile", async (data) => {
       const { fileName, fileDir, lobbyId } = data;

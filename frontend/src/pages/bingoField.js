@@ -101,11 +101,13 @@ function BingoPage() {
 
   function setBingoGameAndLength() {
     if (challengeGame && challengeLength) {
+      
       socket.emit("setBingoGameAndLength", {
         challengeGame,
         challengeLength,
-        lobbyId,
+        lobbyId
       });
+      console.log("on set bingo  game and length " + challengeGame, challengeLength, lobbyId);
     }
   }
 
