@@ -147,7 +147,7 @@ module.exports = function (io) {
       }
     });
 
-    
+
     // event that allows user to pick a safefile and the length of the challenge
     socket.on("setBingoGameAndLength", async (data) => {
       const { challengeGame, challengeLength, lobbyId } = data;
@@ -157,7 +157,7 @@ module.exports = function (io) {
       for (let i = 0; i < lobbies.length; i++) {
         const id = lobbies[i].getLobbyId();
         if(id === lobbyId) {
-          lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation");
+          lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/");
           break;
         }
       }
