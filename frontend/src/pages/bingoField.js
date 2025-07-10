@@ -1,45 +1,69 @@
 import React, { useEffect, useState } from "react";
 import { socket } from "../websocket/socket.js";
 import "../styles/bingoField.css";
+import "../styles/button.css"
+import ChallengesModal from "../assets/challengesModal.js";
 
 function BingoPage() {
   // Variables to store the button- and player name, the functions to update them and the color of the player
+
+  // Values Bingofields from the Server
   const [bingoChallenges, setBingoChallenges] = useState(Array(25).fill(""));
-  const [bingoColors, setBingoColors] = useState(Array(25).fill(""));
-  const [playerNames, setPlayerNames] = useState([]);
-  const [playerColor, setPlayerColor] = useState("");
+  const [bingoFieldColors, setBingoColors] = useState(Array(25).fill(""));
+
   const [possibleColors, setPossibleColors]= useState([]);
   const [lobbyId, setLobbyId] = useState("");
+  const [currentPlayer, setCurrentPlayer] = useState("");
+  const [playerColor, setPlayerColor] = useState("");
+  const [nameColorArr, setNameColorArr] = useState([]);
+
+  //Values and functions for the modal popup window
+  const [showModal, setShowModal] = useState(false);
+  const closeModal = () => setShowModal(false);
+
+
+// Values for picking Game and length of the Game
+  const [challengeGame, setChallengeGame] = useState("");
+  const [challengeLength, setChallengeLength] = useState("");
 
   useEffect(() => {
+    // setting currentPlayer from Storage. For Testing maybe won´t need it
+    const storedName = localStorage.getItem("playerName");
+    if (storedName) {
+      setCurrentPlayer(storedName);
+      console.log("You are Player : " ,storedName); 
+      
+    }
+
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
-    socket.on("updateBingoField", (bingoColorArr, challengeArr, players, possibleColors, lobbyId) => {
-      console.log(
-        "Receiving Bingo Field:",
-        bingoColorArr,
-        challengeArr,
-        players,
-        possibleColors
-      );
-      setBingoChallenges(challengeArr);
-      setBingoColors(bingoColorArr);
-      setPlayerNames(players)
-      setPossibleColors(possibleColors);
-      setLobbyId(lobbyId);
-    });
+    socket.on(
+      "updateBingoField",
+      (colorArr, bingoChallenges, nameColorArr, pickableColor, lobbyId) => {
+        console.log(
+          "Receiving Bingo Field:",
+          colorArr,
+          bingoChallenges,
+          nameColorArr,
+          pickableColor,
+          lobbyId
+        );
+        setBingoChallenges(bingoChallenges);
+        setBingoColors(colorArr);
+        setPossibleColors(pickableColor);
+        setLobbyId(lobbyId);
+        setNameColorArr(nameColorArr);
+      }
+    );
 
-    
-//Socket event for Error Messages from the SErver
+    //Socket event for Error Messages from the Server
     socket.on("errorMsg", (message) => {
-
-      alert(message)
+      alert(message);
     });
- 
+
     // Cleanup function to remove the event listener when the component unmounts
     return () => {
       socket.off("updateBingoField");
       socket.off("errorMsg");
-
     };
   }, []);
 
@@ -53,7 +77,7 @@ function BingoPage() {
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
 
     //Changing Colors temporary until Server overwrites it.
-    const newColors = [...bingoColors];
+    const newColors = [...bingoFieldColors];
     newColors[index] = playerColor;
     setBingoColors(newColors);
 
@@ -75,6 +99,16 @@ function BingoPage() {
     }
   }
 
+  function setBingoGameAndLength() {
+    if (challengeGame && challengeLength) {
+      socket.emit("setBingoGameAndLength", {
+        challengeGame,
+        challengeLength,
+        lobbyId,
+      });
+    }
+  }
+
 
   //dynamic rendering of the buttons based on the bingoChallenges array and the bingoColors array
   const renderButtons = () => {
@@ -83,17 +117,55 @@ function BingoPage() {
         key={index}
         className="bingoFieldButton"
         onClick={() => challengeFieldPressed(index)}
-        style={{ backgroundColor: bingoColors[index] || "black" }}
+        style={{ backgroundColor: bingoFieldColors[index] || "black" }}
       >
         {name}
       </button>
     ));
   };
 
-  //dynamic playerNames rendering based on the playerNames array
+  /* //dynamic playerNames and colors rendering based on the nameColor array
   const renderPlayerNames = () => {
-    return playerNames.map((name, index) => <div className="playerList" key={index}>{name}</div>);
+    return nameColorArr.map(({ playerName, playerColor }, index) => (
+      <div className="playerList" 
+      key={index} 
+      style={{ color: playerColor }}
+      >
+        {playerName}
+      </div>
+    ));
+  }; */
+
+  //STILL NEEDS TESTING! Comment above is the old version.
+  const renderPlayerNames = () => {
+    return nameColorArr.map(({ playerName, playerColor }, index) => (
+      <div
+        className="playerList"
+        key={index}
+        style={{ display: "flex", alignItems: "center", gap: "8px" }}
+      >
+        <span
+          style={{ color: "#fff" }}
+        >
+          {playerName}
+        </span>
+        <span
+          title={playerColor}
+          style={{
+            backgroundColor: playerColor,
+            width: "12px",
+            height: "12px",
+            display: "inline-block",
+            borderRadius: "2px",
+            border: "1px solid #000", // Optional: adds border for better visibility
+          }}
+        />
+      </div>
+    ));
   };
+  
+  
+  
 
   return (
     <div className="allContainer">
@@ -115,13 +187,62 @@ function BingoPage() {
           </select>
         </div>
 
-        <button className="submitColorButton" onClick={() => sendPlayerColor()}>
+        <button className="btn" onClick={() => sendPlayerColor()}>
           Confirm Color
+        </button>
+        <button className="btn" onClick={() => setShowModal(true)}>
+          Select Challenges
         </button>
         <div>Lobby: {lobbyId}</div>
         <div className="playerListContainer">
           Players: {renderPlayerNames()}
         </div>
+      </div>
+
+      <div>
+        <ChallengesModal show={showModal} onClose={() => setShowModal(false)}>
+          
+          <div className="modalSelectDiv">
+            <h2>Challenges Editor</h2>
+            <label>Game: </label>
+            <select
+              className="modalFields"
+              id="challengeGame"
+              value={challengeGame}
+              onChange={(e) => setChallengeGame(e.target.value)}
+            >
+              <option value="DS3">Dark Souls 3</option>
+              <option value="ED"> EldenRing</option>
+              <option value="NR"> NightReign</option>
+            </select>
+          </div>
+
+          <div className="modalSelectDiv">
+            <label>Length: </label>
+            <select
+              className="modalFields"
+              id="challengeLength"
+              value={challengeLength}
+              onChange={(e) => setChallengeLength(e.target.value)}
+            >
+              <option value="short">short</option>
+              <option value="normal">normal</option>
+              <option value="long">long</option>
+            </select>
+          </div>
+
+          <div className="modalButtonDiv">
+            <button
+              className="btn"
+              onClick={() => {
+                closeModal();
+                setBingoGameAndLength();
+              }}
+            >
+              Confirm
+            </button>
+          </div>
+        </ChallengesModal>
       </div>
 
       <div className="bingoFieldButtonContainer">{renderButtons()}</div>

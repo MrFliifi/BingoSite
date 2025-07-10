@@ -67,16 +67,25 @@ useEffect(() => {
       {
         alert("LobbyId cannot be longer than 15 characters")
       }
-      else if (gameMode === "")
-      {
-        alert("Pick a GameMode")
+      else if (gameMode === "") {
+        alert("Pick a GameMode");
+      } 
+      else if (!/^[a-zA-Z0-9_]+$/.test(currentPlayer)) {
+        alert(
+          "Player name may only contain letters, numbers, and underscores."
+        );
+      } else {
+        socket.emit("sendLobbyData", {
+          playerName: currentPlayer,
+          lobbyId: lobbyId,
+          gameMode: gameMode,
+          state: state,
+          socketId: socket.id,
+        });
 
-      }
-      else
-      {
-        socket.emit("sendLobbyData", {playerName:currentPlayer, lobbyId:lobbyId, gameMode: gameMode, state: state, socketId: socket.id })
-        console.log(currentPlayer, gameMode, state, socket.id);
-        
+        // Save the Name
+        localStorage.setItem("playerName", currentPlayer);
+        console.log(currentPlayer, lobbyId, gameMode, state, socket.id);
       }
 
       
@@ -87,7 +96,7 @@ useEffect(() => {
   return (
     <div className="allContainer">
       <div className="header">
-       <div className="inputGroup">
+        <div className="inputGroup">
           <label>PlayerName:</label>
           <input
             className="fields"
@@ -117,23 +126,23 @@ useEffect(() => {
             value={lobbyId}
             onChange={(e) => setLobbyId(e.target.value)}
           ></input>
-          </div>
-       
-       <div className= "buttonGroup">
-        <button
-          className="lobbyButton"
-          onClick={() => sendPlayerData("create")}
-          id="createButton"
-        >
-          Create Lobby
-        </button>
-        <button
-          className="lobbyButton"
-          onClick={() => sendPlayerData("join")}
-          id="joinButton"
-        >
-          Join Lobby
-        </button>
+        </div>
+
+        <div className="buttonGroup">
+          <button
+            className="btn"
+            onClick={() => sendPlayerData("create")}
+            id="createButton"
+          >
+            Create Lobby
+          </button>
+          <button
+            className="btn"
+            onClick={() => sendPlayerData("join")}
+            id="joinButton"
+          >
+            Join Lobby
+          </button>
         </div>
       </div>
       <div className="title-container">
