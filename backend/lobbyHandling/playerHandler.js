@@ -12,7 +12,7 @@ class playerHandler{
     }
     
     async getNameColorPair(){
-        colorName = {
+        const colorName = {
            playerName: this.playerName,
            playerColor: this.color
         };
