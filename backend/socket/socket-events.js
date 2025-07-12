@@ -87,14 +87,15 @@ module.exports = function (io) {
           lobby.setPlayer(player);
           listOfLobbies.setLobbies(lobby);
           socket.join(lobbyId);
-          console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
+          console.log("Player " + player.getPlayerName() + " created lobby: " + await lobby.getLobbyId());
           io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
 
         } else {
           for (let i = 0; i < lobbies.length; i++) {
             // prevent duplicate lobbyId
             // if lobbyId is not included in any lobby
-            if (!lobbies[i].includes(lobbyId)) {
+            const lobby  = await lobbies[i].getLobbyId();
+            if (!lobby === lobbyId) {
               // create instance of lobby and player
               const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
               const player = new playerHandler(socketId, playerName, lobbyId);
@@ -104,9 +105,10 @@ module.exports = function (io) {
               lobby.setPlayer(player);
               listOfLobbies.setLobbies(lobby);
               socket.join(lobbyId);
-              console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
+              console.log("Player " + player.getPlayerName() + " created lobby: " + await lobby.getLobbyId());
               io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
               break;
+
             } else {
               io.to(socketId).emit("errorMsg", "Lobby already exist");
             }
@@ -122,17 +124,13 @@ module.exports = function (io) {
 
         for (let i = 0; i < lobbies.length; i++) {
           // check wich lobby player belongs to by comparing lobbyId
-          if (lobbies[i].getLobbyId() === lobbyId) {
+          const id = await lobbies[i].getLobbyId();
+          if (id === lobbyId) {
             // create new player instance, when a lobby is found
             const player = new playerHandler(socketId, playerName, lobbyId);
             lobbies[i].setPlayer(player);
             socket.join(lobbyId);
-            console.log(
-              "Player " +
-                player.getPlayerName() +
-                " joined: " +
-                lobbies[i].getLobbyId()
-            );
+            console.log("Player " + player.getPlayerName() + " joined: " + id);
             //Send the Routing information, when player was assigned to a lobby
             io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
             lobbyFound = true;
@@ -155,7 +153,7 @@ module.exports = function (io) {
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
           lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/");
           break;
@@ -171,7 +169,7 @@ module.exports = function (io) {
       
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
           // set file location
           await lobbies[i].setFileName(fileName);
@@ -187,10 +185,7 @@ module.exports = function (io) {
     socket.on("requestChallenges", async (data) => {
       const socketId = data;
 
-      const fileHandlerInst = new fileHandler(
-        "../fileHandling/saveFileLocation",
-        "testFile"
-      );
+      const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
       // fill array with data from file
       let contentArr = await fileHandlerInst.readFromSaveFile();
       console.log("ChallengesArr fürs Frontend: ");
@@ -208,7 +203,7 @@ module.exports = function (io) {
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if (id === lobbyId){
           // fetch components of file path from lobby
           fileName = await lobbies[i].getFileName();
@@ -232,7 +227,7 @@ module.exports = function (io) {
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if (id === lobbyId){
           // fetch components of file path from lobby
           fileName = await lobbies[i].getFileName();
@@ -271,28 +266,41 @@ module.exports = function (io) {
 
     // PlayerColor from the Frontend Bingopage
     socket.on("sendPlayerColor", async (data) => {
-      const { playerColor, socketId } = data;
+      const { playerColor, socketId, lobbyId } = data;
       const lobby = await listOfLobbies.getLobbies();
-
+      
+      // find the correct lobby by lobbyId
       for (let i = 0; i < lobby.length; i++) {
-        const players = await lobby[i].getPlayerArr();
+        const id = await lobby[i].getLobbyId();
+        if (lobbyId === id) {
+          const players = await lobby[i].getPlayerArr();
 
-        for (let j = 0; j < players.length; j++) {
-          const id = await players[j].getSocketId();
-
-          if (id === socketId) {
-            players[j].setColor(playerColor);
-            lobby[i].setUsedColor(playerColor);
-            console.log(
-              "Set Color " +
-                playerColor +
-                " for player " +
-                players[j].getPlayerName()
-            );
+          // find the correct player by socketId
+          for (let j = 0; j < players.length; j++) {
+            const id = await players[j].getSocketId();
+            if (id === socketId){
+              // check if the picked color has been used
+              // if it wasn't set it as the players color
+              const usedColor = await lobby[i].getUsedColor();
+              if (!usedColor.includes(playerColor)) {
+                await players[j].setColor(playerColor);
+                await lobby[i].setUsedColor(playerColor);
+                console.log("Set Color " + playerColor + " for player " + players[j].getPlayerName());
+                break;
+              // if it was used, give the player the next available one
+              } else {
+                const color = await lobby[i].getPickableColor();
+                players[j].setBingoColor(color[0]);
+                console.log("Set Color " + color[0] + " for player " + players[j].getPlayerName());
+                break;
+              }
+            }
           }
+          break;
         }
       }
-    });
+   });
+
 
     socket.on("disconnect", async () => {
       console.log("Client disconnected", socket.id);
