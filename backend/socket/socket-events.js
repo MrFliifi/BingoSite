@@ -87,7 +87,7 @@ module.exports = function (io) {
           lobby.setPlayer(player);
           listOfLobbies.setLobbies(lobby);
           socket.join(lobbyId);
-          console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
+          console.log("Player " + player.getPlayerName() + " created lobby: " + await lobby.getLobbyId());
           io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
 
         } else {
@@ -105,7 +105,7 @@ module.exports = function (io) {
               lobby.setPlayer(player);
               listOfLobbies.setLobbies(lobby);
               socket.join(lobbyId);
-              console.log("Player " + player.getPlayerName() + " created lobby: " + lobby.getLobbyId());
+              console.log("Player " + player.getPlayerName() + " created lobby: " + await lobby.getLobbyId());
               io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
               break;
 
@@ -153,7 +153,7 @@ module.exports = function (io) {
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
           lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/");
           break;
@@ -169,7 +169,7 @@ module.exports = function (io) {
       
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
           // set file location
           await lobbies[i].setFileName(fileName);
@@ -203,7 +203,7 @@ module.exports = function (io) {
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if (id === lobbyId){
           // fetch components of file path from lobby
           fileName = await lobbies[i].getFileName();
@@ -227,7 +227,7 @@ module.exports = function (io) {
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
-        const id = lobbies[i].getLobbyId();
+        const id = await lobbies[i].getLobbyId();
         if (id === lobbyId){
           // fetch components of file path from lobby
           fileName = await lobbies[i].getFileName();
@@ -268,19 +268,17 @@ module.exports = function (io) {
     socket.on("sendPlayerColor", async (data) => {
       const { playerColor, socketId, lobbyId } = data;
       const lobby = await listOfLobbies.getLobbies();
-      console.log(1);
       
       // find the correct lobby by lobbyId
       for (let i = 0; i < lobby.length; i++) {
         const id = await lobby[i].getLobbyId();
         if (lobbyId === id) {
           const players = await lobby[i].getPlayerArr();
-          console.log(2);
+
           // find the correct player by socketId
           for (let j = 0; j < players.length; j++) {
             const id = await players[j].getSocketId();
             if (id === socketId){
-              console.log(3);
               // check if the picked color has been used
               // if it wasn't set it as the players color
               const usedColor = await lobby[i].getUsedColor();
@@ -288,14 +286,12 @@ module.exports = function (io) {
                 await players[j].setColor(playerColor);
                 await lobby[i].setUsedColor(playerColor);
                 console.log("Set Color " + playerColor + " for player " + players[j].getPlayerName());
-                console.log(4);
                 break;
               // if it was used, give the player the next available one
               } else {
                 const color = await lobby[i].getPickableColor();
                 players[j].setBingoColor(color[0]);
                 console.log("Set Color " + color[0] + " for player " + players[j].getPlayerName());
-                console.log(5);
                 break;
               }
             }
