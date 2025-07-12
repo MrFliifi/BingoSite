@@ -7,6 +7,7 @@ class lobbyHandler{
     constructor (gameMode, lobbyId, socketID) {
         this.fileName = "";
         this.fileDirectory = "";
+        // Why are you here?!
         this.socketID = socketID;
         this.lobbyId = lobbyId;
         this.gameMode = gameMode;
@@ -27,7 +28,7 @@ class lobbyHandler{
         return this.socketID;
     }
     
-    getLobbyId(){
+    async getLobbyId(){
         return this.lobbyId;
     }
 

@@ -95,7 +95,7 @@ function BingoPage() {
       console.log("Send Data:  " );
       console.log(playerColor);
       
-    socket.emit("sendPlayerColor",{playerColor: playerColor, socketId: socket.id,  } );
+    socket.emit("sendPlayerColor",{playerColor: playerColor, socketId: socket.id, lobbyId: lobbyId,  } );
     }
   }
 
