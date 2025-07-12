@@ -82,7 +82,7 @@ function BingoPage() {
     setBingoColors(newColors);
 
     //Sending the Server all Data from the Buttonpress
-    socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, lobbyId: lobbyId });
+    socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, lobbyId });
   };
 
   function sendPlayerColor()
@@ -95,7 +95,7 @@ function BingoPage() {
       console.log("Send Data:  " );
       console.log(playerColor);
       
-    socket.emit("sendPlayerColor",{playerColor: playerColor, socketId: socket.id,  } );
+    socket.emit("sendPlayerColor",{playerColor, socketId :socket.id, lobbyId  } );
     }
   }
 
