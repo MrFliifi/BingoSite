@@ -267,40 +267,50 @@ module.exports = function (io) {
     // PlayerColor from the Frontend Bingopage
     socket.on("sendPlayerColor", async (data) => {
       const { playerColor, socketId, lobbyId } = data;
-      const lobby = await listOfLobbies.getLobbies();
-      
-      // find the correct lobby by lobbyId
-      for (let i = 0; i < lobby.length; i++) {
-        const id = await lobby[i].getLobbyId();
-        if (lobbyId === id) {
-          const players = await lobby[i].getPlayerArr();
+      const lobbies = await listOfLobbies.getLobbies();
 
-          // find the correct player by socketId
+      // Find the correct lobby by lobbyId
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = await lobbies[i].getLobbyId();
+        if (lobbyId === id) {
+          const players = await lobbies[i].getPlayerArr();
+
+          // Find the correct player by socketId
           for (let j = 0; j < players.length; j++) {
-            const id = await players[j].getSocketId();
-            if (id === socketId){
-              // check if the picked color has been used
-              // if it wasn't set it as the players color
-              const usedColor = await lobby[i].getUsedColor();
+            const playerSocketId = await players[j].getSocketId();
+            if (playerSocketId === socketId) {
+              const currentPlayerColor = await players[j].getColor();
+
+              // If player already had a color, remove it
+              if (currentPlayerColor !== "") {
+                await lobbies[i].removeUsedColor(currentPlayerColor);
+                const name = await players[j].getPlayerName();
+                console.log(`The player ${name} changed their color from ${currentPlayerColor} to ${playerColor}`);
+              }
+
+              // Refresh used colors after removing the previous one
+              const usedColor = await lobbies[i].getUsedColor();
+                            
               if (!usedColor.includes(playerColor)) {
                 await players[j].setColor(playerColor);
-                await lobby[i].setUsedColor(playerColor);
-                console.log("Set Color " + playerColor + " for player " + players[j].getPlayerName());
-                break;
-              // if it was used, give the player the next available one
+                await lobbies[i].setUsedColor(playerColor);
+                const name = await players[j].getPlayerName();
+                console.log(`Set Color ${playerColor} for player ${name}`);
               } else {
-                const color = await lobby[i].getPickableColor();
-                players[j].setBingoColor(color[0]);
-                console.log("Set Color " + color[0] + " for player " + players[j].getPlayerName());
-                break;
+                // Assign next available color
+                const color = await lobbies[i].getPickableColor();
+                await players[j].setColor(color[0]);  // Assuming setColor is correct
+                await lobbies[i].setUsedColor(color[0]);
+                const name = await players[j].getPlayerName();
+                console.log(`Set Color ${color[0]} for player ${name}`);
               }
+              break; // Done with this player
             }
           }
-          break;
+          break; // Done with this lobby
         }
       }
-   });
-
+    });
 
     socket.on("disconnect", async () => {
       console.log("Client disconnected", socket.id);

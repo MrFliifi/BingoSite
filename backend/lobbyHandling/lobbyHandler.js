@@ -39,6 +39,7 @@ class lobbyHandler{
         return this.pickableColor;
     }
 
+
     async setFileName(fileName){
         this.fileName = fileName;
     }
@@ -108,6 +109,10 @@ class lobbyHandler{
     getPlayerArr() {
         return this.playerArr;
      }
+    
+    async removeUsedColor(playerColor) {
+    this.usedColor = this.usedColor.filter(color => color !== playerColor);
+    }
 
     async setUsedColor(playerColor) {
         this.usedColor.push(playerColor);
