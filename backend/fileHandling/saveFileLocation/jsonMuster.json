@@ -1,0 +1,16 @@
+{
+    "challenges": {
+        "Besiege den Iudex Gundyr ohne Heilung": {
+            "length": ["short", "medium"],
+            "gameMode": "unknown"
+        },
+        "Rüste eine Waffe auf +3 auf": {
+            "length": ["short"],
+            "gameMode": "unknown"
+        },
+        "Sammle 5 Estus-Scherben": {
+            "length": ["short", "long"],
+            "gameMode": "unknown"
+        }
+    }
+}
