@@ -82,7 +82,7 @@ module.exports = function (io) {
           const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
           const player = new playerHandler(socketId, playerName, lobbyId);
           // set up the bingo board with default value
-          await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation");
+          await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation", "short");
           // assing player to lobby and lobby to lobby holder
           lobby.setPlayer(player);
           listOfLobbies.setLobbies(lobby);
@@ -100,7 +100,7 @@ module.exports = function (io) {
               const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
               const player = new playerHandler(socketId, playerName, lobbyId);
               // set up the bingo board with default value
-              await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation");
+              await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation", "short");
               // assing player to lobby and lobby to lobby holder
               lobby.setPlayer(player);
               listOfLobbies.setLobbies(lobby);
@@ -155,12 +155,12 @@ module.exports = function (io) {
       for (let i = 0; i < lobbies.length; i++) {
         const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
-          lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/");
+          lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/", challengeLength);
           break;
         }
       }
     });
-    
+    /*
     // ToDo: Figure out if this is still usefull?
     // event that assings safefile to lobby
     socket.on("loadSaveFile", async (data) => {
@@ -240,7 +240,7 @@ module.exports = function (io) {
       fileHandlerInst.close();
       console.log(addedChallenge);
     });
-
+    */
     //When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
     socket.on("ChallengeField", async (data) => {
       const { colorIndex, socketId, lobbyId } = data;
@@ -341,12 +341,7 @@ module.exports = function (io) {
         // remove player
         for (let h = 0; h < players.length; h++) {
           if (goneUser === players[h].getPlayerName()) {
-            console.log(
-              "Removed player " +
-                goneUser +
-                " from lobby: " +
-                lobby[i].getLobbyId()
-            );
+            console.log("Removed player " + goneUser + " from lobby: " + lobby[i].getLobbyId());
             players.splice(h, 1);
             break;
           }
