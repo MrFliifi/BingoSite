@@ -95,14 +95,11 @@ function BingoPage() {
       console.log("Send Data:  " );
       console.log(playerColor);
       
-<<<<<<< HEAD
-    socket.emit("sendPlayerColor",{playerColor: playerColor, socketId: socket.id, lobbyId: lobbyId,  } );
-=======
     socket.emit("sendPlayerColor",{playerColor, socketId :socket.id, lobbyId  } );
->>>>>>> origin/FrontEnd
     }
   }
 
+  
   function setBingoGameAndLength() {
     if (challengeGame && challengeLength) {
       
