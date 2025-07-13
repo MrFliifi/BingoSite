@@ -91,30 +91,35 @@ module.exports = function (io) {
           io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
 
         } else {
+          // check if lobby already exists
+          let lobbyExists = false;
           for (let i = 0; i < lobbies.length; i++) {
-            // prevent duplicate lobbyId
-            // if lobbyId is not included in any lobby
-            const lobby  = await lobbies[i].getLobbyId();
-            if (!lobby === lobbyId) {
+            const existingLobbyId = await lobbies[i].getLobbyId();
+            if (existingLobbyId === lobbyId) {
+              lobbyExists = true;
+              break;
+            }
+          }
+
+          if (lobbyExists == false) {
               // create instance of lobby and player
               const lobby = new lobbyHandler(gameMode, lobbyId, socketId);
               const player = new playerHandler(socketId, playerName, lobbyId);
+              
               // set up the bingo board with default value
               await lobby.setBingoChallenges("DarkSouls3", "./saveFileLocation", "short");
-              // assing player to lobby and lobby to lobby holder
+              
+              // assign player to lobby and lobby to lobby holder
               lobby.setPlayer(player);
               listOfLobbies.setLobbies(lobby);
               socket.join(lobbyId);
               console.log("Player " + player.getPlayerName() + " created lobby: " + await lobby.getLobbyId());
               io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
-              break;
-
-            } else {
-              io.to(socketId).emit("errorMsg", "Lobby already exist");
-            }
+          } else {
+              io.to(socketId).emit("errorMsg", "Lobby already exists");
           }
         }
-        // case where player want's to join existing lobby
+      // case where player want's to join existing lobby
       } else if (state === "join") {
         // get all lobbies from lobby holder
         const lobbies = await listOfLobbies.getLobbies();
@@ -341,7 +346,7 @@ module.exports = function (io) {
         // remove player
         for (let h = 0; h < players.length; h++) {
           if (goneUser === players[h].getPlayerName()) {
-            console.log("Removed player " + goneUser + " from lobby: " + lobby[i].getLobbyId());
+            console.log("Removed player " + goneUser + " from lobby: " + await lobby[i].getLobbyId());
             players.splice(h, 1);
             break;
           }
