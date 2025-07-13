@@ -1,24 +1,16 @@
 {
-    "short":  {
-        "challenge": [
-            "Besiege den Iudex Gundyr ohne Heilung",
-            "Rüste eine Waffe auf +3 auf",
-        ]
-
-    },
-
-    "medium": {
-        "challenge": [
-            "Töte einen Boss ohne Lock-On",
-            "Rüste das dümmste mögliche Outfit aus",
-        ]   
-    },
-
-    "long": {
-        "challenge": [
-            "Töte einen Boss mit nur 1 HP übrig",
-            "Werde in jedem Gebiet einmal verflucht",
-            "Mache den kompletten Run in einer Rolle deiner Wahl (z. B. 'Fashion Souls', 'Only Shields', 'Nackt mit Hut')"
-        ]
+    "challenges": {
+        "Besiege den Iudex Gundyr ohne Heilung": {
+            "length": ["short", "medium"],
+            "gameMode": "unknown"
+        },
+        "Rüste eine Waffe auf +3 auf": {
+            "length": ["short"],
+            "gameMode": "unknown"
+        },
+        "Sammle 5 Estus-Scherben": {
+            "length": ["short", "long"],
+            "gameMode": "unknown"
+        }
     }
 }

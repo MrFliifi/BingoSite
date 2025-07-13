@@ -39,26 +39,30 @@ class fileHandler{
         }
     }
 
-
     async readFromSaveFile(challengeLength) {
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
         try {
             const content = await fs.promises.readFile(localFilePath, 'utf8');
             const jsonData = JSON.parse(content);
 
-            // Prüfen, ob der gewünschte Schwierigkeitsgrad existiert
-            if (!jsonData[challengeLength] || !jsonData[challengeLength].challenge) {
-                throw new Error(`Challenge length "${challengeLength}" not found in file.`);
+            if (!jsonData.challenges) {
+                throw new Error(`Challenge data not found in file.`);
             }
 
-            return jsonData[challengeLength].challenge;
+            // Collect challenge keys where the length includes the requested value
+            const matchingKeys = Object.entries(jsonData.challenges)
+                .filter(([_, value]) => value.length.includes(challengeLength))
+                .map(([key]) => key); // Just return the keys as strings
+
+            return matchingKeys; // Array of matching challenge titles
         } catch (err) {
             console.error(`Error reading or parsing JSON file at ${localFilePath}:`, err);
-            throw err; // Weiterwerfen, falls extern behandelt werden soll
+            throw err;
         }
     }
 
-    async deleteFromSafeFile(toDelete) {
+
+/*  async deleteFromSafeFile(toDelete) {
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
         try {
             let contentArr = await this.readFromSaveFile();
@@ -86,25 +90,8 @@ class fileHandler{
             }
         });
     }
-
+*/
 }
-
-// example for how to use the class. also for testing purposes
-/*
-const fileHandlerInst = new fileHandler("../fileHandling/saveFileLocation", "testFile");
-fileHandlerInst.createSaveFile();
-let challenges = "Besiege Vordt ohne Schaden zu nehmen\nTöte den Tänzer des Nordwindtals vor dem Kathedralenboss\nVerwende während eines Bosskampfs nur Pyromantie\nSammle alle Estus-Scherben im Spiel\nRüste keine Rüstung während des gesamten Spiels\nErreiche den Farron Keep ohne zu rollen\nTöte einen Invasor mit einem kritischen Treffer\nBesiege einen Boss nur mit blanken Fäusten\nSammle alle Illusory Walls\nBeende ein Gebiet ohne ein einziges Leuchtfeuer zu benutzen\nVerwende nur Bögen als Waffe für ein Gebiet\nSprich mit jedem NPC mindestens einmal\nVerliere mehr als 100.000 Seelen auf einmal\nBeschwöre einen Phantom-Spieler und töte ihn\nWerde dreimal von Hodrick invadiert\nTöte einen Boss mit einer Waffe auf +0\nErreiche die Untoten-Siedlung ohne ein einziges Mal zu sterben\nWerde zum Aldrich-Faithful und gewinne einen PvP-Kampf\nVerwende nur Waffen aus Boss-Seelen\nTöte einen Drachen oder Wyvern ohne Bogen oder Magie\nFinde und benutze alle Estus-Flakon-Upgrades\nErreiche NG+ während des Bingos\nSprich mit Yoel und hol dir alle 5 Hollowing-Level\nBesiege den Nameless King ohne Rüstung\nRüste nur Waffen aus, die du lootest (keine Händler)\nVerwende nie die ´Rollen´-Taste für 10 Minuten Spielzeit\nErledige einen Boss mit nur Würfen (Wurfmesser, Bomben, etc.)\nVerwandle dich mit Hilfe eines Zaubers oder Rings in ein Objekt und werde nicht entdeckt\nTöte einen Kristallechsen-Dämon ohne Estus-Nutzung\nRäume ein komplettes Gebiet nur mit Rückwärtsrollen und Parieren";
-
-fileHandlerInst.writeToSaveFile(challenges);
-
-(async () => {
-  const result = await fileHandlerInst.readFromSaveFile();
-  console.log(result);
-})(); 
-
-/* fileHandlerInst.deleteFromSafeFile("jaguar47");
-fileHandlerInst.deleteEntireSafeFile(); */
-
 
 module.exports = {fileHandler};
 

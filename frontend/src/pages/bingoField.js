@@ -214,9 +214,9 @@ function BingoPage() {
               value={challengeGame}
               onChange={(e) => setChallengeGame(e.target.value)}
             >
-              <option value="DS3">Dark Souls 3</option>
-              <option value="ED"> EldenRing</option>
-              <option value="NR"> NightReign</option>
+              <option value="DarkSouls3">Dark Souls 3</option>
+              <option value="EldenRing"> Elden Ring</option>
+              <option value="Nightreign"> Nightreign</option>
             </select>
           </div>
 
@@ -229,7 +229,7 @@ function BingoPage() {
               onChange={(e) => setChallengeLength(e.target.value)}
             >
               <option value="short">short</option>
-              <option value="normal">normal</option>
+              <option value="medium">medium</option>
               <option value="long">long</option>
             </select>
           </div>

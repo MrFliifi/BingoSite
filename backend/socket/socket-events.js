@@ -3,7 +3,7 @@
 const { lobbyHandler } = require("../lobbyHandling/lobbyHandler.js");
 const { playerHandler } = require("../lobbyHandling/playerHandler.js");
 const { lobbyHolder } = require("../lobbyHandling/lobbyHolder.js");
-const { fileHandler } = require("../fileHandling/fileHandler.js");
+// const { fileHandler } = require("../fileHandling/fileHandler.js");
 
 // creates lobby instance that tracks state of the game
 const listOfLobbies = new lobbyHolder();
@@ -149,7 +149,7 @@ module.exports = function (io) {
     // event that allows user to pick a safefile and the length of the challenge
     socket.on("setBingoGameAndLength", async (data) => {
       const { challengeGame, challengeLength, lobbyId } = data;
-      console.log("recieved Data: " + challengeGame + challengeLength + lobbyId);  
+      //console.log("recieved Data: " + challengeGame + challengeLength + lobbyId);  
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
