@@ -16,8 +16,6 @@ useEffect(() => {
   socket.on("errorMsg", (message) => {
     alert(message);
      console.log("Error incoming:");
-    
-    
   });
 
   //Routing based on the Gamemode NEEDS TESTING!!!!
@@ -54,8 +52,6 @@ useEffect(() => {
 }, [gameMode, navigate]);
 
 
-
-
     function sendPlayerData(state) {
       
       if (currentPlayer === "") {
@@ -87,9 +83,6 @@ useEffect(() => {
         localStorage.setItem("playerName", currentPlayer);
         console.log(currentPlayer, lobbyId, gameMode, state, socket.id);
       }
-
-      
-     
     }
 
     
@@ -147,11 +140,6 @@ useEffect(() => {
       </div>
       <div className="title-container">
         <div className="title">Orden der Bierbank Bingo</div>
-      </div>
-      <div className="linkChallengeContainer">
-        <Link className="linkChallenge" to="/challengeEditor">
-          ChallengeEditor
-        </Link>
       </div>
     </div>
   );
