@@ -14,7 +14,7 @@ module.exports = function (io) {
   setInterval(async () => {
     // fetch existing lobbies
     const lobby = await listOfLobbies.getLobbies();
-    console.log("Periodic lobby Log: ");
+    console.log("Periodic lobby Log: ", lobby);
 
     
 
@@ -24,7 +24,6 @@ module.exports = function (io) {
       const pickableColor = await lobby[i].getPickableColor();
       const colorArr = await lobby[i].getBingoColor();
       const gameMode = await lobby[i].getGameMode();
-      console.log(colorArr);
       
       const bingoChallenges = await lobby[i].getBingoChallenges();
       // we need to fetch a dict of name and color for each member of the lobby and write that to an arr (nameColorArr)
@@ -138,10 +137,13 @@ module.exports = function (io) {
             // create new player instance, when a lobby is found
             const player = new playerHandler(socketId, playerName, lobbyId);
             lobbies[i].setPlayer(player);
+            lobbyGameMode = await lobbies[i].getGameMode();
+            console.log(lobbyGameMode);
+            
             socket.join(lobbyId);
             console.log("Player " + player.getPlayerName() + " joined: " + id);
             //Send the Routing information, when player was assigned to a lobby
-            io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
+            io.to(socketId).emit("lobbyRouting", { lobbyId, lobbyGameMode });
             lobbyFound = true;
             break;
           }

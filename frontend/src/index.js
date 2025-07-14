@@ -17,6 +17,8 @@ import ChallengeEditor from "./pages/challengeEditor.js"
 // React Components like HomePage or BingoSite Function HAVE to be in Pascal Case!!!
 
 
+
+
 // Creates the router for the frontend
 const router = createBrowserRouter([
   {

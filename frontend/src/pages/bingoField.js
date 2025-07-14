@@ -29,6 +29,9 @@ function BingoPage() {
   const [challengeLength, setChallengeLength] = useState("");
 
   useEffect(() => {
+
+    document.title = "ODB Bingo";
+
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
     socket.on(
       "updateBingoField",
@@ -70,14 +73,16 @@ function BingoPage() {
 
   };
 
-  function sendPlayerColor() {
-    if (playerColor === "") {
+  function sendPlayerColor(color) {
+    if (color === "") {
       alert("Pick PlayerColor");
     } else {
       console.log("Send Data:  ");
-      console.log(playerColor);
+      console.log(color);
+
+      setPlayerColor(color);
       
-    socket.emit("sendPlayerColor",{playerColor, socketId :socket.id, lobbyId  } );
+    socket.emit("sendPlayerColor",{ playerColor: color, socketId :socket.id, lobbyId  } );
     }
   }
 
@@ -101,7 +106,6 @@ function BingoPage() {
 
   //Function to determine the color-Gradient in Non-Lockout.
 function getBackgroundStyle(colors) {
-  if (!colors || colors.length === 0) return "black";
 
   // Flatten in case colors is nested (array of arrays)
   colors = colors.flat();
@@ -125,15 +129,12 @@ function getBackgroundStyle(colors) {
 }
 //Functions for each case, when i want to chang only one case without touching the other cases.
 function getTwoColorCornerGradient(colors) {
-  if (colors.length !== 2) return "black";
-
   return `conic-gradient(
     ${colors[0]} 0% 50%,
     ${colors[1]} 50% 100%
   )`;
 }
 function getThreeColorPieGradient(colors) {
-  if (colors.length !== 3) return "black";
 
   return `conic-gradient(
     ${colors[0]} 0% 33.33%,
@@ -142,7 +143,6 @@ function getThreeColorPieGradient(colors) {
   )`;
 }
 function getFourColorCornerGradient(colors) {
-  if (colors.length !== 4) return "black";
 
   return `conic-gradient(
     ${colors[0]} 0% 25%,
@@ -224,7 +224,10 @@ function getFourColorCornerGradient(colors) {
             className="fields"
             id="playercolor"
             value={playerColor}
-            onChange={(e) => setPlayerColor(e.target.value)}
+            onChange={(e) => {
+              
+              sendPlayerColor(e.target.value);
+            }}
           >
             <option value="">-- Choose color --</option>
             {possibleColors.map((color, index) => (
@@ -235,9 +238,7 @@ function getFourColorCornerGradient(colors) {
           </select>
         </div>
 
-        <button className="btn" onClick={() => sendPlayerColor()}>
-          Confirm Color
-        </button>
+       
         <button className="btn" onClick={() => setShowModal(true)}>
           Select Challenges
         </button>

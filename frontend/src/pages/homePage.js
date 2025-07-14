@@ -13,6 +13,9 @@ const navigate = useNavigate();
 
 
 useEffect(() => {
+
+   document.title = "ODB Bingo";
+
   socket.on("errorMsg", (message) => {
     alert(message);
      console.log("Error incoming:", message);
@@ -21,9 +24,16 @@ useEffect(() => {
   });
 
   //Routing based on the Gamemode
-  socket.on("lobbyRouting", (data) => {
-    const { lobbyId, gameMode } = data;
 
+    //This part is kinda tricky. When i send the Server the GameMode it may be "wrong" when the user joins a room.
+    //in the Backend i readout the correct gameMode from the lobby but it can´t have the same Name "gameMode", so i had to rename it to "lobbyGameMode"
+    //Here i have to destructure it and make lobbyGameMode again to gameMode, so the routing works when someone create or joins a lobby. 
+  socket.on("lobbyRouting", (data) => {
+  const lobbyId = data.lobbyId;
+  const gameMode = data.lobbyGameMode || data.gameMode;
+
+
+    console.log("Log im Frontend: ", gameMode);
     let route = "";
 
     switch (gameMode) {
@@ -64,7 +74,7 @@ useEffect(() => {
       {
         alert("LobbyId cannot be longer than 15 characters")
       }
-      else if (gameMode === "") {
+      else if (state === "create" && gameMode === "") {
         alert("Pick a GameMode");
       } 
       else if (!/^[a-zA-Z0-9_]+$/.test(currentPlayer)) {

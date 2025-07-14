@@ -14,7 +14,7 @@ class lobbyHandler {
     // arr of colors used by players
     this.bingoColor = Array.from({ length: 25 }, () => []);
     this.usedColor = [];
-    this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
+    this.possibleColor = ["red", "blue", "green", "deeppink", "purple", "teal", "chocolate"];
     this.pickableColor = [];
   }
 
