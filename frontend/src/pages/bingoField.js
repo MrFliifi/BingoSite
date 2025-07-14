@@ -27,6 +27,7 @@ function BingoPage() {
   // Values for picking Game and length of the Game
   const [challengeGame, setChallengeGame] = useState("");
   const [challengeLength, setChallengeLength] = useState("");
+  const [beispielArray, setBeispielArray] = useState([]);
 
   
 
@@ -46,7 +47,33 @@ function BingoPage() {
           colorArr,
         );
 
-        let beispielArray = [["red", "green"], ["red"]]
+        setBeispielArray([
+          ["red", "green"],
+          ["red"],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+        ]);
         console.log(beispielArray);
         
         setBingoChallenges(bingoChallenges);
@@ -76,12 +103,6 @@ function BingoPage() {
 
     const content = bingoChallenges[index];
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
-
-    //Changing Colors temporary until Server overwrites it.
-    const newColors = [...bingoFieldColors];
-    newColors[index] = playerColor;
-    setBingoColors(newColors);
-
     //Sending the Server all Data from the Buttonpress
     socket.emit("ChallengeField", { colorIndex: index, socketId: socket.id, lobbyId });
 
@@ -119,22 +140,25 @@ function BingoPage() {
   //Function to determine the color-Gradient in Non-Lockout.
 function getBackgroundStyle(colors) {
   if (!colors || colors.length === 0) return "black";
+
+  // Flatten in case colors is nested (array of arrays)
+  colors = colors.flat();
+
   if (colors.length === 1) return colors[0];
 
-   if (colors.length === 2) {
-     return getTwoColorCornerGradient(colors);
-   }
+  if (colors.length === 2) {
+    return getTwoColorCornerGradient(colors);
+  }
 
   if (colors.length === 3) {
     return getThreeColorPieGradient(colors);
   }
 
-    if (colors.length === 4) {
-      return getFourColorCornerGradient(colors);
-    }
+  if (colors.length === 4) {
+    return getFourColorCornerGradient(colors);
+  }
 
-
-  // Fallback for more than 4 players
+  // Fallback for more than 4 colors
   return `linear-gradient(to bottom right, ${colors.join(", ")})`;
 }
 //Functions for each case, when i want to chang only one case without touching the other cases.
