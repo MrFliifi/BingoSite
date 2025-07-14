@@ -14,7 +14,7 @@ class lobbyHandler{
         this.bingoChallenges = new Array(25);
         this.playerArr = [];
         // arr of colors used by players
-        this.bingoColor = new Array(25);
+        this.bingoColor = Array.from({ length: 25 }, () => [[]]);
         this.usedColor = [];
         this.possibleColor = ["red", "blue", "green", "yellow", "purple", "white"];
         this.pickableColor = [];
@@ -78,13 +78,12 @@ class lobbyHandler{
 
     async setBingoColor(i, color) {
         if (this.gameMode === "Non-Lockout") {
-            if (!Array.isArray(this.bingoColor[i])) {
-                this.bingoColor[i] = [];
-                this.bingoColor[i].push([]);  // Push an empty array as the first element
-            }
-            this.bingoColor[i][0].push(color); // Push color into the inner array
+            
+            this.bingoColor[i][0].push(color);
+            
+        
         } else {
-            this.bingoColor[i] = color;
+            this.bingoColor[i][0] = color;
         }
     }
 

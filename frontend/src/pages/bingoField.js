@@ -44,11 +44,11 @@ function BingoPage() {
         console.log(
           "Receiving Bingo Field:",
           colorArr,
-          bingoChallenges,
-          nameColorArr,
-          pickableColor,
-          lobbyId
         );
+
+        let beispielArray = [["red", "green"], ["red"]]
+        console.log(beispielArray);
+        
         setBingoChallenges(bingoChallenges);
         setBingoColors(colorArr);
         setPossibleColors(pickableColor);

@@ -16,13 +16,15 @@ module.exports = function (io) {
     const lobby = await listOfLobbies.getLobbies();
     console.log("Periodic lobby Log: ");
 
-    console.log(lobby);
+    
 
     // send data to each coressponding lobby
     for (let i = 0; i < lobby.length; i++) {
       const lobbyId = await lobby[i].getLobbyId();
       const pickableColor = await lobby[i].getPickableColor();
       const colorArr = await lobby[i].getBingoColor();
+      console.log(colorArr);
+      
       const bingoChallenges = await lobby[i].getBingoChallenges();
       // we need to fetch a dict of name and color for each member of the lobby and write that to an arr (nameColorArr)
       // we send this arr to the website 
