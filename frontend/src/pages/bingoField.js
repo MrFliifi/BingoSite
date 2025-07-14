@@ -270,6 +270,7 @@ function getFourColorCornerGradient(colors) {
               id="challengeGame"
               value={challengeGame}
               onChange={(e) => setChallengeGame(e.target.value)}
+              >
               <option value="DarkSouls3">Dark Souls 3</option>
               <option value="EldenRing"> Elden Ring</option>
               <option value="Nightreign"> Nightreign</option>
