@@ -39,6 +39,7 @@ class lobbyHandler{
         return this.pickableColor;
     }
 
+
     async setFileName(fileName){
         this.fileName = fileName;
     }
@@ -55,10 +56,10 @@ class lobbyHandler{
         return this.fileDirectory;
     }
     
-    async setBingoChallenges(fileName, directory){
+    async setBingoChallenges(fileName, directory, challengeLength){
         const fileHandlerInst = new fileHandler(directory, fileName);
         // fill array with data from file
-        let contentArr = await fileHandlerInst.readFromSaveFile();
+        let contentArr = await fileHandlerInst.readFromSaveFile(challengeLength);
 
         // shuffle content of array around
         for (let i = contentArr.length - 1; i > 0; i--) {
@@ -108,6 +109,10 @@ class lobbyHandler{
     getPlayerArr() {
         return this.playerArr;
      }
+    
+    async removeUsedColor(playerColor) {
+    this.usedColor = this.usedColor.filter(color => color !== playerColor);
+    }
 
     async setUsedColor(playerColor) {
         this.usedColor.push(playerColor);

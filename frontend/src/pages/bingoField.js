@@ -82,11 +82,8 @@ function BingoPage() {
     setBingoColors(newColors);
 
     //Sending the Server all Data from the Buttonpress
-    socket.emit("ChallengeField", {
-      colorIndex: index,
-      socketId: socket.id,
-      lobbyId: lobbyId,
-    });
+    socket.emit("ChallengeField", { colorIndex: index, socketId: socket.id, lobbyId });
+
   };
 
   function sendPlayerColor() {
@@ -95,15 +92,12 @@ function BingoPage() {
     } else {
       console.log("Send Data:  ");
       console.log(playerColor);
-
-      socket.emit("sendPlayerColor", {
-        playerColor: playerColor,
-        socketId: socket.id,
-        lobbyId: lobbyId,
-      });
+      
+    socket.emit("sendPlayerColor",{playerColor, socketId :socket.id, lobbyId  } );
     }
   }
 
+  
   function setBingoGameAndLength() {
     if (challengeGame && challengeLength) {
       socket.emit("setBingoGameAndLength", {
@@ -276,11 +270,9 @@ function getFourColorCornerGradient(colors) {
               id="challengeGame"
               value={challengeGame}
               onChange={(e) => setChallengeGame(e.target.value)}
-            >
-              <option>-- Choose Game --</option>
-              <option value="DS3">Dark Souls 3</option>
-              <option value="ED"> EldenRing</option>
-              <option value="NR"> NightReign</option>
+              <option value="DarkSouls3">Dark Souls 3</option>
+              <option value="EldenRing"> Elden Ring</option>
+              <option value="Nightreign"> Nightreign</option>
             </select>
           </div>
 
@@ -294,7 +286,7 @@ function getFourColorCornerGradient(colors) {
             >
               <option>-- Choose Length --</option>
               <option value="short">short</option>
-              <option value="normal">normal</option>
+              <option value="medium">medium</option>
               <option value="long">long</option>
             </select>
           </div>
