@@ -164,7 +164,7 @@ function getFourColorCornerGradient(colors) {
             key={index}
             className="bingoFieldButton"
             onClick={() => challengeFieldPressed(index)}
-            style={{ backgroundColor: bingoFieldColors[index] || "black" }}
+            style={{ backgroundColor: bingoFieldColors[index] }}
           >
             {name}
           </button>
@@ -241,6 +241,7 @@ function getFourColorCornerGradient(colors) {
         <button className="btn" onClick={() => setShowModal(true)}>
           Select Challenges
         </button>
+        <div>GameMode: {gameMode}</div>
         <div>Lobby: {lobbyId}</div>
         <div className="playerListContainer">
           Players: {renderPlayerNames()}

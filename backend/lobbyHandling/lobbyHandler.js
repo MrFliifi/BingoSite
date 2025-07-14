@@ -75,12 +75,23 @@ class lobbyHandler {
 
   async setBingoColor(i, color) {
     if (this.gameMode === "Lockout") {
-        if(!this.bingoColor[i].length > 0)
-        {
-            this.bingoColor[i][0] = color;
-        }
+        //if field is empty, set color
+      if (this.bingoColor[i].length === 0) {
+        this.bingoColor[i][0] = color;
+        //when the color in the array the same as the color in the argument is, make the array empty
+      } else if (this.bingoColor[i][0] === color) {
+        this.bingoColor[i] = [];
+      }
+      
     } else {
-      if (!this.bingoColor[i].includes(color)) {
+        //Non-Lockout if the color already exists, remove it
+        //indexof searches for the index, where the same color is located. If the color is not in the array index == -1
+      const index = this.bingoColor[i].indexOf(color);
+        //If the color is in the array, splice it
+      if (index !== -1) {
+        this.bingoColor[i].splice(index, 1);
+      } else {
+        //if it doesn´t exit, push into array
         this.bingoColor[i].push(color);
       }
     }
