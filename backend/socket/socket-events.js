@@ -23,6 +23,7 @@ module.exports = function (io) {
       const lobbyId = await lobby[i].getLobbyId();
       const pickableColor = await lobby[i].getPickableColor();
       const colorArr = await lobby[i].getBingoColor();
+      const gameMode = await lobby[i].getGameMode();
       console.log(colorArr);
       
       const bingoChallenges = await lobby[i].getBingoChallenges();
@@ -42,7 +43,8 @@ module.exports = function (io) {
         bingoChallenges,
         nameColorArr,
         pickableColor,
-        lobbyId
+        lobbyId,
+        gameMode
       );
     }
 

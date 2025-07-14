@@ -27,60 +27,22 @@ function BingoPage() {
   // Values for picking Game and length of the Game
   const [challengeGame, setChallengeGame] = useState("");
   const [challengeLength, setChallengeLength] = useState("");
-  const [beispielArray, setBeispielArray] = useState([]);
-
-  
 
   useEffect(() => {
-  
-    const storedGameMode = localStorage.getItem("gameMode");
-    if (storedGameMode) {
-      setGameMode(storedGameMode);
-      console.log("The GameMode you are playing : ", storedGameMode);
-    }
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
     socket.on(
       "updateBingoField",
-      (colorArr, bingoChallenges, nameColorArr, pickableColor, lobbyId) => {
+      (colorArr, bingoChallenges, nameColorArr, pickableColor, lobbyId, gameMode) => {
         console.log(
           "Receiving Bingo Field:",
           colorArr,
         );
-
-        setBeispielArray([
-          ["red", "green"],
-          ["red"],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-          [],
-        ]);
-        console.log(beispielArray);
-        
         setBingoChallenges(bingoChallenges);
         setBingoColors(colorArr);
         setPossibleColors(pickableColor);
         setLobbyId(lobbyId);
         setNameColorArr(nameColorArr);
+        setGameMode(gameMode)
       }
     );
 

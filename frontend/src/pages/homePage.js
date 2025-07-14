@@ -78,12 +78,7 @@ useEffect(() => {
           gameMode: gameMode,
           state: state,
           socketId: socket.id,
-        });
-
-        // Save the Name
-        localStorage.setItem("gameMode", gameMode);
-       
-       
+        }); 
       }
     }
 
