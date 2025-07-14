@@ -77,7 +77,15 @@ class lobbyHandler{
     }
 
     async setBingoColor(i, color) {
-        this.bingoColor[i] = color;
+        if (this.gameMode === "Non-Lockout") {
+            if (!Array.isArray(this.bingoColor[i])) {
+                this.bingoColor[i] = [];
+                this.bingoColor[i].push([]);  // Push an empty array as the first element
+            }
+            this.bingoColor[i][0].push(color); // Push color into the inner array
+        } else {
+            this.bingoColor[i] = color;
+        }
     }
 
     async getBingoColor() {
@@ -113,6 +121,7 @@ class lobbyHandler{
     async removeUsedColor(playerColor) {
     this.usedColor = this.usedColor.filter(color => color !== playerColor);
     }
+
 
     async setUsedColor(playerColor) {
         this.usedColor.push(playerColor);
