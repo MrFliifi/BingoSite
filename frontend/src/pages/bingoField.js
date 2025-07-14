@@ -28,6 +28,8 @@ function BingoPage() {
   const [challengeGame, setChallengeGame] = useState("");
   const [challengeLength, setChallengeLength] = useState("");
 
+  
+
   useEffect(() => {
   
     const storedGameMode = localStorage.getItem("gameMode");
@@ -35,7 +37,6 @@ function BingoPage() {
       setGameMode(storedGameMode);
       console.log("The GameMode you are playing : ", storedGameMode);
     }
-
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
     socket.on(
       "updateBingoField",
@@ -270,7 +271,8 @@ function getFourColorCornerGradient(colors) {
               id="challengeGame"
               value={challengeGame}
               onChange={(e) => setChallengeGame(e.target.value)}
-              >
+            >
+              <option>-- Choose Game --</option>
               <option value="DarkSouls3">Dark Souls 3</option>
               <option value="EldenRing"> Elden Ring</option>
               <option value="Nightreign"> Nightreign</option>
