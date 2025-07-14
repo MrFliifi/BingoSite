@@ -4,35 +4,36 @@ import "../styles/bingoField.css";
 import "../styles/button.css"
 import ChallengesModal from "../assets/challengesModal.js";
 
+
+
 function BingoPage() {
+ 
   // Variables to store the button- and player name, the functions to update them and the color of the player
 
   // Values Bingofields from the Server
   const [bingoChallenges, setBingoChallenges] = useState(Array(25).fill(""));
   const [bingoFieldColors, setBingoColors] = useState(Array(25).fill(""));
 
-  const [possibleColors, setPossibleColors]= useState([]);
+  const [possibleColors, setPossibleColors] = useState([]);
   const [lobbyId, setLobbyId] = useState("");
-  const [currentPlayer, setCurrentPlayer] = useState("");
   const [playerColor, setPlayerColor] = useState("");
   const [nameColorArr, setNameColorArr] = useState([]);
+  const [gameMode, setGameMode] =useState("");
 
   //Values and functions for the modal popup window
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
 
-
-// Values for picking Game and length of the Game
+  // Values for picking Game and length of the Game
   const [challengeGame, setChallengeGame] = useState("");
   const [challengeLength, setChallengeLength] = useState("");
 
   useEffect(() => {
-    // setting currentPlayer from Storage. For Testing maybe won´t need it
-    const storedName = localStorage.getItem("playerName");
-    if (storedName) {
-      setCurrentPlayer(storedName);
-      console.log("You are Player : " ,storedName); 
-      
+  
+    const storedGameMode = localStorage.getItem("gameMode");
+    if (storedGameMode) {
+      setGameMode(storedGameMode);
+      console.log("The GameMode you are playing : ", storedGameMode);
     }
 
     // On Socket-Event "sendBingoField" an Array of 25 strings will be received
@@ -69,9 +70,8 @@ function BingoPage() {
 
   // Function to handle button clicks
   const challengeFieldPressed = (index) => {
-
     //if no color is picked, do nothing
-    if(!playerColor) return;
+    if (!playerColor) return;
 
     const content = bingoChallenges[index];
     console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
@@ -82,63 +82,135 @@ function BingoPage() {
     setBingoColors(newColors);
 
     //Sending the Server all Data from the Buttonpress
-    socket.emit("ChallengeField", { colorIndex: index, socketId : socket.id, lobbyId: lobbyId });
+    socket.emit("ChallengeField", {
+      colorIndex: index,
+      socketId: socket.id,
+      lobbyId: lobbyId,
+    });
   };
 
-  function sendPlayerColor()
-  {
-    if(playerColor === "")
-    {
-      alert("Pick PlayerColor")
-    }
-    else{
-      console.log("Send Data:  " );
+  function sendPlayerColor() {
+    if (playerColor === "") {
+      alert("Pick PlayerColor");
+    } else {
+      console.log("Send Data:  ");
       console.log(playerColor);
-      
-    socket.emit("sendPlayerColor",{playerColor: playerColor, socketId: socket.id, lobbyId: lobbyId,  } );
+
+      socket.emit("sendPlayerColor", {
+        playerColor: playerColor,
+        socketId: socket.id,
+        lobbyId: lobbyId,
+      });
     }
   }
 
   function setBingoGameAndLength() {
     if (challengeGame && challengeLength) {
-      
       socket.emit("setBingoGameAndLength", {
         challengeGame,
         challengeLength,
-        lobbyId
+        lobbyId,
       });
-      console.log("on set bingo  game and length " + challengeGame, challengeLength, lobbyId);
+      console.log(
+        "on set bingo  game and length " + challengeGame,
+        challengeLength,
+        lobbyId
+      );
+    } else {
+      alert("Pick Game and Bingolength");
     }
   }
+
+  //Function to determine the color-Gradient in Non-Lockout.
+function getBackgroundStyle(colors) {
+  if (!colors || colors.length === 0) return "black";
+  if (colors.length === 1) return colors[0];
+
+   if (colors.length === 2) {
+     return getTwoColorCornerGradient(colors);
+   }
+
+  if (colors.length === 3) {
+    return getThreeColorPieGradient(colors);
+  }
+
+    if (colors.length === 4) {
+      return getFourColorCornerGradient(colors);
+    }
+
+
+  // Fallback for more than 4 players
+  return `linear-gradient(to bottom right, ${colors.join(", ")})`;
+}
+//Functions for each case, when i want to chang only one case without touching the other cases.
+function getTwoColorCornerGradient(colors) {
+  if (colors.length !== 2) return "black";
+
+  return `conic-gradient(
+    ${colors[0]} 0% 50%,
+    ${colors[1]} 50% 100%
+  )`;
+}
+function getThreeColorPieGradient(colors) {
+  if (colors.length !== 3) return "black";
+
+  return `conic-gradient(
+    ${colors[0]} 0% 33.33%,
+    ${colors[1]} 33.33% 66.66%,
+    ${colors[2]} 66.66% 100%
+  )`;
+}
+function getFourColorCornerGradient(colors) {
+  if (colors.length !== 4) return "black";
+
+  return `conic-gradient(
+    ${colors[0]} 0% 25%,
+    ${colors[1]} 25% 50%,
+    ${colors[2]} 50% 75%,
+    ${colors[3]} 75% 100%
+  )`;
+}
 
 
   //dynamic rendering of the buttons based on the bingoChallenges array and the bingoColors array
   const renderButtons = () => {
-    return bingoChallenges.map((name, index) => (
-      <button
-        key={index}
-        className="bingoFieldButton"
-        onClick={() => challengeFieldPressed(index)}
-        style={{ backgroundColor: bingoFieldColors[index] || "black" }}
-      >
-        {name}
-      </button>
-    ));
+    //Rendering the Buttons for different gameModes
+    switch (gameMode?.trim()) {
+      case "Lockout":
+      case "TimeTrial":
+        return bingoChallenges.map((name, index) => (
+          <button
+            key={index}
+            className="bingoFieldButton"
+            onClick={() => challengeFieldPressed(index)}
+            style={{ backgroundColor: bingoFieldColors[index] || "black" }}
+          >
+            {name}
+          </button>
+        ));
+
+      case "Non-Lockout":
+        return bingoChallenges.map((name, index) => (
+          <button
+            key={index}
+            className="bingoFieldButton"
+            onClick={() => challengeFieldPressed(index)}
+            style={{
+              background: getBackgroundStyle(bingoFieldColors[index]),
+            }}
+          >
+            {name}
+          </button>
+        ));
+
+      default:
+        console.log(
+          "Error, SwitchCase for GameMode didn´t work.... Gamemode Var: ",
+          gameMode
+        );
+    }
   };
 
-  /* //dynamic playerNames and colors rendering based on the nameColor array
-  const renderPlayerNames = () => {
-    return nameColorArr.map(({ playerName, playerColor }, index) => (
-      <div className="playerList" 
-      key={index} 
-      style={{ color: playerColor }}
-      >
-        {playerName}
-      </div>
-    ));
-  }; */
-
-  //STILL NEEDS TESTING! Comment above is the old version.
   const renderPlayerNames = () => {
     return nameColorArr.map(({ playerName, playerColor }, index) => (
       <div
@@ -146,11 +218,7 @@ function BingoPage() {
         key={index}
         style={{ display: "flex", alignItems: "center", gap: "8px" }}
       >
-        <span
-          style={{ color: "#fff" }}
-        >
-          {playerName}
-        </span>
+        <span style={{ color: "#fff" }}>{playerName}</span>
         <span
           title={playerColor}
           style={{
@@ -159,15 +227,12 @@ function BingoPage() {
             height: "12px",
             display: "inline-block",
             borderRadius: "2px",
-            border: "1px solid #000", // Optional: adds border for better visibility
+            border: "1px solid #000",
           }}
         />
       </div>
     ));
   };
-  
-  
-  
 
   return (
     <div className="allContainer">
@@ -203,7 +268,6 @@ function BingoPage() {
 
       <div>
         <ChallengesModal show={showModal} onClose={() => setShowModal(false)}>
-          
           <div className="modalSelectDiv">
             <h2>Challenges Editor</h2>
             <label>Game: </label>
@@ -213,6 +277,7 @@ function BingoPage() {
               value={challengeGame}
               onChange={(e) => setChallengeGame(e.target.value)}
             >
+              <option>-- Choose Game --</option>
               <option value="DS3">Dark Souls 3</option>
               <option value="ED"> EldenRing</option>
               <option value="NR"> NightReign</option>
@@ -227,6 +292,7 @@ function BingoPage() {
               value={challengeLength}
               onChange={(e) => setChallengeLength(e.target.value)}
             >
+              <option>-- Choose Length --</option>
               <option value="short">short</option>
               <option value="normal">normal</option>
               <option value="long">long</option>

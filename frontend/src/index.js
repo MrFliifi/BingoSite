@@ -19,7 +19,6 @@ import ChallengeEditor from "./pages/challengeEditor.js"
 
 // Creates the router for the frontend
 const router = createBrowserRouter([
-  
   {
     //This is the Homepage the player first lands on.
     path: "/",
@@ -32,25 +31,25 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/bingoLockout/:lobbyId",
+    path: "/Lockout/:lobbyId",
     element: (
       <>
-        <BingoPage mode="lockout"/>
+        <BingoPage mode="lockout" />
         <Footer />
       </>
     ),
   },
   {
-    path: "/bingoNonLockout/:lobbyId",
+    path: "/Non-Lockout/:lobbyId",
     element: (
       <>
-        <BingoPage mode="NonLockout"/>
+        <BingoPage mode="NonLockout" />
         <Footer />
       </>
     ),
   },
   {
-    path: "/bingoTimeTrial/:lobbyId",
+    path: "/TimeTrial/:lobbyId",
     element: (
       <>
         <BingoPage mode="timeTrial" />

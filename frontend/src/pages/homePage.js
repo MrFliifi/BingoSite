@@ -15,29 +15,26 @@ const navigate = useNavigate();
 useEffect(() => {
   socket.on("errorMsg", (message) => {
     alert(message);
-     console.log("Error incoming:");
+     console.log("Error incoming:", message);
     
     
   });
 
-  //Routing based on the Gamemode NEEDS TESTING!!!!
+  //Routing based on the Gamemode
   socket.on("lobbyRouting", (data) => {
     const { lobbyId, gameMode } = data;
 
     let route = "";
-    console.log(gameMode);
-    console.log("typeof gameMode:", typeof gameMode);
-    console.log("gameMode raw:", JSON.stringify(gameMode));
 
     switch (gameMode) {
       case "Lockout":
-        route = `/bingoLockout/${lobbyId}`;
+        route = `/Lockout/${lobbyId}`;
         break;
       case "Non-Lockout":
-        route = `/bingoNonLockout/${lobbyId}`;
+        route = `/Non-Lockout/${lobbyId}`;
         break;
       case "TimeTrial":
-        route = `/bingoTimeTrial/${lobbyId}`;
+        route = `/TimeTrial/${lobbyId}`;
         break;
       default:
         alert("Unknown game mode");
@@ -84,13 +81,13 @@ useEffect(() => {
         });
 
         // Save the Name
-        localStorage.setItem("playerName", currentPlayer);
-        console.log(currentPlayer, lobbyId, gameMode, state, socket.id);
+        localStorage.setItem("gameMode", gameMode);
+       
+       
       }
-
-      
-     
     }
+
+
 
     
   return (
