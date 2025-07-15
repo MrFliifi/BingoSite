@@ -158,7 +158,7 @@ function getFourColorCornerGradient(colors) {
     //Rendering the Buttons for different gameModes
     switch (gameMode?.trim()) {
       case "Lockout":
-      case "TimeTrial":
+      case "No-Death":
         return bingoChallenges.map((name, index) => (
           <button
             key={index}

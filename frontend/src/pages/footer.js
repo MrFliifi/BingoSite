@@ -11,11 +11,11 @@ function Footer() {
         <div className="footer-right">
           <div>
             <Link to="/impressum">Impressum</Link>
-            </div>
-            <div>
+          </div>
+          <div>
             <Link to="/privacy">Privacy</Link>
-            </div>
-            <div>
+          </div>
+          <div>
             <Link to="/contact">Contact</Link>
           </div>
         </div>
