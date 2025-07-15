@@ -7,10 +7,22 @@ class playerHandler{
         this.color = "";
     }
 
-    getLobbyId(){
+    async getSocketId() {
+        return this.socketId;
+    }
+
+    async getPlayerName() {
+        return this.playerName;
+    }
+
+    async getLobbyId(){
         return this.lobbyId;
     }
-    
+
+    async getColor(){
+        return this.color;
+    }
+
     async getNameColorPair(){
         const colorName = {
            playerName: this.playerName,
@@ -19,27 +31,7 @@ class playerHandler{
         return colorName;
     }
 
-    async getSocketId() {
-        return this.socketId;
-    }
-
-    setSocketId(socketId) {
-        this.socketId = socketId;
-    }
-
-    getPlayerName() {
-        return this.playerName;
-    }
-
-    setPlayerName(playerName) {
-        this.playerName = playerName;
-    }
-
-    getColor(){
-        return this.color;
-    }
-
-    setColor(color) {
+    async setColor(color) {
         this.color = color;
     }
 }

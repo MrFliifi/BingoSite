@@ -11,11 +11,11 @@ class lobbyHolder {
     return lobbyList;
   }
 
-  setLobbies(lobby) {
+  async setLobbies(lobby) {
     this.lobbies.push(lobby);
   }
 
-  deleteLobby(index) {
+  async deleteLobby(index) {
     this.lobbies.splice(index, 1);
   }
 }

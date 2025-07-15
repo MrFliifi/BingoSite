@@ -51,10 +51,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/TimeTrial/:lobbyId",
+    path: "/No-Death/:lobbyId",
     element: (
       <>
-        <BingoPage mode="timeTrial" />
+        <BingoPage mode="NoDeath" />
         <Footer />
       </>
     ),

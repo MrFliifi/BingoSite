@@ -14,7 +14,7 @@ const navigate = useNavigate();
 
 useEffect(() => {
 
-   document.title = "ODB Bingo";
+   document.title = "Bingo der Bierbank";
 
   socket.on("errorMsg", (message) => {
     alert(message);
@@ -43,8 +43,8 @@ useEffect(() => {
       case "Non-Lockout":
         route = `/Non-Lockout/${lobbyId}`;
         break;
-      case "TimeTrial":
-        route = `/TimeTrial/${lobbyId}`;
+      case "No-Death":
+        route = `/No-Death/${lobbyId}`;
         break;
       default:
         alert("Unknown game mode");
@@ -117,7 +117,7 @@ useEffect(() => {
             <option value="">--Choose GameMode--</option>
             <option value="Lockout">Lockout</option>
             <option value="Non-Lockout">Non-Lockout</option>
-            <option value="TimeTrial"> Time-Trial</option>
+            <option value="No-Death">No-Death</option>
           </select>
 
           <label>LobbyId:</label>
@@ -148,12 +148,7 @@ useEffect(() => {
         </div>
       </div>
       <div className="title-container">
-        <div className="title">Orden der Bierbank Bingo</div>
-      </div>
-      <div className="linkChallengeContainer">
-        <Link className="linkChallenge" to="/challengeEditor">
-          ChallengeEditor
-        </Link>
+        <div className="title">Bingo der Bierbank</div>
       </div>
     </div>
   );
