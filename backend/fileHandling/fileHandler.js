@@ -7,9 +7,31 @@ class fileHandler{
         this.filePath = filePath;
         this.fileName = fileName;
     }
-    
-    // function apparently has to be async because .close() could be executed
-    // before the file was created somehow
+   // only function that is currently relevant 
+   async readFromSaveFile(challengeLength) {
+        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
+        try {
+            const content = await fs.promises.readFile(localFilePath, 'utf8');
+            const jsonData = JSON.parse(content);
+
+            if (!jsonData.challenges) {
+                throw new Error(`Challenge data not found in file.`);
+            }
+
+            // Collect challenge keys where the length includes the requested value
+            const matchingKeys = Object.entries(jsonData.challenges)
+                .filter(([_, value]) => value.length.includes(challengeLength))
+                .map(([key]) => key); // Just return the keys as strings
+
+            return matchingKeys; // Array of matching challenge titles
+        } catch (err) {
+            console.error(`Error reading or parsing JSON file at ${localFilePath}:`, err);
+            throw err;
+        }
+    }
+
+
+    /* everything here is only needed when challenge editor is a thing
     async createSaveFile() {
         // Sets filepath, filename and file format using path class
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
@@ -39,30 +61,7 @@ class fileHandler{
         }
     }
 
-    async readFromSaveFile(challengeLength) {
-        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
-        try {
-            const content = await fs.promises.readFile(localFilePath, 'utf8');
-            const jsonData = JSON.parse(content);
-
-            if (!jsonData.challenges) {
-                throw new Error(`Challenge data not found in file.`);
-            }
-
-            // Collect challenge keys where the length includes the requested value
-            const matchingKeys = Object.entries(jsonData.challenges)
-                .filter(([_, value]) => value.length.includes(challengeLength))
-                .map(([key]) => key); // Just return the keys as strings
-
-            return matchingKeys; // Array of matching challenge titles
-        } catch (err) {
-            console.error(`Error reading or parsing JSON file at ${localFilePath}:`, err);
-            throw err;
-        }
-    }
-
-
-/*  async deleteFromSafeFile(toDelete) {
+     async deleteFromSafeFile(toDelete) {
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);
         try {
             let contentArr = await this.readFromSaveFile();
