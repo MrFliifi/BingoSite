@@ -3,6 +3,7 @@
 const { lobbyHandler } = require("../lobbyHandling/lobbyHandler.js");
 const { playerHandler } = require("../lobbyHandling/playerHandler.js");
 const { lobbyHolder } = require("../lobbyHandling/lobbyHolder.js");
+const { fileHandler } = require("../fileHandling/fileHandler.js");
 
 // Creates lobbyHolder instance that manages all existing lobbies
 const listOfLobbies = new lobbyHolder();
@@ -131,7 +132,7 @@ module.exports = function (io) {
             /* ToDo: Gamemode is unneccesary here when joining. But socket event 
             needs that var to be send over. Would need to create a new 
             SocketEvent in order to remove this line*/ 
-            lobbyGameMode = await lobbies[i].getGameMode();
+            let lobbyGameMode = await lobbies[i].getGameMode();
             
             socket.join(lobbyId);
             console.log("Player " + player.getPlayerName() + " joined: " + id);
@@ -151,15 +152,23 @@ module.exports = function (io) {
 
     // Event that allows user to pick a safefile and the length of the challenge
     socket.on("setBingoGameAndLength", async (data) => {
+      // probably need to send a default value for challengeLength
       const { challengeGame, challengeLength, lobbyId } = data;
 
       const lobbies = await listOfLobbies.getLobbies();
       for (let i = 0; i < lobbies.length; i++) {
         const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
-          await lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/", challengeLength);
-          console.log("Set game to " + challengeGame + " and length " + challengeLength);
-          break;
+          const gameMode = await lobbies[i].getGameMode();
+          if (gameMode === "No-Death") {
+            const challengePointMap = await fileHandler.readFromNdSaveFile(gameMode);
+            socket.emit("setupNoDeath", challengePointMap);
+            break;
+          } else {
+            await lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/", challengeLength);
+            console.log("Set game to " + challengeGame + " and length " + challengeLength);
+            break;
+          }
         }
       }
     });

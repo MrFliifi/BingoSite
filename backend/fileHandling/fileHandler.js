@@ -7,8 +7,8 @@ class fileHandler{
         this.filePath = filePath;
         this.fileName = fileName;
     }
-   // only function that is currently relevant 
-   async readFromSaveFile(challengeLength) {
+    // only function that is currently relevant 
+    async readFromSaveFile(challengeLength) {
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
         try {
             const content = await fs.promises.readFile(localFilePath, 'utf8');
@@ -30,6 +30,32 @@ class fileHandler{
         }
     }
 
+
+    async readFromNdSaveFile(gameMode) {
+        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
+        try {
+            const content = await fs.promises.readFile(localFilePath, 'utf8');
+            const jsonData = JSON.parse(content);
+
+            if (!jsonData.challenges) {
+                throw new Error(`Challenge data not found in file.`);
+            }
+
+            // Build a key-points mapping for challenges that match the gameMode
+            const challengeMap = Object.entries(jsonData.challenges)
+                .filter(([_, value]) => value.gameMode === gameMode)
+                .reduce((acc, [key, value]) => {
+                    acc[key] = value.points;
+                    return acc;
+                }, {});
+
+            return challengeMap; // Object: { "ND Challenge1": 1, "ND Challenge2": 2, ... }
+
+        } catch (err) {
+            console.error(`Error reading or parsing JSON file at ${localFilePath}:`, err);
+            throw err;
+        }
+    }
 
     /* everything here is only needed when challenge editor is a thing
     async createSaveFile() {
