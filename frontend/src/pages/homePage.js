@@ -1,5 +1,5 @@
 
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import {socket} from "../websocket/socket.js";
 import "../styles/homePage.css";

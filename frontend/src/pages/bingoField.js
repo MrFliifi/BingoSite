@@ -14,7 +14,7 @@ function BingoPage() {
   const [bingoChallenges, setBingoChallenges] = useState(Array(25).fill(""));
   const [bingoFieldColors, setBingoColors] = useState(Array(25).fill(""));
 
-  const [possibleColors, setPossibleColors] = useState([]);
+  const [pickableColors, setPickableColors] = useState([]);
   const [lobbyId, setLobbyId] = useState("");
   const [playerColor, setPlayerColor] = useState("");
   const [nameColorArr, setNameColorArr] = useState([]);
@@ -42,7 +42,7 @@ function BingoPage() {
         );
         setBingoChallenges(bingoChallenges);
         setBingoColors(colorArr);
-        setPossibleColors(pickableColor);
+        setPickableColors(pickableColor);
         setLobbyId(lobbyId);
         setNameColorArr(nameColorArr);
         setGameMode(gameMode)
@@ -230,7 +230,7 @@ function getFourColorCornerGradient(colors) {
             }}
           >
             <option value="">-- Choose color --</option>
-            {possibleColors.map((color, index) => (
+            {pickableColors.map((color, index) => (
               <option key={index} value={color}>
                 {color}
               </option>

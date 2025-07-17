@@ -1,0 +1,38 @@
+.checkmarkTable {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.headerRow,
+.challengeRow {
+  display: flex;
+  width: 100%;
+}
+
+.challengeHeader,
+.playerHeader,
+.challengeCell,
+.checkmarkCell {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #444;
+  box-sizing: border-box;
+}
+
+.challengeHeader {
+  background-color: #222;
+  color: #fff;
+}
+
+.playerHeader {
+  font-weight: bold;
+}
+
+.checkmarkCell {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 
 //import pages
 import BingoPage from "./pages/bingoField.js";
+import NoDeath from "./pages/noDeath.js"
 import HomePage from "./pages/homePage.js";
 import NotFoundPage from "./pages/notFoundPage.js";
 import Footer from "./pages/footer.js";
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
     path: "/No-Death/:lobbyId",
     element: (
       <>
-        <BingoPage mode="NoDeath" />
+        <NoDeath mode="NoDeath" />
         <Footer />
       </>
     ),
