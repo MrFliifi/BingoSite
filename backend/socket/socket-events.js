@@ -198,8 +198,11 @@ module.exports = function (io) {
           
           // needs testing
           if (gameMode === "No-Death") {
-            const fileHandlerObject = new fileHandler;
-            const challengePointMap = await fileHandlerObject.readFromNdSaveFile(
+            const fileHandlerObject = new fileHandler(
+              "../fileHandling/saveFileLocation",
+             challengeGame
+            );
+            const challengePointMap = await fileHandlerObject.readFromSaveFile(
               gameMode
             );
             io.to(lobbyId).emit("setupNoDeath", challengePointMap);
