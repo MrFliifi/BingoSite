@@ -37,7 +37,7 @@ module.exports = function (io) {
           const player = {
             playerId: await playerArr[k].getSocketId(),
             playerScore: await playerArr[k].getScore(),
-            checkmarkArray: []
+            checkmarkArray: await playerArr[k].getCheckmarkArr() 
           }
           playerObjects.push(player);
         }
@@ -219,11 +219,15 @@ module.exports = function (io) {
           for (let j = 0; j < players.length; j++) {
             const playerId = await players[j].getSocketId();
             if (playerId === socketId) {
-              const fileHandlerInst = new fileHandler("./saveFileLocation/", fileName);
-              const map = await fileHandlerInst.readFromSaveFile("short", gameMode);
-              const length = map.size();
-              await players[j].setCheckmarkArr(length);
+              const checkmarkArr = await players[j].getCheckmarkArr();
+              if (checkmarkArr.length === 0){
+                const fileHandlerInst = new fileHandler("./saveFileLocation/", fileName);
+                const map = await fileHandlerInst.readFromSaveFile("short", gameMode);
+                const length = map.size();
+                await players[j].setCheckmarkArr(length);
+              } else {
               await players[j].setCheckmarkArr(challengeIndex, value);
+              }
             }
           } 
         }
