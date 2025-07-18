@@ -36,10 +36,6 @@ function BingoPage() {
     socket.on(
       "updateBingoField",
       (colorArr, bingoChallenges, nameColorArr, pickableColor, lobbyId, gameMode) => {
-        console.log(
-          "Receiving Bingo Field:",
-          colorArr,
-        );
         setBingoChallenges(bingoChallenges);
         setBingoColors(colorArr);
         setPickableColors(pickableColor);

@@ -32,8 +32,6 @@ useEffect(() => {
   const lobbyId = data.lobbyId;
   const gameMode = data.lobbyGameMode || data.gameMode;
 
-
-    console.log("Log im Frontend: ", gameMode);
     let route = "";
 
     switch (gameMode) {

@@ -604,19 +604,24 @@
         },
         "No-Death": {
             "ND Challenge1": {
-                "points": 1
+                "points": 1,
+                "gameMode": "No-Death"
             },
             "ND Challenge2": {
-                "points": 1
+              "points": 5,
+              "gameMode": "No-Death"
             },
             "ND Challenge3": {
-                "points": 1
+              "points": 1,
+              "gameMode": "No-Death"
             },
             "ND Challenge4": {
-                "points": 1
+              "points": 2,
+              "gameMode": "No-Death"
             },
             "ND Challenge5": {
-                "points": 1
+              "points": 1,
+              "gameMode": "No-Death"
             }
         }
     }

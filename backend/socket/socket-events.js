@@ -14,7 +14,7 @@ module.exports = function (io) {
   setInterval(async () => {
     // Fetch existing lobbies
     const lobbies = await listOfLobbies.getLobbies();
-    console.log("Periodic lobby Log: ", lobbies);
+    //console.log("Periodic lobby Log: ", lobbies);
 
     // Send data to each coressponding lobby
     for (let i = 0; i < lobbies.length; i++) {
@@ -47,6 +47,8 @@ module.exports = function (io) {
       
       const bingoChallenges = await lobbies[i].getBingoChallenges();
       if (gameMode === "No-Death") {
+
+        
         io.to(lobbyId).emit(
           "updateNoDeath", 
           nameColorArr, 
@@ -177,16 +179,30 @@ module.exports = function (io) {
       // probably need to send a default value for challengeLength
       const { challengeGame, challengeLength, lobbyId } = data;
 
+      console.log(lobbyId);
+      console.log(challengeGame);
+      console.log(challengeLength);
+      
+      
+      
+
       const lobbies = await listOfLobbies.getLobbies();
+      
       for (let i = 0; i < lobbies.length; i++) {
         const id = await lobbies[i].getLobbyId();
+    
         if(id === lobbyId) {
+      
           const gameMode = await lobbies[i].getGameMode();
+          console.log(gameMode);
+          
           // needs testing
           if (gameMode === "No-Death") {
-            console.log(challengePointMap);
-            const challengePointMap = await fileHandler.readFromNdSaveFile(gameMode);
-            socket.emit("setupNoDeath", challengePointMap);
+            const fileHandlerObject = new fileHandler;
+            const challengePointMap = await fileHandlerObject.readFromNdSaveFile(
+              gameMode
+            );
+            io.to(lobbyId).emit("setupNoDeath", challengePointMap);
             break;
           } else {
             console.log("bin hier, wer noch?")

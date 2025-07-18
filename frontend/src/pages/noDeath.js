@@ -27,18 +27,31 @@ function NoDeath() {
 
     socket.on("setupNoDeath", (challengePointMap) => {
       setChallengePointMap(new Map(challengePointMap));
+
+      console.log(challengePointMap);
+      
     });
 
-    socket.on("updateNoDeath", (data) => {
-      const { nameColorArr, pickableColor, lobbyId, gameMode, playerObjects } =
-        data;
-      setPickableColor(pickableColor);
-      setLobbyId(lobbyId);
-      setGameMode(gameMode);
-      setNameColorArr(nameColorArr);
-      setPlayerObjects(playerObjects);
-      setPlayerPoints(playerPoints);
-    });
+    socket.on(
+      "updateNoDeath",
+      (nameColorArr, pickableColor, lobbyId, gameMode, playerObjects) => {
+        setPickableColor(pickableColor);
+        setLobbyId(lobbyId);
+        setGameMode(gameMode);
+        setNameColorArr(nameColorArr);
+        setPlayerObjects(playerObjects);
+
+     /*    console.log("Jetzt kommt Data log");
+
+        console.log(
+          nameColorArr,
+          pickableColor,
+          lobbyId,
+          gameMode,
+          playerObjects
+        ); */
+      }
+    );
 
 
     return () => {
@@ -124,7 +137,8 @@ function NoDeath() {
 
 
   function sendGame() {
-    socket.emit("setBingoGameAndLength", challengeGame, "", lobbyId);
+    let challengeLength = "";
+    socket.emit("setBingoGameAndLength",{challengeGame,challengeLength,lobbyId});
   }
 
   function sendPlayerColor(color) {
