@@ -48,7 +48,6 @@ module.exports = function (io) {
       const bingoChallenges = await lobbies[i].getBingoChallenges();
       if (gameMode === "No-Death") {
 
-        
         io.to(lobbyId).emit(
           "updateNoDeath", 
           nameColorArr, 
@@ -69,6 +68,8 @@ module.exports = function (io) {
         );
       }
     }
+
+
 
     //1000 equals 1 second. Right now 2 secs.
   }, 2000);
@@ -182,9 +183,6 @@ module.exports = function (io) {
       console.log(lobbyId);
       console.log(challengeGame);
       console.log(challengeLength);
-      
-      
-      
 
       const lobbies = await listOfLobbies.getLobbies();
       
@@ -192,19 +190,11 @@ module.exports = function (io) {
         const id = await lobbies[i].getLobbyId();
     
         if(id === lobbyId) {
-      
-          const gameMode = await lobbies[i].getGameMode();
-          console.log(gameMode);
-          
-          // needs testing
+          lobbies[i].setFileName(challengeGame);
+          const gameMode = await lobbies[i].getGameMode();     
           if (gameMode === "No-Death") {
-            const fileHandlerObject = new fileHandler(
-              "../fileHandling/saveFileLocation",
-             challengeGame
-            );
-            const challengePointMap = await fileHandlerObject.readFromSaveFile(
-              gameMode
-            );
+            const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
+            const challengePointMap = await fileHandlerObject.readFromSaveFile(gameMode);
             io.to(lobbyId).emit("setupNoDeath", challengePointMap);
             break;
           } else {
@@ -217,6 +207,29 @@ module.exports = function (io) {
       }
     });
     
+    socket.on("NoDeathCheckmarkUpdate", async (data) => {
+      const { socketId, challengeIndex, value, lobbyId } = data; 
+      const lobbies = await listOfLobbies.getLobbies();
+      for (let i = 0; i < lobbies.length; i++) {
+        const id = await lobbies[i].getLobbyId();
+        if (id === lobbyId) {
+          const fileName = await lobbies[i].getFileName();
+          const players = await lobbies[i].getPlayerArr();
+          const gameMode = await lobbies[i].getGameMode();
+          for (let j = 0; j < players.length; j++) {
+            const playerId = await players[j].getSocketId();
+            if (playerId === socketId) {
+              const fileHandlerInst = new fileHandler("./saveFileLocation/", fileName);
+              const map = await fileHandlerInst.readFromSaveFile("short", gameMode);
+              const length = map.size();
+              await players[j].setCheckmarkArr(length);
+              await players[j].setCheckmarkArr(challengeIndex, value);
+            }
+          } 
+        }
+      }
+    });
+
     // When a player presses a Bingofield this socket event receives the data und adds it to the arrays.
     socket.on("ChallengeField", async (data) => {
       const { colorIndex, socketId, lobbyId } = data;

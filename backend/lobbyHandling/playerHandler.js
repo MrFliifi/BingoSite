@@ -54,6 +54,10 @@ class playerHandler{
             this.checkmarkArr[i] = false;
         }
     }
+
+    async setCheckmarkArr(index, value) {
+        this.checkmarkArr[index] = value;
+    }
 }
 
 module.exports = {playerHandler};

@@ -195,9 +195,10 @@ function NoDeath() {
               onChange={(e) => setChallengeGame(e.target.value)}
             >
               <option>-- Choose Game --</option>
-              <option value="DarkSouls1">Dark Souls 1</option>
-              <option value="DarkSouls2">Dark Souls 2</option>
               <option value="DarkSouls3">Dark Souls 3</option>
+              <option value="EldenRing">Elden Ring</option>
+              <option value="Nightreign">Nightreign</option>
+              
             </select>
           </div>
 
