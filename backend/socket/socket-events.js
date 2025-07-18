@@ -13,37 +13,59 @@ module.exports = function (io) {
   // 1 sec interval, that gives all clients the neccesary data
   setInterval(async () => {
     // Fetch existing lobbies
-    const lobby = await listOfLobbies.getLobbies();
-    console.log("Periodic lobby Log: ", lobby);
+    const lobbies = await listOfLobbies.getLobbies();
+    console.log("Periodic lobby Log: ", lobbies);
 
     // Send data to each coressponding lobby
-    for (let i = 0; i < lobby.length; i++) {
-      const pickableColor = await lobby[i].getPickableColor();
-      const colorArr = await lobby[i].getBingoColor();
+    for (let i = 0; i < lobbies.length; i++) {
+      const pickableColor = await lobbies[i].getPickableColor();
+      const colorArr = await lobbies[i].getBingoColor();
+      const gameMode = await lobbies[i].getGameMode();
+      const lobbyId = await lobbies[i].getLobbyId();
       // We need to fetch a dict of name and color for each member of the lobby and write that to an arr (nameColorArr)
       // We send this arr to the website 
       // Get all players from lobby
-      const playerArr = await lobby[i].getPlayerArr();
+      const playerArr = await lobbies[i].getPlayerArr();
       let nameColorArr = [];
       for (let j = 0; j < playerArr.length; j++) {
         // for each player, get the dict
         nameColorArr[j] = await playerArr[j].getNameColorPair();
       }
-
-      // ToDo: these three don't need to be send every second. Once is enough. Create a new Event for them
-      const gameMode = await lobby[i].getGameMode();
-      const lobbyId = await lobby[i].getLobbyId();
-      const bingoChallenges = await lobby[i].getBingoChallenges();
-
-      io.to(lobbyId).emit(
-        "updateBingoField",
-        colorArr,
-        bingoChallenges,
-        nameColorArr,
-        pickableColor,
-        lobbyId,
-        gameMode
-      );
+      let playerObjects = [];
+      if (gameMode ===  "No-Death") {
+        for (let k = 0; k < playerArr.length; k++) {
+          const player = {
+            playerId: await playerArr[k].getSocketId(),
+            playerScore: await playerArr[k].getScore(),
+            checkmarkArray: []
+          }
+          playerObjects.push(player);
+        }
+      }
+      
+      // ToDo: these two don't need to be send every second. Once is enough. Create a new Event for them
+      
+      const bingoChallenges = await lobbies[i].getBingoChallenges();
+      if (gameMode === "No-Death") {
+        io.to(lobbyId).emit(
+          "updateNoDeath", 
+          nameColorArr, 
+          pickableColor, 
+          lobbyId, 
+          gameMode, 
+          playerObjects
+        )
+      } else {
+        io.to(lobbyId).emit(
+          "updateBingoField",
+          colorArr,
+          bingoChallenges,
+          nameColorArr,
+          pickableColor,
+          lobbyId,
+          gameMode
+        );
+      }
     }
 
     //1000 equals 1 second. Right now 2 secs.
@@ -160,12 +182,15 @@ module.exports = function (io) {
         const id = await lobbies[i].getLobbyId();
         if(id === lobbyId) {
           const gameMode = await lobbies[i].getGameMode();
+          // needs testing
           if (gameMode === "No-Death") {
+            console.log(challengePointMap);
             const challengePointMap = await fileHandler.readFromNdSaveFile(gameMode);
             socket.emit("setupNoDeath", challengePointMap);
             break;
           } else {
-            await lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/", challengeLength);
+            console.log("bin hier, wer noch?")
+            await lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/", challengeLength, gameMode);
             console.log("Set game to " + challengeGame + " and length " + challengeLength);
             break;
           }

@@ -30,7 +30,7 @@ function NoDeath() {
     });
 
     socket.on("updateNoDeath", (data) => {
-      const { nameColorArr, pickableColor, lobbyId, gameMode, playerObjects, playerPoints } =
+      const { nameColorArr, pickableColor, lobbyId, gameMode, playerObjects } =
         data;
       setPickableColor(pickableColor);
       setLobbyId(lobbyId);

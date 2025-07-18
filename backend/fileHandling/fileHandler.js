@@ -8,8 +8,9 @@ class fileHandler{
         this.fileName = fileName;
     }
     // only function that is currently relevant 
-    async readFromSaveFile(challengeLength) {
+    async readFromSaveFile(challengeLength, gameMode) {
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
+
         try {
             const content = await fs.promises.readFile(localFilePath, 'utf8');
             const jsonData = JSON.parse(content);
@@ -18,12 +19,28 @@ class fileHandler{
                 throw new Error(`Challenge data not found in file.`);
             }
 
-            // Collect challenge keys where the length includes the requested value
-            const matchingKeys = Object.entries(jsonData.challenges)
-                .filter(([_, value]) => value.length.includes(challengeLength))
-                .map(([key]) => key); // Just return the keys as strings
+            let matchingKeys = [];
 
-            return matchingKeys; // Array of matching challenge titles
+            if (gameMode === "No-Death") {
+                // Return all No-Death challenge titles
+                const noDeathData = jsonData.challenges["No-Death"];
+                if (noDeathData) {
+                    matchingKeys = Object.keys(noDeathData);
+                }
+            } else {
+                const bingoData = jsonData.challenges.bingo;
+                if (bingoData) {
+                    matchingKeys = Object.entries(bingoData)
+                        .filter(([_, value]) =>
+                            value.length.map(l => l.toLowerCase()).includes(challengeLength.toLowerCase()) &&
+                            value.gameMode.map(gm => gm.toLowerCase()).includes(gameMode.toLowerCase())
+                        )
+                        .map(([key]) => key);
+                }
+            }
+
+            return matchingKeys;
+
         } catch (err) {
             console.error(`Error reading or parsing JSON file at ${localFilePath}:`, err);
             throw err;

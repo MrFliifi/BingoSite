@@ -64,10 +64,10 @@ class lobbyHandler {
     this.fileDirectory = fileDirectory;
   }
 
-  async setBingoChallenges(fileName, directory, challengeLength) {
+  async setBingoChallenges(fileName, directory, challengeLength, gameMode) {
     const fileHandlerInst = new fileHandler(directory, fileName);
     // fill array with data from file
-    let contentArr = await fileHandlerInst.readFromSaveFile(challengeLength);
+    let contentArr = await fileHandlerInst.readFromSaveFile(challengeLength, gameMode);
 
     // shuffle content of array around
     for (let i = contentArr.length - 1; i > 0; i--) {

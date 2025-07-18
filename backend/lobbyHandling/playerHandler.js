@@ -5,6 +5,8 @@ class playerHandler{
         this.playerName = playerName;
         this.lobbyId = lobbyId;
         this.color = "";
+        this.score = 0;
+        this.checkmarkArr = [];
     }
 
     async getSocketId() {
@@ -31,8 +33,26 @@ class playerHandler{
         return colorName;
     }
 
+    async getScore() {
+        return this.score;
+    }
+
+    async getCheckmarkArr() {
+        return this.checkmarkArr;
+    }
+
     async setColor(color) {
         this.color = color;
+    }
+
+    async setScore(score) {
+        this.score = score;
+    }
+
+    async setCheckmarkArr(length) {
+        for (let i = 0; i < length; i++) {
+            this.checkmarkArr[i] = false;
+        }
     }
 }
 
