@@ -47,6 +47,9 @@ module.exports = function (io) {
         console.log(playerObjects);
         
       }
+
+      console.log(nameColorArr);
+      
       
       // ToDo: these two don't need to be send every second. Once is enough. Create a new Event for them
       
@@ -204,7 +207,7 @@ module.exports = function (io) {
             const challengePointArray = await fileHandlerObject.readFromSaveFile(challengeLength,gameMode);
             console.log(challengePointArray);
             let length = challengePointArray.length;
-            console.log("LÄnge des Arrays: ", length);
+            
             
           
             let players = await lobbies[i].getPlayerArr();
@@ -237,7 +240,7 @@ module.exports = function (io) {
             const playerId = await players[j].getSocketId();
             if (playerId === socketId) {
              
-              await players[j].setCheckmarkArr(challengeIndex, value);
+              await players[j].setCheckmarkArrIndex(challengeIndex, value);
               
             }
           } 

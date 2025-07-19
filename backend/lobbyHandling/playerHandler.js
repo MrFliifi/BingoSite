@@ -27,6 +27,7 @@ class playerHandler {
   async getNameColorPair() {
     const colorName = {
       playerName: this.playerName,
+      playerId: this.socketId,
       playerColor: this.color,
     };
     return colorName;
@@ -49,10 +50,11 @@ class playerHandler {
   }
 
   async setCheckmarkArr(length) {
-    this.checkmarkArr = new Array(length).fill(false);
+
+    this.checkmarkArr = new Array(length).fill(false); 
   }
 
-  async setCheckmarkArr(index, value) {
+  async setCheckmarkArrIndex(index, value) {
     this.checkmarkArr[index] = value;
   }
 }

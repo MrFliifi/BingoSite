@@ -79,14 +79,15 @@ function NoDeath() {
   const renderChallengesWithCheckmarks = () => {
     if (!challengePointArray) return null;
 
+
     return (
       <div className="checkmarkTable">
         {/* Kopfzeile mit Spielernamen */}
         <div className="headerRow">
           <div className="challengeHeader">Challenge</div>
-          {nameColorArr.map(({ playerName, playerColor, socketId }) => (
+          {nameColorArr.map(({ playerName, playerColor, playerId }) => (
             <div
-              key={socketId}
+              key={playerId}
               className="playerHeader"
               style={{
                 color: "#fff",
@@ -100,30 +101,31 @@ function NoDeath() {
 
         {/* Zeilen mit Checkmarks */}
         {challengePointArray.map(({ title, points }, challengeIndex) => (
-          <div className="challengeRow" key={title}>
+          <div className="challengeRow" key={`challenge-${challengeIndex}`}>
             <div className="challengeCell">
               {title} ({points} P)
             </div>
 
             {playerObjects.map(({ playerId, checkmarkArray }) => {
-              const player = nameColorArr.find((p) => p.socketId === playerId);
+              const player = nameColorArr.find((p) => p.playerId === playerId);
               const playerColor = player ? player.playerColor : "#ccc";
-              const currentValue = checkmarkArray[challengeIndex];
+              const currentValue = checkmarkArray?.[challengeIndex] ?? false;
 
               return (
                 <div
-                  key={playerId}
+                  key={`checkmark-${playerId}-${challengeIndex}`} // ✅ eindeutig!
                   className="checkmarkCell"
                   onClick={() =>
                     toggleCheckmark(playerId, challengeIndex, currentValue)
                   }
                   style={{
                     backgroundColor: currentValue ? playerColor : "transparent",
+                    color: currentValue ? "#fff" : "#000", // Textfarbe je nach Zustand
                     cursor: "pointer",
                   }}
                   title={currentValue ? "Completed" : "Not completed"}
                 >
-                  {currentValue ? "✔️" : ""}
+                  {currentValue ? "✔️" : "❌"}
                 </div>
               );
             })}
