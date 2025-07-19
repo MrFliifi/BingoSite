@@ -6,7 +6,7 @@ import "../styles/button.css";
 import ChallengesModal from "../assets/challengesModal.js";
 
 function NoDeath() {
-  const [challengePointMap, setChallengePointMap] = useState(null);
+  const [challengePointArray, setChallengePointArray] = useState([]);
   const [playerObjects, setPlayerObjects] = useState([]);
   const [playerPoints, setPlayerPoints] = useState({});
   const [challengeGame, setChallengeGame] = useState("");
@@ -25,10 +25,10 @@ function NoDeath() {
       console.log("Error incoming:", message);
     });
 
-    socket.on("setupNoDeath", (challengePointMap) => {
-      setChallengePointMap(new Map(challengePointMap));
-
-      console.log(challengePointMap);
+    socket.on("setupNoDeath", (challengePointArray) => {
+      setChallengePointArray(challengePointArray);
+      console.log(challengePointArray);
+      
       
     });
 
@@ -41,15 +41,14 @@ function NoDeath() {
         setNameColorArr(nameColorArr);
         setPlayerObjects(playerObjects);
 
-     /*    console.log("Jetzt kommt Data log");
+    
+        
+
+      console.log("Jetzt kommt Data log");
 
         console.log(
-          nameColorArr,
-          pickableColor,
-          lobbyId,
-          gameMode,
           playerObjects
-        ); */
+        ); 
       }
     );
 
@@ -64,6 +63,11 @@ function NoDeath() {
   const toggleCheckmark = (playerId, challengeIndex, currentValue) => {
     const newValue = !currentValue;
 
+    console.log("i emite CheckmarkUpdate");
+    console.log(playerId, challengeIndex, newValue, lobbyId);
+    
+    
+
     socket.emit("NoDeathCheckmarkUpdate", {
       playerId,
       challengeIndex,
@@ -73,7 +77,7 @@ function NoDeath() {
   };
 
   const renderChallengesWithCheckmarks = () => {
-    if (!challengePointMap) return null;
+    if (!challengePointArray) return null;
 
     return (
       <div className="checkmarkTable">
@@ -95,42 +99,36 @@ function NoDeath() {
         </div>
 
         {/* Zeilen mit Checkmarks */}
-        {Array.from(challengePointMap.entries()).map(
-          ([challenge, points], challengeIndex) => (
-            <div className="challengeRow" key={challenge}>
-              <div className="challengeCell">
-                {challenge} ({points} P)
-              </div>
-
-              {playerObjects.map(({ playerId, arr }) => {
-                const player = nameColorArr.find(
-                  (p) => p.socketId === playerId
-                );
-                const playerColor = player ? player.playerColor : "#ccc";
-                const currentValue = arr[challengeIndex];
-
-                return (
-                  <div
-                    key={playerId}
-                    className="checkmarkCell"
-                    onClick={() =>
-                      toggleCheckmark(playerId, challengeIndex, currentValue)
-                    }
-                    style={{
-                      backgroundColor: currentValue
-                        ? playerColor
-                        : "transparent",
-                      cursor: "pointer",
-                    }}
-                    title={currentValue ? "Completed" : "Not completed"}
-                  >
-                    {currentValue ? "✔️" : ""}
-                  </div>
-                );
-              })}
+        {challengePointArray.map(({ title, points }, challengeIndex) => (
+          <div className="challengeRow" key={title}>
+            <div className="challengeCell">
+              {title} ({points} P)
             </div>
-          )
-        )}
+
+            {playerObjects.map(({ playerId, checkmarkArray }) => {
+              const player = nameColorArr.find((p) => p.socketId === playerId);
+              const playerColor = player ? player.playerColor : "#ccc";
+              const currentValue = checkmarkArray[challengeIndex];
+
+              return (
+                <div
+                  key={playerId}
+                  className="checkmarkCell"
+                  onClick={() =>
+                    toggleCheckmark(playerId, challengeIndex, currentValue)
+                  }
+                  style={{
+                    backgroundColor: currentValue ? playerColor : "transparent",
+                    cursor: "pointer",
+                  }}
+                  title={currentValue ? "Completed" : "Not completed"}
+                >
+                  {currentValue ? "✔️" : ""}
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     );
   };
@@ -195,10 +193,9 @@ function NoDeath() {
               onChange={(e) => setChallengeGame(e.target.value)}
             >
               <option>-- Choose Game --</option>
+              <option value="DarkSouls1">Dark Souls 1</option>
+              <option value="DarkSouls2">Dark Souls 2</option>
               <option value="DarkSouls3">Dark Souls 3</option>
-              <option value="EldenRing">Elden Ring</option>
-              <option value="Nightreign">Nightreign</option>
-              
             </select>
           </div>
 

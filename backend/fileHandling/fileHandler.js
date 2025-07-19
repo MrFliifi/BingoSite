@@ -1,53 +1,77 @@
 const fs = require('fs');
 const path = require('path');
 
-class fileHandler{
-    // needed to acces files in any way
-    constructor (filePath, fileName) {
-        this.filePath = filePath;
-        this.fileName = fileName;
-    }
-    // only function that is currently relevant 
-    async readFromSaveFile(challengeLength, gameMode) {
-        const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.json`);
+class fileHandler {
+  // needed to acces files in any way
+  constructor(filePath, fileName) {
+    this.filePath = filePath;
+    this.fileName = fileName;
+  }
+  // only function that is currently relevant
+  async readFromSaveFile(challengeLength, gameMode) {
+    const localFilePath = path.join(
+      __dirname,
+      this.filePath,
+      `${this.fileName}.json`
+    );
 
-        try {
-            const content = await fs.promises.readFile(localFilePath, 'utf8');
-            const jsonData = JSON.parse(content);
+    try {
+      const content = await fs.promises.readFile(localFilePath, "utf8");
+      const jsonData = JSON.parse(content);
 
-            if (!jsonData.challenges) {
-                throw new Error(`Challenge data not found in file.`);
+      if (!jsonData.challenges) {
+        throw new Error(`Challenge data not found in file.`);
+      }
+
+      // === No-Death ===
+      if (gameMode?.toLowerCase() === "no-death") {
+        const noDeathData = jsonData.challenges["No-Death"];
+        if (noDeathData && typeof noDeathData === "object") {
+          const noDeathArray = [];
+
+          for (const [title, challenge] of Object.entries(noDeathData)) {
+            if (typeof challenge.points === "number") {
+              noDeathArray.push({ title, points: challenge.points });
             }
+          }
 
-            let matchingKeys = [];
-
-            if (gameMode === "No-Death") {
-                // Return all No-Death challenge titles
-                const noDeathData = jsonData.challenges["No-Death"];
-                if (noDeathData) {
-                    matchingKeys = Object.keys(noDeathData);
-                }
-            } else {
-                const bingoData = jsonData.challenges.bingo;
-                if (bingoData) {
-                    matchingKeys = Object.entries(bingoData)
-                        .filter(([_, value]) =>
-                            value.length.map(l => l.toLowerCase()).includes(challengeLength.toLowerCase()) &&
-                            value.gameMode.map(gm => gm.toLowerCase()).includes(gameMode.toLowerCase())
-                        )
-                        .map(([key]) => key);
-                }
-            }
-
-            return matchingKeys;
-
-        } catch (err) {
-            console.error(`Error reading or parsing JSON file at ${localFilePath}:`, err);
-            throw err;
+          return noDeathArray;
+        } else {
+          return [];
         }
-    }
+      }
 
-    /* everything here is only needed when challenge editor is a thing
+      // === Bingo ===
+      const bingoData = jsonData.challenges.bingo;
+      if (bingoData) {
+        const matchingKeys = Object.entries(bingoData)
+          .filter(
+            ([_, value]) =>
+              Array.isArray(value.length) &&
+              Array.isArray(value.gameMode) &&
+              value.length
+                .map((l) => l.toLowerCase())
+                .includes(challengeLength.toLowerCase()) &&
+              value.gameMode
+                .map((gm) => gm.toLowerCase())
+                .includes(gameMode.toLowerCase())
+          )
+          .map(([key]) => key);
+
+        return matchingKeys;
+      }
+
+      return [];
+    } catch (err) {
+      console.error(
+        `Error reading or parsing JSON file at ${localFilePath}:`,
+        err
+      );
+      throw err;
+    }
+  }
+
+  /* everything here is only needed when challenge editor is a thing
     async createSaveFile() {
         // Sets filepath, filename and file format using path class
         const localFilePath = path.join(__dirname, this.filePath, `${this.fileName}.txt`);

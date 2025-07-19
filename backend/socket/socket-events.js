@@ -41,6 +41,11 @@ module.exports = function (io) {
           }
           playerObjects.push(player);
         }
+
+        
+
+        console.log(playerObjects);
+        
       }
       
       // ToDo: these two don't need to be send every second. Once is enough. Create a new Event for them
@@ -193,12 +198,26 @@ module.exports = function (io) {
           lobbies[i].setFileName(challengeGame);
           const gameMode = await lobbies[i].getGameMode();     
           if (gameMode === "No-Death") {
+            console.log("Log des GamesModes: ", gameMode);
+            
             const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
-            const challengePointMap = await fileHandlerObject.readFromSaveFile(gameMode);
-            io.to(lobbyId).emit("setupNoDeath", challengePointMap);
+            const challengePointArray = await fileHandlerObject.readFromSaveFile(challengeLength,gameMode);
+            console.log(challengePointArray);
+            let length = challengePointArray.length;
+            console.log("LÄnge des Arrays: ", length);
+            
+          
+            let players = await lobbies[i].getPlayerArr();
+            console.log("Das sind die Players dessen CheckmarkArray ich setzen will: ", players);
+            
+            for(let j = 0; j < players.length; j ++)
+            {
+              await players[j].setCheckmarkArr(length);
+            }
+            
+            io.to(lobbyId).emit("setupNoDeath", challengePointArray);
             break;
           } else {
-            console.log("bin hier, wer noch?")
             await lobbies[i].setBingoChallenges(challengeGame, "./saveFileLocation/", challengeLength, gameMode);
             console.log("Set game to " + challengeGame + " and length " + challengeLength);
             break;
@@ -213,21 +232,13 @@ module.exports = function (io) {
       for (let i = 0; i < lobbies.length; i++) {
         const id = await lobbies[i].getLobbyId();
         if (id === lobbyId) {
-          const fileName = await lobbies[i].getFileName();
           const players = await lobbies[i].getPlayerArr();
-          const gameMode = await lobbies[i].getGameMode();
           for (let j = 0; j < players.length; j++) {
             const playerId = await players[j].getSocketId();
             if (playerId === socketId) {
-              const checkmarkArr = await players[j].getCheckmarkArr();
-              if (checkmarkArr.length === 0){
-                const fileHandlerInst = new fileHandler("./saveFileLocation/", fileName);
-                const map = await fileHandlerInst.readFromSaveFile("short", gameMode);
-                const length = map.size();
-                await players[j].setCheckmarkArr(length);
-              } else {
+             
               await players[j].setCheckmarkArr(challengeIndex, value);
-              }
+              
             }
           } 
         }

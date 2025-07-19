@@ -1,0 +1,36 @@
+{
+  "challenges": {
+    "bingo": {
+      "Besiege den Iudex Gundyr ohne Heilung": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste eine Waffe auf +3 auf": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      }
+    },
+    "No-Death": {
+      "ND Challenge1": {
+        "points": 1,
+        "gameMode": "No-Death"
+      },
+      "ND Challenge2": {
+        "points": 5,
+        "gameMode": "No-Death"
+      },
+      "ND Challenge3": {
+        "points": 1,
+        "gameMode": "No-Death"
+      },
+      "ND Challenge4": {
+        "points": 2,
+        "gameMode": "No-Death"
+      },
+      "ND Challenge5": {
+        "points": 1,
+        "gameMode": "No-Death"
+      }
+    }
+  }
+}
