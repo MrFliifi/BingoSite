@@ -12,8 +12,17 @@ const {
   backAdress,
 } = require("./config.js");
 
+// CORS for the Socket.io Server, so the backend can receive requests from "frontAdress"
+const options = {
+  cors: {
+    origin: frontAdress,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+};
+
 // Integrates CORS into the Express-App, so the frontend can communicate with the backend
-app.use(cors());
+app.use(cors(options));
 // Safety Feature for HTTP-Header
 app.use(helmet());
 // Parses incoming requests with JSON payloads, makes it readable for the backend
@@ -26,21 +35,34 @@ app.use(express.urlencoded({ extended: false }));
 const httpServer = require("http").createServer(app);
 
 // Port for the backend
-httpServer.listen(backPort, () => {
-    console.log(`Server running on port ${backPort}`);
+httpServer.listen(backPort, "127.0.0.1", () => {
+    console.log(`Server running on port 127.0.0.1:${backPort}`);
   });
 
-// CORS for the Socket.io Server, so the backend can receive requests from "frontAdress"
-const options = {
-  cors: {
-    origin: frontAdress,
-    methods: ["GET", "POST"],
-    credentials: true,
-  },
-};
+
 
 // Creates Socket.io Object and links it to the express HTTP-Server and the cors options that accepts our "frontAdress" as a valid origin
 const io = require("socket.io")(httpServer, options);
+
+
+const path = require("path");
+const buildPath = path.resolve(__dirname, "../../frontend/build");
+
+console.log(buildPath);
+
+
+// Statische Dateien ausliefern
+app.use(express.static(buildPath));
+
+// Fallback für React-Router
+app.get("/{*any}", (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+
+//Monitoring to check if Server is still running
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
 
 
 // imports the logik back to the server.js file
