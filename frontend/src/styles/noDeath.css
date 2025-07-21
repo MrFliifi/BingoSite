@@ -1,6 +1,5 @@
 .checkmarkCell {
-  height: 40px;
-  min-width: 40px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,9 +9,7 @@
   cursor: pointer;
 }
 
-
-.headerRow,
-.challengeRow {
+.headerRow {
   display: flex;
   width: 100%;
 }
@@ -21,25 +18,55 @@
 .playerHeader,
 .challengeCell,
 .checkmarkCell {
-  flex: 1;
+   flex: 1;
   text-align: center;
   padding: 8px;
   border: 1px solid #444;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.challengeHeader {
+.challengeCell{
+  background-color: rgb(79, 12, 120, 0.7);
+}
+
+.challengeHeader,
+.challengeFooter {
   background-color: #222;
   color: #fff;
+  min-height: 20px;
+}
+
+.challengeTitle,
+.challengePoints{
+  font-weight: bold;
+
 }
 
 .playerHeader {
   font-weight: bold;
 }
 
-.checkmarkCell {
-  height: 40px;
+.checkmarkTable
+{
+   display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.checkmarkRow {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  align-items: stretch; /* alle Zellen gleich hoch */
+}
+
+.challengeCategoryRow {
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  margin-top: 12px;
+  border-radius: 4px;
 }

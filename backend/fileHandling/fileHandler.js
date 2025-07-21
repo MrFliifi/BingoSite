@@ -23,23 +23,42 @@ class fileHandler {
         throw new Error(`Challenge data not found in file.`);
       }
 
-      // === No-Death ===
-      if (gameMode?.toLowerCase() === "no-death") {
-        const noDeathData = jsonData.challenges["No-Death"];
-        if (noDeathData && typeof noDeathData === "object") {
-          const noDeathArray = [];
+     if (gameMode?.toLowerCase() === "no-death") {
+       const noDeathData = jsonData.challenges["No-Death"];
+       if (noDeathData && typeof noDeathData === "object") {
+         const noDeathArray = [];
 
-          for (const [title, challenge] of Object.entries(noDeathData)) {
-            if (typeof challenge.points === "number") {
-              noDeathArray.push({ title, points: challenge.points });
-            }
-          }
+         for (const [categoryName, categoryData] of Object.entries(
+           noDeathData
+         )) {
+           if (
+             categoryData &&
+             typeof categoryData === "object" &&
+             categoryData.challenges
+           ) {
+             const challengeArray = [];
 
-          return noDeathArray;
-        } else {
-          return [];
-        }
-      }
+             for (const [title, challenge] of Object.entries(
+               categoryData.challenges
+             )) {
+               if (typeof challenge.points === "number") {
+                 challengeArray.push({ title, points: challenge.points });
+               }
+             }
+
+             noDeathArray.push({
+               category: categoryName,
+               challenges: challengeArray,
+             });
+           }
+         }
+
+         return noDeathArray;
+       } else {
+         return [];
+       }
+     }
+
 
       // === Bingo ===
       const bingoData = jsonData.challenges.bingo;

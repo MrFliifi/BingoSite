@@ -8,6 +8,8 @@ const { fileHandler } = require("../fileHandling/fileHandler.js");
 // Creates lobbyHolder instance that manages all existing lobbies
 const listOfLobbies = new lobbyHolder();
 
+module.exports = { listOfLobbies };
+
 // Every Event has to be in the io.on("connection"), it is the entry point for the Socket.io Server
 module.exports = function (io) {
   // 1 sec interval, that gives all clients the neccesary data
@@ -49,6 +51,7 @@ module.exports = function (io) {
       }
 
       console.log(nameColorArr);
+      console.log(playerObjects);
       
       
       // ToDo: these two don't need to be send every second. Once is enough. Create a new Event for them
@@ -230,18 +233,52 @@ module.exports = function (io) {
     });
     
     socket.on("NoDeathCheckmarkUpdate", async (data) => {
-      const { socketId, challengeIndex, value, lobbyId } = data; 
+      const { playerId, challengeIndex, value, lobbyId } = data; 
       const lobbies = await listOfLobbies.getLobbies();
+
+      
       for (let i = 0; i < lobbies.length; i++) {
         const id = await lobbies[i].getLobbyId();
         if (id === lobbyId) {
+        
           const players = await lobbies[i].getPlayerArr();
+          const gameMode = await lobbies[i].getGameMode();
+          const challengeGame = await lobbies[i].getFileName();
           for (let j = 0; j < players.length; j++) {
-            const playerId = await players[j].getSocketId();
-            if (playerId === socketId) {
-             
+            const socketId= await players[j].getSocketId();
+            if (socketId === playerId) {
               await players[j].setCheckmarkArrIndex(challengeIndex, value);
-              
+
+              //Getting Point Array
+              const fileHandlerObject = new fileHandler(
+                "../fileHandling/saveFileLocation",
+                challengeGame
+              );
+              const challengePointArray =
+                await fileHandlerObject.readFromSaveFile(
+                  "",
+                  gameMode
+                );
+
+                const checkMarkArray = await players[j].getCheckmarkArr();
+                console.log(challengePointArray);
+                console.log(checkMarkArray);
+                
+                
+               let totalScore = 0;
+               let index = 0;
+
+               //Running through the challengePointArray and Adding the points if the checkMarkArray Index is true
+               for (const category of challengePointArray) {
+                 for (const challenge of category.challenges) {
+                   if (checkMarkArray[index]) {
+                     totalScore += challenge.points;
+                   }
+                   index++;
+                 }
+               }
+                //Setting the Score
+              await players[j].setScore(totalScore);
             }
           } 
         }

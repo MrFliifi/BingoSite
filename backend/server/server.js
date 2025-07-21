@@ -51,10 +51,10 @@ const buildPath = path.resolve(__dirname, "../../frontend/build");
 console.log(buildPath);
 
 
-// Statische Dateien ausliefern
+// Telling Express where to find our Frontend
 app.use(express.static(buildPath));
 
-// Fallback für React-Router
+// Specify which File to serve to the Client. We need only the Index.html, cause of our one-page Router Design.
 app.get("/{*any}", (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });

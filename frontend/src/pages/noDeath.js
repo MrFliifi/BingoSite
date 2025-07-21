@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { socket } from "../websocket/socket.js";
 import "../styles/noDeath.css";
 import "../styles/bingoField.css";
@@ -8,7 +8,6 @@ import ChallengesModal from "../assets/challengesModal.js";
 function NoDeath() {
   const [challengePointArray, setChallengePointArray] = useState([]);
   const [playerObjects, setPlayerObjects] = useState([]);
-  const [playerPoints, setPlayerPoints] = useState({});
   const [challengeGame, setChallengeGame] = useState("");
   const [nameColorArr, setNameColorArr] = useState([]);
   const [pickableColor, setPickableColor] = useState([]);
@@ -40,15 +39,6 @@ function NoDeath() {
         setGameMode(gameMode);
         setNameColorArr(nameColorArr);
         setPlayerObjects(playerObjects);
-
-    
-        
-
-      console.log("Jetzt kommt Data log");
-
-        console.log(
-          playerObjects
-        ); 
       }
     );
 
@@ -62,11 +52,11 @@ function NoDeath() {
 
   const toggleCheckmark = (playerId, challengeIndex, currentValue) => {
     const newValue = !currentValue;
-
-    console.log("i emite CheckmarkUpdate");
-    console.log(playerId, challengeIndex, newValue, lobbyId);
-    
-    
+   
+    console.log("emitting CheckmarkUpdate:" , playerId, challengeIndex, newValue);    
+    //check if the cell the player wants to press, is his/her own cell
+    if(playerId === socket.id)
+    {
 
     socket.emit("NoDeathCheckmarkUpdate", {
       playerId,
@@ -74,36 +64,58 @@ function NoDeath() {
       value: newValue,
       lobbyId,
     });
+  }
   };
 
-  const renderChallengesWithCheckmarks = () => {
-    if (!challengePointArray) return null;
+ function renderChallengePlayerHeader() {
+   return (
+     <div className="headerRow">
+       <div className="challengeHeader">Challenges</div>
+       {nameColorArr.map(({ playerName, playerColor, playerId }) => {
+         // Search for player in the plyerObjects array
+         const player = playerObjects.find((p) => p.playerId === playerId);
+         const score = player?.playerScore ?? 0;
+
+         return (
+           <div
+             key={playerId}
+             className="playerHeader"
+             style={{
+               color: "#fff",
+               backgroundColor: playerColor,
+             }}
+           >
+             {playerName} ({score})
+           </div>
+         );
+       })}
+     </div>
+   );
+ }
 
 
-    return (
-      <div className="checkmarkTable">
-        {/* Kopfzeile mit Spielernamen */}
-        <div className="headerRow">
-          <div className="challengeHeader">Challenge</div>
-          {nameColorArr.map(({ playerName, playerColor, playerId }) => (
-            <div
-              key={playerId}
-              className="playerHeader"
-              style={{
-                color: "#fff",
-                backgroundColor: playerColor,
-              }}
-            >
-              {playerName}
-            </div>
-          ))}
+  function renderRows() {
+    let globalChallengeIndex = 0;
+
+    return challengePointArray.flatMap(({ category, challenges }) => {
+      const rows = [];
+
+      // Kategorie-Zeile
+      rows.push(
+        <div key={`category-${category}`} className="challengeCategoryRow">
+          {category}
         </div>
+      );
 
-        {/* Zeilen mit Checkmarks */}
-        {challengePointArray.map(({ title, points }, challengeIndex) => (
-          <div className="challengeRow" key={`challenge-${challengeIndex}`}>
+      // Challenge-Zeilen
+      challenges.forEach(({ title, points }, localIndex) => {
+        const challengeIndex = globalChallengeIndex;
+
+        rows.push(
+          <div className="checkmarkRow" key={`row-${challengeIndex}`}>
             <div className="challengeCell">
-              {title} ({points} P)
+              <div className="challengeTitle">{title}</div>
+              <div className="challengePoints">({points} P)</div>
             </div>
 
             {playerObjects.map(({ playerId, checkmarkArray }) => {
@@ -113,27 +125,37 @@ function NoDeath() {
 
               return (
                 <div
-                  key={`checkmark-${playerId}-${challengeIndex}`} // ✅ eindeutig!
+                  key={`checkmark-${playerId}-${challengeIndex}`}
                   className="checkmarkCell"
                   onClick={() =>
                     toggleCheckmark(playerId, challengeIndex, currentValue)
                   }
                   style={{
                     backgroundColor: currentValue ? playerColor : "transparent",
-                    color: currentValue ? "#fff" : "#000", // Textfarbe je nach Zustand
+                    opacity: currentValue ? 0.7 : 1,
                     cursor: "pointer",
                   }}
                   title={currentValue ? "Completed" : "Not completed"}
                 >
-                  {currentValue ? "✔️" : "❌"}
+                  <span style={{ color: currentValue ? "black" : "red" }}>
+                    {currentValue ? "\u2713" : "❌"}
+                  </span>
                 </div>
               );
             })}
           </div>
-        ))}
-      </div>
-    );
-  };
+        );
+
+        globalChallengeIndex++;
+      });
+
+      return rows;
+    });
+  }
+
+
+
+
 
 
   function sendGame() {
@@ -216,10 +238,16 @@ function NoDeath() {
       </div>
 
       <div className="noDeathContainer">
-        <div className="challenges">{renderChallengesWithCheckmarks()}</div>
+        <div className="challengePlayerHeader">
+          {renderChallengePlayerHeader()}
+        </div>
+        <div className="checkmarkTable">{renderRows()}</div>
+
+        <div className="challengeFooter"></div>
       </div>
     </div>
   );
 }
+
 
 export default NoDeath;

@@ -602,27 +602,20 @@
                 "gameMode": ["non-lockout", "lockout"]
             }
         },
-        "No-Death": {
-            "ND Challenge1": {
-                "points": 1,
-                "gameMode": "No-Death"
-            },
-            "ND Challenge2": {
-              "points": 5,
-              "gameMode": "No-Death"
-            },
-            "ND Challenge3": {
-              "points": 1,
-              "gameMode": "No-Death"
-            },
-            "ND Challenge4": {
-              "points": 2,
-              "gameMode": "No-Death"
-            },
-            "ND Challenge5": {
-              "points": 1,
-              "gameMode": "No-Death"
-            }
+       "No-Death": {
+      "Lothric Castle": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Vordt of the Boreal Valley": { "points": 5 },
+          "Dancer of the Boreal Valley": { "points": 5 }
+        }
+      },
+      "Undead Settlement": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Rotten Greatwood": { "points": 5},
+          "Outrider Knight": { "points": 3 }
+        }
         }
     }
-}
+    }}
