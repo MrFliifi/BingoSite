@@ -26,8 +26,6 @@ function NoDeath() {
 
     socket.on("setupNoDeath", (challengePointArray) => {
       setChallengePointArray(challengePointArray);
-      console.log(challengePointArray);
-      
       
     });
 
@@ -85,7 +83,7 @@ function NoDeath() {
                backgroundColor: playerColor,
              }}
            >
-             {playerName} ({score})
+             {playerName} ({score} Points)
            </div>
          );
        })}

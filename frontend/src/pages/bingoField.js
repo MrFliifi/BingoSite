@@ -61,9 +61,6 @@ function BingoPage() {
   const challengeFieldPressed = (index) => {
     //if no color is picked, do nothing
     if (!playerColor) return;
-
-    const content = bingoChallenges[index];
-    console.log(`Button ${index} pressed with Bingo Challenge: "${content}"`);
     //Sending the Server all Data from the Buttonpress
     socket.emit("ChallengeField", { colorIndex: index, socketId: socket.id, lobbyId });
 
@@ -73,9 +70,7 @@ function BingoPage() {
     if (color === "") {
       alert("Pick PlayerColor");
     } else {
-      console.log("Send Data:  ");
-      console.log(color);
-
+   
       setPlayerColor(color);
       
     socket.emit("sendPlayerColor",{ playerColor: color, socketId :socket.id, lobbyId  } );
@@ -90,11 +85,7 @@ function BingoPage() {
         challengeLength,
         lobbyId,
       });
-      console.log(
-        "on set bingo  game and length " + challengeGame,
-        challengeLength,
-        lobbyId
-      );
+   
     } else {
       alert("Pick Game and Bingolength");
     }

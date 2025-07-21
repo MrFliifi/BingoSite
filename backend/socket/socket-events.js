@@ -43,17 +43,9 @@ module.exports = function (io) {
           }
           playerObjects.push(player);
         }
-
-        
-
-        console.log(playerObjects);
         
       }
 
-      console.log(nameColorArr);
-      console.log(playerObjects);
-      
-      
       // ToDo: these two don't need to be send every second. Once is enough. Create a new Event for them
       
       const bingoChallenges = await lobbies[i].getBingoChallenges();
@@ -116,6 +108,7 @@ module.exports = function (io) {
         if (lobbies.length == 0) {
           const lobby = new lobbyHandler(gameMode, lobbyId);
           const player = new playerHandler(socketId, playerName, lobbyId);
+          
 
           // Assing player to lobby and lobby to lobby holder
           await lobby.setPlayer(player);

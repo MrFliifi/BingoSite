@@ -1,608 +1,608 @@
 {
-    "challenges": {
-        "bingo": {
-            "Besiege den Iudex Gundyr ohne Heilung": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste eine Waffe auf +3 auf": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Sammle 5 Estus-Scherben": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einer Wurfwaffe": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Beschwöre einen Phantom-Verbündeten": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Schließe ein Gebiet komplett ohne Tod ab": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Trage ein komplettes Set eines NPCs": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze ein Wachsbecken": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einem kritischen Treffer": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verbrenne eine Untotensplitter": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Kristall-Echsen-Drachen": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste den Estus-Flakon vollständig aus": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Kaufe eine Geste von einem NPC": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Lies die Beschreibung eines Boss-Seelen-Gegenstands": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze das Katapult in der Kathedrale": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Mimic ohne entdeckt zu werden": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Lege eine Nachricht, die bewertet wird": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Wechsle deine Covenant": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte den Dämon auf dem Dach in der Untoten-Siedlung": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mache einen Parry-Kill": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Darkwraith": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege Vordt mit nur einer Waffe": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Schwarzritter": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Öffne eine Abkürzung": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Erhalte eine Boss-Seele": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss mit nur Pyromantie": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nutze keine Estus-Flakons in einem ganzen Gebiet": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege den Abyss Watchers ohne Treffer": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss mit bloßen Fäusten": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Invader": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege einen Boss im Koop": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste eine Boss-Waffe aus": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwandle dich mit dem Chameleon-Zauber": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mache einen Backstab mit einem Dolch": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit Fall-Schaden": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einer Umweltfalle": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwandle eine Boss-Seele in einen Zauber": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste keine Rüstung aus": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss ohne Rollen": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Schließe einen NPC-Quest ab": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einer Peitsche": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze die 'Path of the Dragon'-Geste": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner, während du vergiftet bist": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze keine Waffen, nur Magie": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einem Bogen": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Trage nur 'Fashion Souls'-Rüstung": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mache einen Run ohne Schild": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte ein Gebiet nur mit Feuerbomben": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte ein Phantom-Invader (Red NPC)": {
-                "length": ["short"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwandle dich in ein Objekt mit Spook/Hidden Body": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege Pontiff Sulyvahn ohne Schaden": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwende keine Rüstung oder Kleidung": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte Aldrich ohne Estus": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte den Dancer als ersten Boss": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte Lothric und Lorian solo ohne Estus": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte Yhorm ohne die Sturmherrscher-Waffe": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mache einen No-Bonfire-Run bis zum 3. Boss": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Kein Level-Up bis zum 4. Boss": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze kein Leveling während des gesamten Spiels": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele ein ganzes Gebiet auf NG+": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss mit einer Waffe, die du gerade gefunden hast": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss mit einer 'broken straight sword'": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte Oceiros ohne Magie oder Heilung": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele ein Gebiet in voller Havels-Rüstung": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Drachen mit Nahkampf": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Keine Zauber, keine Pyromantie, keine Wunder im Spiel": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit Poison Mist": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit Rüstung aus deinem Startgebiet": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege einen Boss nur mit Konterparrys": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele mit maximaler Auslastung": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte den Champion Gundyr beim ersten Versuch": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte die Tänzerin mit einem Bogen": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur Fäuste bis zum ersten Lord of Cinder": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege einen Boss im NG++": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Kein Estus, nur Ashen Estus erlaubt": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Starte als 'Deprived' und töte 3 Bosse ohne Level-Up": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte ein Gebiet ohne HUD": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze die Symbol des Gier-Helm permanent": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege einen Boss mit nur einer Hand (Controller auf einer Hand)": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nutze keine Shortcut-Türen": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele mit invertierter Steuerung (Joystick/Kamera vertauscht)": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Wechsle nach jedem Tod deine komplette Ausrüstung": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze keine Leuchtfeuer-Teleports": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verbrauche alle Boss-Seelen für Seelen, keine Items": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele mit Farbfilter/Monochrom-Modus (wenn möglich)": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte 3 Bosse, ohne einen Estus-Flakon auszurüsten": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Halte immer unter 30% Ausrüstungslast": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwende keine Waffe länger als 5 Minuten": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte 3 Gegner mit nur Tritten": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Sei verflucht UND vergiftet UND blutend gleichzeitig": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner, während du komplett nackt bist": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Keine Backstabs während des Runs": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele permanent in Hollow-Form": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege einen Boss ohne zu sprinten": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Lege ein Prismastein in jedes neue Gebiet": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einem Schild-Schlag": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Lass dich 10x verfluchen (bzw. von Basilisken treffen)": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss ohne Lock-On": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste das dümmste mögliche Outfit aus": {
-                "length": ["medium"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mache einen 'Pacifist-Run' bis zum ersten Boss": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Geh nie über 70% Equip Load": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele mit dem Controller verkehrt herum": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege 5 Gegner mit Spells, obwohl du keine Magic-Class bist": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Springe in den Abgrund mit Absicht 3x (Selbstmordfeld)": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte alle Händler (nachdem du alles gekauft hast)": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur Einhandwaffen erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele mit schlechtester Waffe (+0) bis zum 3. Boss": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur Waffen mit Blutung": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Kein Blocken erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte alle Crystal Lizards im Spiel": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte 10 Gegner mit der 'Fist Weapon'": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Erhalte alle Estus-Upgrades": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste alle Ringe einer Ring-Kategorie gleichzeitig": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur Bossseelen-Waffen benutzen": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Spiele das ganze Spiel mit einem bestimmten Set (z. B. 'Kleriker')": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Keine Verstärkungen an Waffen erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Keine Buffs (Zauber/Harz/etc.) erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Immer unter 10% HP bleiben": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Keine Rollen – nur laufen und blocken": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur Boss-Armor benutzen": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur NPC-Geschenke verwenden": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Kein Aufheben von Items erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege einen Boss mit einer Geste am Ende": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwende 'Untrue Dark Ring' permanent": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einem 'Dung Pie'": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Erhalte alle 3 Enden in einem Spielstand": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit einem Critical Riposte durch Parry": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mach einen Chaos Build mit Faith/Int/Str": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mach einen Dexterity Run nur mit Dolchen": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Hol alle Endbosse nackt und ohne Leveln": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwende nie den linken Trigger": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Schlage einen Gegner mit der Faust KO": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Drachen mit einem Giftbogen": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Parrye einen Boss (z. B. Pontiff) mindestens 3x": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur schwere Waffen erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nutze keine Ringe": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Nur Unsichtbarkeitszauber erlaubt": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner, während du eine Emote machst": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Werde 5x invaded und gewinne alle Kämpfe": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Gegner mit dem ersten Treffer nach 5 Minuten Nichtkampf": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verbrenne keine Untoten-Splitter": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze keinen Schild, nur Zweihand": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Rüste keine Ringe aus": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Sammle alle Kisten im Spiel": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Benutze keine Items außer Estus": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Besiege 3 Bosse mit nur Wurfmessern": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Verwende nie den Sprint-Knopf": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Töte einen Boss mit nur 1 HP übrig": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Werde in jedem Gebiet einmal verflucht": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            },
-            "Mache den kompletten Run in einer Rolle deiner Wahl (z.B. 'Fashion Souls', 'Only Shields', 'Nackt mit Hut')": {
-                "length": ["long"],
-                "gameMode": ["non-lockout", "lockout"]
-            }
-        },
-       "No-Death": {
+  "challenges": {
+    "bingo": {
+      "Besiege den Iudex Gundyr ohne Heilung": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste eine Waffe auf +3 auf": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Sammle 5 Estus-Scherben": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einer Wurfwaffe": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Beschwöre einen Phantom-Verbündeten": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Schließe ein Gebiet komplett ohne Tod ab": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Trage ein komplettes Set eines NPCs": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze ein Wachsbecken": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einem kritischen Treffer": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verbrenne eine Untotensplitter": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Kristall-Echsen-Drachen": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste den Estus-Flakon vollständig aus": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Kaufe eine Geste von einem NPC": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lies die Beschreibung eines Boss-Seelen-Gegenstands": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze das Katapult in der Kathedrale": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Mimic ohne entdeckt zu werden": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lege eine Nachricht, die bewertet wird": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Wechsle deine Covenant": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte den Dämon auf dem Dach in der Untoten-Siedlung": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mache einen Parry-Kill": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Darkwraith": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege Vordt mit nur einer Waffe": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Schwarzritter": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Öffne eine Abkürzung": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Erhalte eine Boss-Seele": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss mit nur Pyromantie": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nutze keine Estus-Flakons in einem ganzen Gebiet": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege den Abyss Watchers ohne Treffer": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss mit bloßen Fäusten": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Invader": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege einen Boss im Koop": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste eine Boss-Waffe aus": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwandle dich mit dem Chameleon-Zauber": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mache einen Backstab mit einem Dolch": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit Fall-Schaden": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einer Umweltfalle": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwandle eine Boss-Seele in einen Zauber": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste keine Rüstung aus": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss ohne Rollen": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Schließe einen NPC-Quest ab": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einer Peitsche": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze die 'Path of the Dragon'-Geste": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner, während du vergiftet bist": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze keine Waffen, nur Magie": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einem Bogen": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Trage nur 'Fashion Souls'-Rüstung": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mache einen Run ohne Schild": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte ein Gebiet nur mit Feuerbomben": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte ein Phantom-Invader (Red NPC)": {
+        "length": ["short"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwandle dich in ein Objekt mit Spook/Hidden Body": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege Pontiff Sulyvahn ohne Schaden": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwende keine Rüstung oder Kleidung": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Aldrich ohne Estus": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte den Dancer als ersten Boss": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Lothric und Lorian solo ohne Estus": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Yhorm ohne die Sturmherrscher-Waffe": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mache einen No-Bonfire-Run bis zum 3. Boss": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Kein Level-Up bis zum 4. Boss": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze kein Leveling während des gesamten Spiels": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele ein ganzes Gebiet auf NG+": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss mit einer Waffe, die du gerade gefunden hast": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss mit einer 'broken straight sword'": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Oceiros ohne Magie oder Heilung": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele ein Gebiet in voller Havels-Rüstung": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Drachen mit Nahkampf": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Keine Zauber, keine Pyromantie, keine Wunder im Spiel": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit Poison Mist": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit Rüstung aus deinem Startgebiet": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege einen Boss nur mit Konterparrys": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele mit maximaler Auslastung": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte den Champion Gundyr beim ersten Versuch": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte die Tänzerin mit einem Bogen": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur Fäuste bis zum ersten Lord of Cinder": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege einen Boss im NG++": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Kein Estus, nur Ashen Estus erlaubt": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Starte als 'Deprived' und töte 3 Bosse ohne Level-Up": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte ein Gebiet ohne HUD": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze die Symbol des Gier-Helm permanent": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege einen Boss mit nur einer Hand (Controller auf einer Hand)": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nutze keine Shortcut-Türen": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele mit invertierter Steuerung (Joystick/Kamera vertauscht)": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Wechsle nach jedem Tod deine komplette Ausrüstung": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze keine Leuchtfeuer-Teleports": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verbrauche alle Boss-Seelen für Seelen, keine Items": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele mit Farbfilter/Monochrom-Modus (wenn möglich)": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte 3 Bosse, ohne einen Estus-Flakon auszurüsten": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Halte immer unter 30% Ausrüstungslast": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwende keine Waffe länger als 5 Minuten": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte 3 Gegner mit nur Tritten": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Sei verflucht UND vergiftet UND blutend gleichzeitig": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner, während du komplett nackt bist": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Keine Backstabs während des Runs": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele permanent in Hollow-Form": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege einen Boss ohne zu sprinten": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lege ein Prismastein in jedes neue Gebiet": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einem Schild-Schlag": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lass dich 10x verfluchen (bzw. von Basilisken treffen)": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss ohne Lock-On": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste das dümmste mögliche Outfit aus": {
+        "length": ["medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mache einen 'Pacifist-Run' bis zum ersten Boss": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Geh nie über 70% Equip Load": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele mit dem Controller verkehrt herum": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege 5 Gegner mit Spells, obwohl du keine Magic-Class bist": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Springe in den Abgrund mit Absicht 3x (Selbstmordfeld)": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte alle Händler (nachdem du alles gekauft hast)": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur Einhandwaffen erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele mit schlechtester Waffe (+0) bis zum 3. Boss": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur Waffen mit Blutung": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Kein Blocken erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte alle Crystal Lizards im Spiel": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte 10 Gegner mit der 'Fist Weapon'": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Erhalte alle Estus-Upgrades": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste alle Ringe einer Ring-Kategorie gleichzeitig": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur Bossseelen-Waffen benutzen": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Spiele das ganze Spiel mit einem bestimmten Set (z. B. 'Kleriker')": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Keine Verstärkungen an Waffen erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Keine Buffs (Zauber/Harz/etc.) erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Immer unter 10% HP bleiben": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Keine Rollen – nur laufen und blocken": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur Boss-Armor benutzen": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur NPC-Geschenke verwenden": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Kein Aufheben von Items erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege einen Boss mit einer Geste am Ende": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwende 'Untrue Dark Ring' permanent": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einem 'Dung Pie'": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Erhalte alle 3 Enden in einem Spielstand": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit einem Critical Riposte durch Parry": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mach einen Chaos Build mit Faith/Int/Str": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mach einen Dexterity Run nur mit Dolchen": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Hol alle Endbosse nackt und ohne Leveln": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwende nie den linken Trigger": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Schlage einen Gegner mit der Faust KO": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Drachen mit einem Giftbogen": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Parrye einen Boss (z. B. Pontiff) mindestens 3x": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur schwere Waffen erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nutze keine Ringe": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Nur Unsichtbarkeitszauber erlaubt": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner, während du eine Emote machst": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Werde 5x invaded und gewinne alle Kämpfe": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Gegner mit dem ersten Treffer nach 5 Minuten Nichtkampf": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verbrenne keine Untoten-Splitter": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze keinen Schild, nur Zweihand": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Rüste keine Ringe aus": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Sammle alle Kisten im Spiel": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Benutze keine Items außer Estus": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Besiege 3 Bosse mit nur Wurfmessern": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verwende nie den Sprint-Knopf": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss mit nur 1 HP übrig": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Werde in jedem Gebiet einmal verflucht": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Mache den kompletten Run in einer Rolle deiner Wahl (z.B. 'Fashion Souls', 'Only Shields', 'Nackt mit Hut')": {
+        "length": ["long"],
+        "gameMode": ["non-lockout", "lockout"]
+      }
+    },
+    "No-Death": {
       "Lothric Castle": {
         "gameMode": "No-Death",
         "challenges": {
@@ -613,9 +613,10 @@
       "Undead Settlement": {
         "gameMode": "No-Death",
         "challenges": {
-          "Rotten Greatwood": { "points": 5},
+          "Rotten Greatwood": { "points": 5 },
           "Outrider Knight": { "points": 3 }
         }
-        }
+      }
     }
-    }}
+  }
+}
