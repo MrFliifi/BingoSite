@@ -196,7 +196,7 @@ module.exports = function (io) {
         
             const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
             const challengePointArray = await fileHandlerObject.readFromSaveFile(challengeLength,gameMode);
-         
+            let length = challengePointArray.length;
             let players = await lobbies[i].getPlayerArr();
             
             for(let j = 0; j < players.length; j ++)
