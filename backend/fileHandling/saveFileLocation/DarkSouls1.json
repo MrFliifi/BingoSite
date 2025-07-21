@@ -11,25 +11,218 @@
       }
     },
     "No-Death": {
-      "ND Challenge1": {
-        "points": 1,
-        "gameMode": "No-Death"
+      "Northern Undead Asylum": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Asylum Demon": { "points": 5 },
+          "Stray Demon": { "points": 5 },
+          "Black Knight 1 (Sword)": { "points": 3 },
+          "Black Knight 2 (Sword)": { "points": 3 }
+        }
       },
-      "ND Challenge2": {
-        "points": 5,
-        "gameMode": "No-Death"
+      "Undead Burg": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Black Knight (Sword)": { "points": 3 },
+          "Taurus Demon": { "points": 5 },
+          "Havel The Rock": { "points": 3 },
+          "The Bridge Wyvern": { "points": 3 }
+        }
       },
-      "ND Challenge3": {
-        "points": 1,
-        "gameMode": "No-Death"
+      "Undead Parish": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Fang Boar": { "points": 3 },
+          "Black Knight (Greatsword)": { "points": 3 },
+          "Berenike Knight": { "points": 3 },
+          "Channeler": { "points": 3 },
+          "Bell Gargoyles": { "points": 5 },
+          "Titanite Demon": { "points": 3 },
+          "Capra Demon": { "points": 5 }
+        }
       },
-      "ND Challenge4": {
-        "points": 2,
-        "gameMode": "No-Death"
+      "Darkroot Garden": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Moonlight Butterfly": { "points": 5 },
+          "Giant Cat 1": { "points": 3 },
+          "Giant Cat 2": { "points": 3 },
+          "Giant Cat 3": { "points": 3 },
+          "Great Grey Wolf Sif": { "points": 5 }
+        }
       },
-      "ND Challenge5": {
-        "points": 1,
-        "gameMode": "No-Death"
+      "Darkroot Basin": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Black Knight (Halberd)": { "points": 3 },
+          "Hydra": { "points": 3 },
+          "Golden Crystal Golem": { "points": 3 }
+        }
+      },
+      "Depths": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Butcher 1": { "points": 3 },
+          "Butcher 2": { "points": 3 },
+          "Giant Rat": { "points": 3 },
+          "Kirk (Phantom)": { "points": 3 },
+          "Channeler": { "points": 3 },
+          "Gaping Dragon": { "points": 5 }
+        }
+      },
+      "Blighttown": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Mildred (Phantom)": { "points": 3 },
+          "Parasitic Wall Hugger": { "points": 3 }
+        }
+      },
+      "Queelag's Domain": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Chaos Witch Quelaag": { "points": 5 }
+        }
+      },
+      "Ash Lake": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Black Hydra": { "points": 3 }
+        }
+      },
+      "The Valley of Drakes": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Undead Dragon": { "points": 3 }
+        }
+      },
+      "Sen's Fortress": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Berenike Knight": { "points": 3 },
+          "Ricard": { "points": 3 },
+          "Iron Golem": { "points": 5 },
+          "Titanite Demon 1": { "points": 3 },
+          "Titanite Demon 2": { "points": 3 },
+          "Titanite Demon 3": { "points": 3 },
+          "Titanite Demon 4": { "points": 3 }
+        }
+      },
+      "Anor Londo": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Titanite Demon": { "points": 3 },
+          "Ornstein and Smough": { "points": 5 },
+          "Dark Sun Gywndolin": { "points": 5 }
+        }
+      },
+      "Painted World of Ariamis": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Undead Dragon": { "points": 3 },
+          "Jeremiah (Phantom)": { "points": 3 },
+          "Berenike Knight": { "points": 3 },
+          "Crossbreed Priscilla": { "points": 5 }
+        }
+      },
+      "New Londo Ruins": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Mass of Souls 1": { "points": 3 },
+          "Mass of Souls 2": { "points": 3 }
+        }
+      },
+      "The Abyss": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Four Kings": { "points": 5 }
+        }
+      },
+      "The Duke's Archives": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Fang Boar 1": { "points": 3 },
+          "Channeler 1": { "points": 3 },
+          "Channeler 2": { "points": 3 },
+          "Channeler 3": { "points": 3 },
+          "Golden Crystal Golem": { "points": 3 }
+        }
+      },
+      "Crystal Cave": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Golden Crystal Golem 1": { "points": 3 },
+          "Golden Crystal Golem 2": { "points": 3 },
+          "Seath the Scaleless": { "points": 5 }
+        }
+      },
+      "Demon Ruins": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Ceaseless Discharge": { "points": 5 },
+          "Kirk (Phantom)": { "points": 3 },
+          "Demon Firesage": { "points": 5 },
+          "Centipede Demon": { "points": 5 }
+        }
+      },
+      "Lost Izalith": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Titanite Demon": { "points": 3 },
+          "Kirk (Phantom)": { "points": 3 },
+          "The Bed of Chaos": { "points": 5 }
+        }
+      },
+      "The Catacombs": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Titanite Demon": { "points": 3 },
+          "Black Knight (Greataxe)": { "points": 3 },
+          "Pinwheel": { "points": 5 }
+        }
+      },
+      "Tomb of Giants": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Black Knight (Halberd)": { "points": 3 },
+          "Leeroy (Phantom)": { "points": 3 },
+          "Gravelord Nito": { "points": 5 }
+        }
+      },
+      "Kiln of the First Flame": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Black Knight 1 (Sword)": { "points": 3 },
+          "Black Knight 2 (Greatsword)": { "points": 3 },
+          "Black Knight 3 (Sword)": { "points": 3 },
+          "Black Knight 4 (Greataxe)": { "points": 3 },
+          "Black Knight 5 (Halberd)": { "points": 3 },
+          "Gwyn, Lord of Cinder": { "points": 5 }
+        }
+      },
+      "Sanctuary Garden": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Sanctuary Guardian": { "points": 5 }
+        }
+      },
+      "Royal Woods": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Knight Artorias": { "points": 5 },
+          "Black Dragon Kalameet": { "points": 5 }
+        }
+      },
+      "Oolacile Township": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Chester (Phantom)": { "points": 3 }
+        }
+      },
+      "Chasm of the Abyss": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Manus, Father of the Abyss": { "points": 5 }
+        }
       }
     }
   }

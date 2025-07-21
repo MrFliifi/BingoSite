@@ -11,26 +11,263 @@
       }
     },
     "No-Death": {
-      "ND Challenge1": {
-        "points": 1,
-        "gameMode": "No-Death"
-      },
-      "ND Challenge2": {
-        "points": 5,
-        "gameMode": "No-Death"
-      },
-      "ND Challenge3": {
-        "points": 1,
-        "gameMode": "No-Death"
-      },
-      "ND Challenge4": {
-        "points": 2,
-        "gameMode": "No-Death"
-      },
-      "ND Challenge5": {
-        "points": 1,
-        "gameMode": "No-Death"
-      }
+  "Things Betwixt": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "The Pursuer": { "points": 3 },
+      "Ogre 1": { "points": 3 },
+      "Ogre 2": { "points": 3 },
+      "Ogre 3": { "points": 3 }
+    }
+  },
+  "Forest of Fallen Giants": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "The Pursuer": { "points": 5 },
+      "The Last Giant": { "points": 5 },
+      "Syan Soldier": { "points": 3 }
+    }
+  },
+  "The Gutter": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Syan Soldier": { "points": 3 },
+      "Heide Knight": { "points": 3 },
+      "Rotten Vermin": { "points": 3 },
+      "Mimic": { "points": 3 }
+    }
+  },
+  "Heide's Tower of Flame": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Hellkite Dragon": { "points": 3 },
+      "Dragonrider": { "points": 5 },
+      "Syan Soldier": { "points": 3 }
+    }
+  },
+  "Cathedral of Blue": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Old Dragonslayer": { "points": 5 }
+    }
+  },
+  "No-man's Wharf": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Flexile Sentry": { "points": 5 }
+    }
+  },
+  "The Lost Bastille": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "The Pursuer (1st Encounter)": { "points": 3 },
+      "The Pursuer (2nd Encounter)": { "points": 3 },
+      "The Pursuer (3rd Encounter)": { "points": 3 },
+      "The Pursuer (4th Encounter)": { "points": 3 },
+      "Ruin Sentinels": { "points": 5 }
+    }
+  },
+  "Belfry Luna": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Belfry Gargoyles": { "points": 5 }
+    }
+  },
+  "Sinners' Rise": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Lost Sinner": { "points": 5 }
+    }
+  },
+  "Huntsman's Copse": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Skeleton Lords": { "points": 5 },
+      "Executioners Chariot": { "points": 5 },
+      "Greatsword Phantom": { "points": 3 },
+      "Hollow Mage 1": { "points": 3 },
+      "Hollow Mage 2": { "points": 3 },
+      "Syan Soldier": { "points": 3 }
+    }
+  },
+  "Harvest Valley": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Covetous Demon": { "points": 5 }
+    }
+  },
+  "Earthen Peak": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Mytha, the Baneful Queen": { "points": 5 },
+      "Mimic": { "points": 3 }
+    }
+  },
+  "Iron Keep": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Smelter Demon": { "points": 5 },
+      "The Pursuer": { "points": 3 },
+      "Old Iron King": { "points": 5 },
+      "Blue Phantom": { "points": 3 }
+    }
+  },
+  "Grave of Saints": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Royal Rat Vanguard": { "points": 5 }
+    }
+  },
+  "Black Gulch": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "The Rotten": { "points": 5 }
+    }
+  },
+  "Shaded Woods": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Scorpioness Najka": { "points": 5 },
+      "Body of Vengarl": { "points": 3 },
+      "Syan Soldier": { "points": 3 },
+      "Lion Clan Warrior": { "points": 3 }
+    }
+  },
+  "Doors of Pharros": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Royal Rat Authority": { "points": 5 }
+    }
+  },
+  "Brightstone Cove Tseldora": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Prowling Magus and Congregation": { "points": 5 },
+      "The Duke's Dear Freja": { "points": 5 },
+      "Red Phantom": { "points": 3 },
+      "Mimic": { "points": 3 }
+    }
+  },
+  "Drangleic Castle": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Dragonrider": { "points": 5 },
+      "Looking Glass Knight": { "points": 5 },
+      "Executioners Chariot Horse": { "points": 3 },
+      "Mimic": { "points": 3 }
+    }
+  },
+  "Dark Chasm of Old": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Darklurker": { "points": 5 }
+    }
+  },
+  "Shrine of Amana": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Demon of Song": { "points": 5 }
+    }
+  },
+  "Undead Crypt": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Velstadt, the Royal Aegis": { "points": 5 },
+      "Vendrick": { "points": 5 },
+      "Dragonrider": { "points": 3 }
+    }
+  },
+  "Aldia's Keep": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Guardian Dragon": { "points": 5 },
+      "Mimic 1": { "points": 3 },
+      "Mimic 2": { "points": 3 },
+      "Mimic 3": { "points": 3 },
+      "Mimic 4": { "points": 3 },
+      "Mimic 5 (Cage)": { "points": 3 },
+      "Ogre": { "points": 3 },
+      "Ogre (Cage)": { "points": 3 }
+    }
+  },
+  "Dragon Shrine": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Ancient Dragon": { "points": 5 },
+      "Wyvern": { "points": 3 }
+    }
+  },
+  "Memory of Jeigh": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Giant Lord": { "points": 5 }
+    }
+  },
+  "Throne of Want": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Throne Watcher and Defender": { "points": 5 },
+      "Nashandra": { "points": 5 },
+      "Aldia, Scholar of the First Sin": { "points": 5 }
+    }
+  },
+  "Dragon's Sanctum": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Elana, the Squalid Queen": { "points": 5 }
+    }
+  },
+  "Cave of the Dead": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Afflicted Graverobber, Varg & Explorer": { "points": 5 }
+    }
+  },
+  "Dragon's Rest": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Sinh, the Slumbering Dragon": { "points": 5 }
+    }
+  },
+  "Brume Tower": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Fume Knight": { "points": 5 }
+    }
+  },
+  "Memory of the Old Iron King": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Sir Alonne": { "points": 5 }
+    }
+  },
+  "Iron Passage": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Smelter Demon": { "points": 5 }
+    }
+  },
+  "Frozen Eleum Loyce": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Aava, the King's Pet": { "points": 5 },
+      "Mimic 1": { "points": 3 },
+      "Mimic 2": { "points": 3 },
+      "Covetous Demon (White)": { "points": 3 }
+    }
+  },
+  "Grand Cathedral": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Burnt Ivory King": { "points": 5 }
+    }
+  },
+  "Frigid Outskirts": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Lud & Zallen": { "points": 5 }
     }
   }
 }
+
+}}

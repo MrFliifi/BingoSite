@@ -603,20 +603,221 @@
       }
     },
     "No-Death": {
-      "Lothric Castle": {
-        "gameMode": "No-Death",
-        "challenges": {
-          "Vordt of the Boreal Valley": { "points": 5 },
-          "Dancer of the Boreal Valley": { "points": 5 }
-        }
-      },
-      "Undead Settlement": {
-        "gameMode": "No-Death",
-        "challenges": {
-          "Rotten Greatwood": { "points": 5 },
-          "Outrider Knight": { "points": 3 }
-        }
-      }
+      
+  "Cemetery of Ash": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Ravenous Crystal Lizard": { "points": 3 },
+      "Iudex Gundyr": { "points": 5 }
+    }
+  },
+  "Firelink Shrine": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Sword Master": { "points": 3 }
+    }
+  },
+  "High Wall of Lothric": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Mimic": { "points": 3 },
+      "Vordt of the Boreal Valley": { "points": 5 },
+      "Dancer of the Boreal Valley": { "points": 5 }
+    }
+  },
+  "Undead Settlement": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Holy Knight Hodrick (Invader)": { "points": 3 },
+      "Curse-Rotted Greatwood": { "points": 5 },
+      "Demon": { "points": 3 },
+      "Boreal Outrider Knight": { "points": 3 }
+    }
+  },
+  "Road of Sacrifices": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Unkindled Butcher": { "points": 3 },
+      "Unkindled Watchdog (Greatsword)": { "points": 3 },
+      "Unkindled Watchdog (Great Club)": { "points": 3 },
+      "Yellowfinger Heysel (Invader)": { "points": 3 },
+      "Holy Knight Hodrick (Invader Sign)": { "points": 3 },
+      "Crystal Sage": { "points": 5 }
+    }
+  },
+  "Cathedral of the Deep": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Fallen Knight": { "points": 3 },
+      "Unkindled Brigand": { "points": 3 },
+      "Ravenous Crystal Lizard": { "points": 3 },
+      "Giant Slave 1": { "points": 3 },
+      "Mimic": { "points": 3 },
+      "Deep Accursed": { "points": 3 },
+      "Longfinger Kirk (Invader)": { "points": 3 },
+      "Giant Slave 2": { "points": 3 },
+      "Deacons of the Deep": { "points": 5 }
+    }
+  },
+  "Farron Keep": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Stray Demon": { "points": 3 },
+      "Yellowfinger Heysel (Invader)": { "points": 3 },
+      "Ravenous Crystal Lizard": { "points": 3 },
+      "Abyss Watchers": { "points": 5 }
+    }
+  },
+  "Catacombs of Carthus": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Knight Slayer Tsorig (Invader)": { "points": 3 },
+      "High Lord Wolnir": { "points": 5 },
+      "Mimic": { "points": 3 },
+      "Demon": { "points": 3 }
+    }
+  },
+  "Smouldering Lake": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Carthus Sandworm": { "points": 3 },
+      "Knight Slayer Tsorig": { "points": 3 },
+      "Old Demon King": { "points": 5 }
+    }
+  },
+  "Irithyll of the Boreal Valley": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Sulyvahn's Beast (Bridge)": { "points": 3 },
+      "Silver Knight 1": { "points": 3 },
+      "Silver Knight 2": { "points": 3 },
+      "Silver Knight 3": { "points": 3 },
+      "Pontiff Sulyvahn": { "points": 5 },
+      "Mimic": { "points": 3 },
+      "Drang Knight (Hammers)": { "points": 3 },
+      "Drang Knight (Twinspears)": { "points": 3 },
+      "Sulyvahn's Beast 1 (Sewer)": { "points": 3 },
+      "Sulyvahn's Beast 2 (Sewer)": { "points": 3 }
+    }
+  },
+  "Anor Londo": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Deep Accursed": { "points": 3 },
+      "Aldrich, Devourer of Gods": { "points": 5 }
+    }
+  },
+  "Irithyll Dungeon": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Alva, Seeker of the Spurned (Invader)": { "points": 3 },
+      "Giant Slave": { "points": 3 },
+      "Mimic (Estus Shard)": { "points": 3 },
+      "Mimic (Dragonslayer Lightning Arrow)": { "points": 3 },
+      "Mimic (Dark Clutch Ring)": { "points": 3 },
+      "Mimic (Titanite Scale)": { "points": 3 }
+    }
+  },
+  "Profaned Capital": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Monstrosity of Sin 1": { "points": 3 },
+      "Monstrosity of Sin 2": { "points": 3 },
+      "Monstrosity of Sin 3": { "points": 3 },
+      "Monstrosity of Sin 4": { "points": 3 },
+      "Mimic (Court Sorcerer's Staff)": { "points": 3 },
+      "Court Sorcerer Eamon": { "points": 3 },
+      "Mimic (Greatshield of Glory)": { "points": 3 },
+      "Mimic (Rusted Gold Coin)": { "points": 3 },
+      "Yhorm the Giant": { "points": 5 }
+    }
+  },
+  "Lothric Castle": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Mimic (Titanite Scale)": { "points": 3 },
+      "Pus of Man (White)": { "points": 3 },
+      "Pus of Man (Green)": { "points": 3 },
+      "Boreal Outrider Knight": { "points": 3 },
+      "Mimic (Sunlight Straight Sword)": { "points": 3 },
+      "Dragonslayer Armour": { "points": 5 }
+    }
+  },
+  "Grand Archives": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Crystal Sage": { "points": 3 },
+      "Boreal Outrider Knight": { "points": 3 },
+      "Black Hand Kamui": { "points": 3 },
+      "Daughter of Crystal Kriemhild": { "points": 3 },
+      "Lion Knight Albert": { "points": 3 },
+      "The Twin Princes - Lothric and Lorian": { "points": 5 }
+    }
+  },
+  "Consumed King's Garden": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Oceiros, The Consumed King": { "points": 5 }
+    }
+  },
+  "Untended Graves": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Ravenous Crystal Lizard 1": { "points": 3 },
+      "Ravenous Crystal Lizard 2": { "points": 3 },
+      "Daughter of Crystal Kriemhild (Invader)": { "points": 3 },
+      "Champion Gundyr": { "points": 5 }
+    }
+  },
+  "Archdragon Peak": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Ancient Wyvern (Boss)": { "points": 5 },
+      "Ancient Wyvern": { "points": 3 },
+      "Havel the Rock": { "points": 3 },
+      "The Nameless King": { "points": 5 }
+    }
+  },
+  "Kiln of the First Flame": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Soul of Cinder": { "points": 5 }
+    }
+  },
+  "Painted World of Ariandel": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Champion's Gravetender & Gravetender Greatwolf": { "points": 5 },
+      "Sir Vilhelm": { "points": 3 },
+      "Livid Pyromancer Dunnel (Invader)": { "points": 3 },
+      "Blackflame Friede": { "points": 5 }
+    }
+  },
+  "The Dreg Heap": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Pilgrim Puba / Angel 1": { "points": 3 },
+      "Pilgrim Puba / Angel 2": { "points": 3 },
+      "Desert Pyromancer Zoey": { "points": 3 },
+      "Pilgrim Puba / Angel 3": { "points": 3 },
+      "The Demon Prince": { "points": 5 }
+    }
+  },
+  "The Ringed City": {
+    "gameMode": "No-Death",
+    "challenges": {
+      "Alva, Seeker of the Spurned (Invader)": { "points": 3 },
+      "Silver Knight Ledo (Invader)": { "points": 3 },
+      "Dragonslayer Armour": { "points": 3 },
+      "Moaning Knight (Invader)": { "points": 3 },
+      "Mimic": { "points": 3 },
+      "Darkeater Midir": { "points": 5 },
+      "Halflight, Spear of the Church": { "points": 5 },
+      "Shira, Knight of Filianore": { "points": 3 },
+      "Slave Knight Gael": { "points": 5 }
     }
   }
 }
+
+}}
+

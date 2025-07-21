@@ -184,10 +184,6 @@ module.exports = function (io) {
       // probably need to send a default value for challengeLength
       const { challengeGame, challengeLength, lobbyId } = data;
 
-      console.log(lobbyId);
-      console.log(challengeGame);
-      console.log(challengeLength);
-
       const lobbies = await listOfLobbies.getLobbies();
       
       for (let i = 0; i < lobbies.length; i++) {
@@ -197,17 +193,11 @@ module.exports = function (io) {
           lobbies[i].setFileName(challengeGame);
           const gameMode = await lobbies[i].getGameMode();     
           if (gameMode === "No-Death") {
-            console.log("Log des GamesModes: ", gameMode);
-            
+        
             const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
             const challengePointArray = await fileHandlerObject.readFromSaveFile(challengeLength,gameMode);
-            console.log(challengePointArray);
-            let length = challengePointArray.length;
-            
-            
-          
+         
             let players = await lobbies[i].getPlayerArr();
-            console.log("Das sind die Players dessen CheckmarkArray ich setzen will: ", players);
             
             for(let j = 0; j < players.length; j ++)
             {
@@ -254,10 +244,6 @@ module.exports = function (io) {
                 );
 
                 const checkMarkArray = await players[j].getCheckmarkArr();
-                console.log(challengePointArray);
-                console.log(checkMarkArray);
-                
-                
                let totalScore = 0;
                let index = 0;
 

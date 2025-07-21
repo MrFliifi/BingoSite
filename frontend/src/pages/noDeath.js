@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { socket } from "../websocket/socket.js";
 import "../styles/noDeath.css";
 import "../styles/bingoField.css";
