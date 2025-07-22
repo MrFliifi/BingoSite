@@ -41,7 +41,7 @@ function BingoPage() {
         setPickableColors(pickableColor);
         setLobbyId(lobbyId);
         setNameColorArr(nameColorArr);
-        setGameMode(gameMode)
+        setGameMode(gameMode) 
       }
     );
 
@@ -93,7 +93,7 @@ function BingoPage() {
 
   //Function to determine the color-Gradient in Non-Lockout.
 function getBackgroundStyle(colors) {
-
+if (!colors || colors.length === 0) return "black";
   // Flatten in case colors is nested (array of arrays)
   colors = colors.flat();
 
@@ -145,7 +145,8 @@ function getFourColorCornerGradient(colors) {
     //Rendering the Buttons for different gameModes
     switch (gameMode?.trim()) {
       case "Lockout":
-      case "No-Death":
+      
+      
         return bingoChallenges.map((name, index) => (
           <button
             key={index}
@@ -158,6 +159,8 @@ function getFourColorCornerGradient(colors) {
         ));
 
       case "Non-Lockout":
+       
+        
         return bingoChallenges.map((name, index) => (
           <button
             key={index}

@@ -98,6 +98,8 @@ class lobbyHandler {
         //Non-Lockout if the color already exists, remove it
         //indexof searches for the index, where the same color is located. If the color is not in the array index == -1
       const index = this.bingoColor[i].indexOf(color);
+        console.log(this.bingoColor);
+        
         //If the color is in the array, splice it
       if (index !== -1) {
         this.bingoColor[i].splice(index, 1);

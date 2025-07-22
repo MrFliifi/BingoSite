@@ -279,7 +279,7 @@ module.exports = function (io) {
             if (id === socketId) {
               const color = await players[j].getColor();
               await lobby[i].setBingoColor(colorIndex, color);
-              console.log("Field at index " + colorIndex + " set to color " + color);
+              console.log("Field at index " + colorIndex + " toggled color " + color);
               break;
             }
           }
