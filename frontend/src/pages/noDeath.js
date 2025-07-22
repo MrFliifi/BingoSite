@@ -192,7 +192,12 @@ function NoDeath() {
               sendPlayerColor(e.target.value);
             }}
           >
-            <option value="">-- Choose color --</option>
+            <option value="">
+              {playerColor && playerColor.length > 0
+                ? playerColor
+                : "--Choose Color--"}
+            </option>
+
             {pickableColor.map((color, index) => (
               <option key={index} value={color}>
                 {color}

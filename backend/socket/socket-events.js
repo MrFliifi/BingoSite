@@ -18,6 +18,9 @@ module.exports = function (io) {
     const lobbies = await listOfLobbies.getLobbies();
     //console.log("Periodic lobby Log: ", lobbies);
 
+    console.log(lobbies);
+    
+
     // Send data to each coressponding lobby
     for (let i = 0; i < lobbies.length; i++) {
       const pickableColor = await lobbies[i].getPickableColor();

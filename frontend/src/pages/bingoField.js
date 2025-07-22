@@ -216,11 +216,15 @@ function getFourColorCornerGradient(colors) {
             id="playercolor"
             value={playerColor}
             onChange={(e) => {
-              
               sendPlayerColor(e.target.value);
             }}
           >
-            <option value="">-- Choose color --</option>
+            <option value="">
+              {playerColor && playerColor.length > 0
+                ? playerColor
+                : "--Choose Color--"}
+            </option>
+
             {pickableColors.map((color, index) => (
               <option key={index} value={color}>
                 {color}
@@ -229,7 +233,6 @@ function getFourColorCornerGradient(colors) {
           </select>
         </div>
 
-       
         <button className="btn" onClick={() => setShowModal(true)}>
           Select Challenges
         </button>
