@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <HomePage />
-        <Footer />
+
       </>
     ),
     errorElement: <NotFoundPage />,
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <BingoPage mode="lockout" />
-        <Footer />
+       
       </>
     ),
   },
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <BingoPage mode="NonLockout" />
-        <Footer />
+        
       </>
     ),
   },
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <NoDeath mode="NoDeath" />
-        <Footer />
+       
       </>
     ),
   },
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <ChallengeEditor />
-        <Footer />
+       
       </>
     ),
   },
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Empty />
-        <Footer />
+   
       </>
     ),
   },
@@ -84,7 +84,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Empty />
-        <Footer />
+    
       </>
     ),
   },
@@ -93,7 +93,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Empty />
-        <Footer />
+     
       </>
     ),
   },

@@ -20,11 +20,11 @@
 .checkmarkCell {
    flex: 1;
   text-align: center;
-  padding: 8px;
+  padding: 3px;
   border: 1px solid #444;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
+  
   justify-content: center;
 }
 
@@ -40,8 +40,21 @@
 }
 
 .challengeTitle,
-.challengePoints{
-  font-weight: bold;
+.challengePoints,
+.challengePlayerHeader{
+
+  padding-right: 10px;
+
+  color: #fff;
+  text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                -3px 0px 0 #000,
+                3px 0px 0 #000,
+                0px -3px 0 #000,
+                0px 3px 0 #000;
 
 }
 
@@ -49,11 +62,20 @@
   font-weight: bold;
 }
 
-.checkmarkTable
+.checkmarkTable,
+.challengePlayerHeader
 {
    display: flex;
+  margin: auto;
   flex-direction: column;
-  width: 100%;
+  width: 98%;
+}
+
+.challengePlayerHeader{
+ position: sticky;
+ top: 20px;
+ z-index: 100;
+
 }
 
 .checkmarkRow {
@@ -66,7 +88,7 @@
   font-weight: bold;
   background-color: #333;
   color: #fff;
-  padding: 8px 12px;
-  margin-top: 12px;
+  padding: 2px 50px;
+  margin-top: 5px;
   border-radius: 4px;
 }

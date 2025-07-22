@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import {socket} from "../websocket/socket.js";
 import "../styles/homePage.css";
+import "../styles/header.css";
 
 function HomePage() {
 const [currentPlayer, setCurrentPlayer] = useState("");

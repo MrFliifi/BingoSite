@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { socket } from "../websocket/socket.js";
 import "../styles/bingoField.css";
-import "../styles/button.css"
+import "../styles/button.css";
+import "../styles/header.css";
 import ChallengesModal from "../assets/challengesModal.js";
 
 

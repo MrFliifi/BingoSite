@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { socket } from "../websocket/socket.js";
 import "../styles/noDeath.css";
-import "../styles/bingoField.css";
 import "../styles/button.css";
+import "../styles/header.css";
 import ChallengesModal from "../assets/challengesModal.js";
 
 function NoDeath() {
@@ -83,7 +83,9 @@ function NoDeath() {
                backgroundColor: playerColor,
              }}
            >
-             {playerName} ({score} Points)
+             {/* Span is for a gap between PlayerName and Points */}
+             {playerName}
+             <span>&nbsp;&nbsp;&nbsp;</span> ({score} Points)
            </div>
          );
        })}
@@ -116,6 +118,7 @@ function NoDeath() {
               <div className="challengePoints">({points} P)</div>
             </div>
 
+            {/* Searching for values inside the playerObjects, like their color */}
             {playerObjects.map(({ playerId, checkmarkArray }) => {
               const player = nameColorArr.find((p) => p.playerId === playerId);
               const playerColor = player ? player.playerColor : "#ccc";
@@ -128,6 +131,7 @@ function NoDeath() {
                   onClick={() =>
                     toggleCheckmark(playerId, challengeIndex, currentValue)
                   }
+                   //setting to background color to playerColor, when currentvalue is TRUE otherwise transparent(Nothing)
                   style={{
                     backgroundColor: currentValue ? playerColor : "transparent",
                     opacity: currentValue ? 0.7 : 1,
@@ -136,6 +140,7 @@ function NoDeath() {
                   title={currentValue ? "Completed" : "Not completed"}
                 >
                   <span style={{ color: currentValue ? "black" : "red" }}>
+                    {/* using UNICODE for the checkmark symbol*/}
                     {currentValue ? "\u2713" : "❌"}
                   </span>
                 </div>
