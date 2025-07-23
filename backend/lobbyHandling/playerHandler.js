@@ -50,7 +50,6 @@ class playerHandler {
   }
 
   async setCheckmarkArr(length) {
-
     this.checkmarkArr = new Array(length).fill(false); 
   }
 

@@ -18,7 +18,7 @@ module.exports = function (io) {
     const lobbies = await listOfLobbies.getLobbies();
     //console.log("Periodic lobby Log: ", lobbies);
 
-    console.log(lobbies);
+    //console.log(lobbies);
     
 
     // Send data to each coressponding lobby
@@ -158,29 +158,49 @@ module.exports = function (io) {
           // Check wich lobby player belongs to by comparing lobbyId
           const id = await lobbies[i].getLobbyId();
           if (id === lobbyId) {
+
             // Create new player instance, when a lobby is found
             const player = new playerHandler(socketId, playerName, lobbyId);
-            await lobbies[i].setPlayer(player);
-            /* ToDo: Gamemode is unneccesary here when joining. But socket event 
-            needs that var to be send over. Would need to create a new 
-            SocketEvent in order to remove this line*/ 
-            let lobbyGameMode = await lobbies[i].getGameMode();
+            await lobbies[i].setPlayer(player); 
+            const gameMode = await lobbies[i].getGameMode();
             
             socket.join(lobbyId);
             console.log("Player " + player.getPlayerName() + " joined: " + id);
             // Send the Routing information, when player was assigned to a lobby
-            io.to(socketId).emit("lobbyRouting", { lobbyId, lobbyGameMode });
+            io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
             lobbyFound = true;
+            // sets up the no-death board when a player joins
+            if (gameMode === "No-Death") {
+              const challengeGame = await lobbies[i].getFileName()
+              if (challengeGame !== "") {
+                const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
+                const challengePointArray = await fileHandlerObject.readFromSaveFile("short", gameMode);
+                const length = challengePointArray.length;
+                const players = await lobbies[i].getPlayerArr();
+                
+                for(let j = 0; j < players.length; j ++){
+                  const id = await players[j].getSocketId();
+                  if (id === socketId){
+                    await players[j].setCheckmarkArr(length);
+                    break;
+                  }
+                }
+
+                io.to(lobbyId).emit("setupNoDeath", challengePointArray);
+                break;
+              }
+              break;
+            }
             break;
           }
         }
         // If no Lobby was found, send error Message
-        if (!lobbyFound) {
-          console.log("sending player errorMsg");
-          io.to(socketId).emit("errorMsg", "Lobby doesn’t exist");
-        }
+      if (!lobbyFound) {
+        console.log("sending player errorMsg");
+        io.to(socketId).emit("errorMsg", "Lobby doesn’t exist");
       }
-    });
+    }
+  });
 
     // Event that allows user to pick a safefile and the length of the challenge
     socket.on("setBingoGameAndLength", async (data) => {
@@ -193,12 +213,14 @@ module.exports = function (io) {
         const id = await lobbies[i].getLobbyId();
     
         if(id === lobbyId) {
-          lobbies[i].setFileName(challengeGame);
+          await lobbies[i].setFileName(challengeGame);
+          console.log("setGameandLength" + challengeGame);
+          
           const gameMode = await lobbies[i].getGameMode();     
           if (gameMode === "No-Death") {
         
             const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
-            const challengePointArray = await fileHandlerObject.readFromSaveFile(challengeLength,gameMode);
+            const challengePointArray = await fileHandlerObject.readFromSaveFile(challengeLength, gameMode);
             let length = challengePointArray.length;
             let players = await lobbies[i].getPlayerArr();
             
@@ -222,7 +244,6 @@ module.exports = function (io) {
       const { playerId, challengeIndex, value, lobbyId } = data; 
       const lobbies = await listOfLobbies.getLobbies();
 
-      
       for (let i = 0; i < lobbies.length; i++) {
         const id = await lobbies[i].getLobbyId();
         if (id === lobbyId) {
@@ -236,30 +257,23 @@ module.exports = function (io) {
               await players[j].setCheckmarkArrIndex(challengeIndex, value);
 
               //Getting Point Array
-              const fileHandlerObject = new fileHandler(
-                "../fileHandling/saveFileLocation",
-                challengeGame
-              );
-              const challengePointArray =
-                await fileHandlerObject.readFromSaveFile(
-                  "",
-                  gameMode
-                );
+              const fileHandlerObject = new fileHandler("../fileHandling/saveFileLocation", challengeGame);
+              const challengePointArray = await fileHandlerObject.readFromSaveFile("", gameMode);
 
-                const checkMarkArray = await players[j].getCheckmarkArr();
-               let totalScore = 0;
-               let index = 0;
+              const checkMarkArray = await players[j].getCheckmarkArr();
+              let totalScore = 0;
+              let index = 0;
 
-               //Running through the challengePointArray and Adding the points if the checkMarkArray Index is true
-               for (const category of challengePointArray) {
-                 for (const challenge of category.challenges) {
-                   if (checkMarkArray[index]) {
-                     totalScore += challenge.points;
-                   }
-                   index++;
-                 }
-               }
-                //Setting the Score
+              //Running through the challengePointArray and Adding the points if the checkMarkArray Index is true
+              for (const category of challengePointArray) {
+                for (const challenge of category.challenges) {
+                  if (checkMarkArray[index]) {
+                    totalScore += challenge.points;
+                  }
+                  index++;
+                }
+              }
+              //Setting the Score
               await players[j].setScore(totalScore);
             }
           } 
