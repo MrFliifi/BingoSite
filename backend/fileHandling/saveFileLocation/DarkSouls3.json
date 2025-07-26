@@ -1,823 +1,534 @@
 {
   "challenges": {
     "bingo": {
-      "Besiege den Iudex Gundyr ohne Heilung": {
-        "length": ["short"],
+      "Besiege einen Boss hitless": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Rüste eine Waffe auf +3 auf": {
-        "length": ["short"],
+      "Töte einen Boss nur mit Pyromancys/Sorceries/Miracles": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Sammle 5 Estus-Scherben": {
-        "length": ["short"],
+      "Besiege einen Boss mit bloßen Fäusten": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte einen Gegner mit einer Wurfwaffe": {
-        "length": ["short"],
+      "Töte einen Drachen (z.B. Wyvern oder Ancient Wyvern)": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Beschwöre einen Phantom-Verbündeten": {
-        "length": ["short"],
+      "Töte einen Boss nur mit Consumables": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Schließe ein Gebiet komplett ohne Tod ab": {
-        "length": ["short"],
+      "Töte einen Boss nur mit Bögen oder Armbrüsten": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Trage ein komplettes Set eines NPCs": {
-        "length": ["short"],
+      "Habe 7 Estus": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Benutze ein Wachsbecken": {
-        "length": ["short"],
+      "Habe 8 Estus": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte einen Gegner mit einem kritischen Treffer": {
-        "length": ["short"],
+      "Habe 9 Estus": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Verbrenne eine Untotensplitter": {
-        "length": ["short"],
+      "Habe 10 Estus": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte einen Kristall-Echsen-Drachen": {
-        "length": ["short"],
+      "Habe 11 Estus": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Rüste den Estus-Flakon vollständig aus": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Kaufe eine Geste von einem NPC": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Lies die Beschreibung eines Boss-Seelen-Gegenstands": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze das Katapult in der Kathedrale": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Mimic ohne entdeckt zu werden": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Lege eine Nachricht, die bewertet wird": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Wechsle deine Covenant": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte den Dämon auf dem Dach in der Untoten-Siedlung": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mache einen Parry-Kill": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Darkwraith": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege Vordt mit nur einer Waffe": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Schwarzritter": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Öffne eine Abkürzung": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Erhalte eine Boss-Seele": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss mit nur Pyromantie": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Nutze keine Estus-Flakons in einem ganzen Gebiet": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege den Abyss Watchers ohne Treffer": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss mit bloßen Fäusten": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Invader": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege einen Boss im Koop": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Rüste eine Boss-Waffe aus": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwandle dich mit dem Chameleon-Zauber": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mache einen Backstab mit einem Dolch": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit Fall-Schaden": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit einer Umweltfalle": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwandle eine Boss-Seele in einen Zauber": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Rüste keine Rüstung aus": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss ohne Rollen": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Schließe einen NPC-Quest ab": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit einer Peitsche": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze die 'Path of the Dragon'-Geste": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner, während du vergiftet bist": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze keine Waffen, nur Magie": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit einem Bogen": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Trage nur 'Fashion Souls'-Rüstung": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mache einen Run ohne Schild": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte ein Gebiet nur mit Feuerbomben": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte ein Phantom-Invader (Red NPC)": {
-        "length": ["short"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwandle dich in ein Objekt mit Spook/Hidden Body": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege Pontiff Sulyvahn ohne Schaden": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwende keine Rüstung oder Kleidung": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte Aldrich ohne Estus": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte den Dancer als ersten Boss": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte Lothric und Lorian solo ohne Estus": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte Yhorm ohne die Sturmherrscher-Waffe": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mache einen No-Bonfire-Run bis zum 3. Boss": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Kein Level-Up bis zum 4. Boss": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze kein Leveling während des gesamten Spiels": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Spiele ein ganzes Gebiet auf NG+": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss mit einer Waffe, die du gerade gefunden hast": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss mit einer 'broken straight sword'": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte Oceiros ohne Magie oder Heilung": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Spiele ein Gebiet in voller Havels-Rüstung": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Drachen mit Nahkampf": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Keine Zauber, keine Pyromantie, keine Wunder im Spiel": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit Poison Mist": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit Rüstung aus deinem Startgebiet": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege einen Boss nur mit Konterparrys": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Spiele mit maximaler Auslastung": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte den Champion Gundyr beim ersten Versuch": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte die Tänzerin mit einem Bogen": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Nur Fäuste bis zum ersten Lord of Cinder": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege einen Boss im NG++": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Kein Estus, nur Ashen Estus erlaubt": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Starte als 'Deprived' und töte 3 Bosse ohne Level-Up": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte ein Gebiet ohne HUD": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze die Symbol des Gier-Helm permanent": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege einen Boss mit nur einer Hand (Controller auf einer Hand)": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Nutze keine Shortcut-Türen": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Spiele mit invertierter Steuerung (Joystick/Kamera vertauscht)": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Wechsle nach jedem Tod deine komplette Ausrüstung": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze keine Leuchtfeuer-Teleports": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verbrauche alle Boss-Seelen für Seelen, keine Items": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Spiele mit Farbfilter/Monochrom-Modus (wenn möglich)": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte 3 Bosse, ohne einen Estus-Flakon auszurüsten": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Halte immer unter 30% Ausrüstungslast": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwende keine Waffe länger als 5 Minuten": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte 3 Gegner mit nur Tritten": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Sei verflucht UND vergiftet UND blutend gleichzeitig": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner, während du komplett nackt bist": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Keine Backstabs während des Runs": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Spiele permanent in Hollow-Form": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege einen Boss ohne zu sprinten": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Lege ein Prismastein in jedes neue Gebiet": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit einem Schild-Schlag": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Lass dich 10x verfluchen (bzw. von Basilisken treffen)": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss ohne Lock-On": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Rüste das dümmste mögliche Outfit aus": {
-        "length": ["medium"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mache einen 'Pacifist-Run' bis zum ersten Boss": {
+      "Habe 12 Estus": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Geh nie über 70% Equip Load": {
+      "Habe 13 Estus": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Spiele mit dem Controller verkehrt herum": {
+      "Habe 14 Estus": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Besiege 5 Gegner mit Spells, obwohl du keine Magic-Class bist": {
+      "Habe 15 Estus": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Springe in den Abgrund mit Absicht 3x (Selbstmordfeld)": {
+      "Sprung auf das Dach des Firelink Shrines (Tree skip)": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Erreiche den Archdragon Peak": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Finde einen Estus-Ring": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Finde einen Gebetsbuch": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Zerstöre 5 Illusionswände": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Kille einen Boss mit einer Waffe, die nicht auf Stärke oder Geschicklichkeit skaliert": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Verstärke eine Waffe auf +5": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Sammle 5 Ringe": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss mit einer Bossweapon": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Infuse eine Waffe": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Habe eine Waffe mit Chaos- oder Blitzinfusion": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Hab 10 small titanite shards im Inventar": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lass Greirat zweimal zurückkehren": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen Boss im Ashes of Ariandel DLC": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte alle Händler (nachdem du alles gekauft hast)": {
+      "Töte einen Boss im Ringed Citys DLC": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Nur Einhandwaffen erlaubt": {
+      "Töte Patches": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Sigward von Catarina": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Andre": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Horace": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Hodrik drei Mal": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte Hodrik": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Hab 10 large titanite shards im Inventar": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte einen invader NPC": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Beschwöre ein NPC-Phantom": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lass dich von Patches betrügen (Cathedral)": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Erhalte Hollowing über 15": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte 3 Mimics": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte 4 Mimics": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Töte 5 Mimics": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lande 5 Parrys an Iudex Gundyr": {
+        "length": ["short", "medium"],
+        "gameMode": ["non-lockout", "lockout"]
+      },
+      "Lande 5 Parrys an Champion Gundyr": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Spiele mit schlechtester Waffe (+0) bis zum 3. Boss": {
-        "length": ["long"],
+      "Töte einen Boss während du schwer überladen bist": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Nur Waffen mit Blutung": {
-        "length": ["long"],
+      "Sprich mit Rosaria": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Kein Blocken erlaubt": {
-        "length": ["long"],
+      "Töte einen Black Knight": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte alle Crystal Lizards im Spiel": {
-        "length": ["long"],
+      "Stelle die Armbrust im Smoldering Lake aus": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte 10 Gegner mit der 'Fist Weapon'": {
-        "length": ["long"],
+      "Gib der Firekeeperin ihre Augen zurück": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Erhalte alle Estus-Upgrades": {
-        "length": ["long"],
+      "Töte einen Boss Hitless": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Rüste alle Ringe einer Ring-Kategorie gleichzeitig": {
-        "length": ["long"],
+      "3 Bosse am Stück, ab dem 1. ohne Heilung": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Nur Bossseelen-Waffen benutzen": {
-        "length": ["long"],
+      "Töte Iudex Gundyr": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Spiele das ganze Spiel mit einem bestimmten Set (z. B. 'Kleriker')": {
-        "length": ["long"],
+      "Töte Vordt of the Boreal Valley": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Keine Verstärkungen an Waffen erlaubt": {
-        "length": ["long"],
+      "Töte Curse-Rotted Greatwood": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Keine Buffs (Zauber/Harz/etc.) erlaubt": {
-        "length": ["long"],
+      "Töte Crystal Sage": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Immer unter 10% HP bleiben": {
-        "length": ["long"],
+      "Töte Deacons of The Deep": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Keine Rollen – nur laufen und blocken": {
-        "length": ["long"],
+      "Töte die Abysswatcher": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Nur Boss-Armor benutzen": {
-        "length": ["long"],
+      "Töte High Lord Wolnir": {
+        "length": ["short", "medium"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Nur NPC-Geschenke verwenden": {
-        "length": ["long"],
+      "Töte Demon King": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Kein Aufheben von Items erlaubt": {
-        "length": ["long"],
+      "Töte Pontiff Sulyvahn": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Besiege einen Boss mit einer Geste am Ende": {
-        "length": ["long"],
+      "Töte Yhorm, the Giant": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Verwende 'Untrue Dark Ring' permanent": {
-        "length": ["long"],
+      "Töte Aldrich, Devourer of Gods": {
+        "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Töte einen Gegner mit einem 'Dung Pie'": {
-        "length": ["long"],
+      "Töte Dancer of the Boreal Valley": {
+        "length": ["short", "medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },  
+      "Töte Dragonslayer Armour": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      },  
+      "Töte Oceiros, The Consumed King": {
+        "length": ["medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
       },
-      "Erhalte alle 3 Enden in einem Spielstand": {
+      "Töte Champion Gundyr": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      }, 
+      "Töte Lothric, Younger Prince": {
+        "length": ["medium", "long"],
+        "gameMode": ["non-lockout", "lockout"]
+      }, 
+      "Töte Ancient Wyvern": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit einem Critical Riposte durch Parry": {
+      }, 
+      "Töte Nameless King": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mach einen Chaos Build mit Faith/Int/Str": {
+      }, 
+      "Töte Soul Of Cinder": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mach einen Dexterity Run nur mit Dolchen": {
+      }, 
+      "Töte Champion's Gravetender And Gravetender Greatwolf": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Hol alle Endbosse nackt und ohne Leveln": {
+      }, 
+      "Töte Sister Friede": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwende nie den linken Trigger": {
+      }, 
+      "Töte Demon In Pain, Demon From Below, And Demon Prince": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Schlage einen Gegner mit der Faust KO": {
+      }, 
+      "Töte Halflight, Spear Of The Church": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Drachen mit einem Giftbogen": {
+      }, 
+      "Töte Darkeater Midir": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
-      },
-      "Parrye einen Boss (z. B. Pontiff) mindestens 3x": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Nur schwere Waffen erlaubt": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Nutze keine Ringe": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Nur Unsichtbarkeitszauber erlaubt": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner, während du eine Emote machst": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Werde 5x invaded und gewinne alle Kämpfe": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Gegner mit dem ersten Treffer nach 5 Minuten Nichtkampf": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verbrenne keine Untoten-Splitter": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze keinen Schild, nur Zweihand": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Rüste keine Ringe aus": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Sammle alle Kisten im Spiel": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Benutze keine Items außer Estus": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Besiege 3 Bosse mit nur Wurfmessern": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Verwende nie den Sprint-Knopf": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Töte einen Boss mit nur 1 HP übrig": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Werde in jedem Gebiet einmal verflucht": {
-        "length": ["long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
-      "Mache den kompletten Run in einer Rolle deiner Wahl (z.B. 'Fashion Souls', 'Only Shields', 'Nackt mit Hut')": {
+      }, 
+      "Töte Slave Knight Gael": {
         "length": ["long"],
         "gameMode": ["non-lockout", "lockout"]
       }
     },
-    "No-Death": {
-      
-  "Cemetery of Ash": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Ravenous Crystal Lizard": { "points": 3 },
-      "Iudex Gundyr": { "points": 5 }
-    }
-  },
-  "Firelink Shrine": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Sword Master": { "points": 3 }
-    }
-  },
-  "High Wall of Lothric": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Mimic": { "points": 3 },
-      "Vordt of the Boreal Valley": { "points": 5 },
-      "Dancer of the Boreal Valley": { "points": 5 }
-    }
-  },
-  "Undead Settlement": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Holy Knight Hodrick (Invader)": { "points": 3 },
-      "Curse-Rotted Greatwood": { "points": 5 },
-      "Demon": { "points": 3 },
-      "Boreal Outrider Knight": { "points": 3 }
-    }
-  },
-  "Road of Sacrifices": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Unkindled Butcher": { "points": 3 },
-      "Unkindled Watchdog (Greatsword)": { "points": 3 },
-      "Unkindled Watchdog (Great Club)": { "points": 3 },
-      "Yellowfinger Heysel (Invader)": { "points": 3 },
-      "Holy Knight Hodrick (Invader Sign)": { "points": 3 },
-      "Crystal Sage": { "points": 5 }
-    }
-  },
-  "Cathedral of the Deep": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Fallen Knight": { "points": 3 },
-      "Unkindled Brigand": { "points": 3 },
-      "Ravenous Crystal Lizard": { "points": 3 },
-      "Giant Slave 1": { "points": 3 },
-      "Mimic": { "points": 3 },
-      "Deep Accursed": { "points": 3 },
-      "Longfinger Kirk (Invader)": { "points": 3 },
-      "Giant Slave 2": { "points": 3 },
-      "Deacons of the Deep": { "points": 5 }
-    }
-  },
-  "Farron Keep": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Stray Demon": { "points": 3 },
-      "Yellowfinger Heysel (Invader)": { "points": 3 },
-      "Ravenous Crystal Lizard": { "points": 3 },
-      "Abyss Watchers": { "points": 5 }
-    }
-  },
-  "Catacombs of Carthus": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Knight Slayer Tsorig (Invader)": { "points": 3 },
-      "High Lord Wolnir": { "points": 5 },
-      "Mimic": { "points": 3 },
-      "Demon": { "points": 3 }
-    }
-  },
-  "Smouldering Lake": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Carthus Sandworm": { "points": 3 },
-      "Knight Slayer Tsorig": { "points": 3 },
-      "Old Demon King": { "points": 5 }
-    }
-  },
-  "Irithyll of the Boreal Valley": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Sulyvahn's Beast (Bridge)": { "points": 3 },
-      "Silver Knight 1": { "points": 3 },
-      "Silver Knight 2": { "points": 3 },
-      "Silver Knight 3": { "points": 3 },
-      "Pontiff Sulyvahn": { "points": 5 },
-      "Mimic": { "points": 3 },
-      "Drang Knight (Hammers)": { "points": 3 },
-      "Drang Knight (Twinspears)": { "points": 3 },
-      "Sulyvahn's Beast 1 (Sewer)": { "points": 3 },
-      "Sulyvahn's Beast 2 (Sewer)": { "points": 3 }
-    }
-  },
-  "Anor Londo": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Deep Accursed": { "points": 3 },
-      "Aldrich, Devourer of Gods": { "points": 5 }
-    }
-  },
-  "Irithyll Dungeon": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Alva, Seeker of the Spurned (Invader)": { "points": 3 },
-      "Giant Slave": { "points": 3 },
-      "Mimic (Estus Shard)": { "points": 3 },
-      "Mimic (Dragonslayer Lightning Arrow)": { "points": 3 },
-      "Mimic (Dark Clutch Ring)": { "points": 3 },
-      "Mimic (Titanite Scale)": { "points": 3 }
-    }
-  },
-  "Profaned Capital": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Monstrosity of Sin 1": { "points": 3 },
-      "Monstrosity of Sin 2": { "points": 3 },
-      "Monstrosity of Sin 3": { "points": 3 },
-      "Monstrosity of Sin 4": { "points": 3 },
-      "Mimic (Court Sorcerer's Staff)": { "points": 3 },
-      "Court Sorcerer Eamon": { "points": 3 },
-      "Mimic (Greatshield of Glory)": { "points": 3 },
-      "Mimic (Rusted Gold Coin)": { "points": 3 },
-      "Yhorm the Giant": { "points": 5 }
-    }
-  },
-  "Lothric Castle": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Mimic (Titanite Scale)": { "points": 3 },
-      "Pus of Man (White)": { "points": 3 },
-      "Pus of Man (Green)": { "points": 3 },
-      "Boreal Outrider Knight": { "points": 3 },
-      "Mimic (Sunlight Straight Sword)": { "points": 3 },
-      "Dragonslayer Armour": { "points": 5 }
-    }
-  },
-  "Grand Archives": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Crystal Sage": { "points": 3 },
-      "Boreal Outrider Knight": { "points": 3 },
-      "Black Hand Kamui": { "points": 3 },
-      "Daughter of Crystal Kriemhild": { "points": 3 },
-      "Lion Knight Albert": { "points": 3 },
-      "The Twin Princes - Lothric and Lorian": { "points": 5 }
-    }
-  },
-  "Consumed King's Garden": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Oceiros, The Consumed King": { "points": 5 }
-    }
-  },
-  "Untended Graves": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Ravenous Crystal Lizard 1": { "points": 3 },
-      "Ravenous Crystal Lizard 2": { "points": 3 },
-      "Daughter of Crystal Kriemhild (Invader)": { "points": 3 },
-      "Champion Gundyr": { "points": 5 }
-    }
-  },
-  "Archdragon Peak": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Ancient Wyvern (Boss)": { "points": 5 },
-      "Ancient Wyvern": { "points": 3 },
-      "Havel the Rock": { "points": 3 },
-      "The Nameless King": { "points": 5 }
-    }
-  },
-  "Kiln of the First Flame": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Soul of Cinder": { "points": 5 }
-    }
-  },
-  "Painted World of Ariandel": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Champion's Gravetender & Gravetender Greatwolf": { "points": 5 },
-      "Sir Vilhelm": { "points": 3 },
-      "Livid Pyromancer Dunnel (Invader)": { "points": 3 },
-      "Blackflame Friede": { "points": 5 }
-    }
-  },
-  "The Dreg Heap": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Pilgrim Puba / Angel 1": { "points": 3 },
-      "Pilgrim Puba / Angel 2": { "points": 3 },
-      "Desert Pyromancer Zoey": { "points": 3 },
-      "Pilgrim Puba / Angel 3": { "points": 3 },
-      "The Demon Prince": { "points": 5 }
-    }
-  },
-  "The Ringed City": {
-    "gameMode": "No-Death",
-    "challenges": {
-      "Alva, Seeker of the Spurned (Invader)": { "points": 3 },
-      "Silver Knight Ledo (Invader)": { "points": 3 },
-      "Dragonslayer Armour": { "points": 3 },
-      "Moaning Knight (Invader)": { "points": 3 },
-      "Mimic": { "points": 3 },
-      "Darkeater Midir": { "points": 5 },
-      "Halflight, Spear of the Church": { "points": 5 },
-      "Shira, Knight of Filianore": { "points": 3 },
-      "Slave Knight Gael": { "points": 5 }
+    "No-Death": { 
+      "Cemetery of Ash": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Ravenous Crystal Lizard": { "points": 3 },
+          "Iudex Gundyr": { "points": 5 }
+        }
+      },
+      "Firelink Shrine": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Sword Master": { "points": 3 }
+        }
+      },
+      "High Wall of Lothric": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Mimic": { "points": 3 },
+          "Vordt of the Boreal Valley": { "points": 5 },
+          "Dancer of the Boreal Valley": { "points": 5 }
+        }
+      },
+      "Undead Settlement": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Holy Knight Hodrick (Invader)": { "points": 3 },
+          "Curse-Rotted Greatwood": { "points": 5 },
+          "Demon": { "points": 3 },
+          "Boreal Outrider Knight": { "points": 3 }
+        }
+      },
+      "Road of Sacrifices": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Unkindled Butcher": { "points": 3 },
+          "Unkindled Watchdog (Greatsword)": { "points": 3 },
+          "Unkindled Watchdog (Great Club)": { "points": 3 },
+          "Yellowfinger Heysel (Invader)": { "points": 3 },
+          "Holy Knight Hodrick (Invader Sign)": { "points": 3 },
+          "Crystal Sage": { "points": 5 }
+        }
+      },
+      "Cathedral of the Deep": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Fallen Knight": { "points": 3 },
+          "Unkindled Brigand": { "points": 3 },
+          "Ravenous Crystal Lizard": { "points": 3 },
+          "Giant Slave 1": { "points": 3 },
+          "Mimic": { "points": 3 },
+          "Deep Accursed": { "points": 3 },
+          "Longfinger Kirk (Invader)": { "points": 3 },
+          "Giant Slave 2": { "points": 3 },
+          "Deacons of the Deep": { "points": 5 }
+        }
+      },
+      "Farron Keep": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Stray Demon": { "points": 3 },
+          "Yellowfinger Heysel (Invader)": { "points": 3 },
+          "Ravenous Crystal Lizard": { "points": 3 },
+          "Abyss Watchers": { "points": 5 }
+        }
+      },
+      "Catacombs of Carthus": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Knight Slayer Tsorig (Invader)": { "points": 3 },
+          "High Lord Wolnir": { "points": 5 },
+          "Mimic": { "points": 3 },
+          "Demon": { "points": 3 }
+        }
+      },
+      "Smouldering Lake": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Carthus Sandworm": { "points": 3 },
+          "Knight Slayer Tsorig": { "points": 3 },
+          "Old Demon King": { "points": 5 }
+        }
+      },
+      "Irithyll of the Boreal Valley": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Sulyvahn's Beast (Bridge)": { "points": 3 },
+          "Silver Knight 1": { "points": 3 },
+          "Silver Knight 2": { "points": 3 },
+          "Silver Knight 3": { "points": 3 },
+          "Pontiff Sulyvahn": { "points": 5 },
+          "Mimic": { "points": 3 },
+          "Drang Knight (Hammers)": { "points": 3 },
+          "Drang Knight (Twinspears)": { "points": 3 },
+          "Sulyvahn's Beast 1 (Sewer)": { "points": 3 },
+          "Sulyvahn's Beast 2 (Sewer)": { "points": 3 }
+        }
+      },
+      "Anor Londo": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Deep Accursed": { "points": 3 },
+          "Aldrich, Devourer of Gods": { "points": 5 }
+        }
+      },
+      "Irithyll Dungeon": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Alva, Seeker of the Spurned (Invader)": { "points": 3 },
+          "Giant Slave": { "points": 3 },
+          "Mimic (Estus Shard)": { "points": 3 },
+          "Mimic (Dragonslayer Lightning Arrow)": { "points": 3 },
+          "Mimic (Dark Clutch Ring)": { "points": 3 },
+          "Mimic (Titanite Scale)": { "points": 3 }
+        }
+      },
+      "Profaned Capital": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Monstrosity of Sin 1": { "points": 3 },
+          "Monstrosity of Sin 2": { "points": 3 },
+          "Monstrosity of Sin 3": { "points": 3 },
+          "Monstrosity of Sin 4": { "points": 3 },
+          "Mimic (Court Sorcerer's Staff)": { "points": 3 },
+          "Court Sorcerer Eamon": { "points": 3 },
+          "Mimic (Greatshield of Glory)": { "points": 3 },
+          "Mimic (Rusted Gold Coin)": { "points": 3 },
+          "Yhorm the Giant": { "points": 5 }
+        }
+      },
+      "Lothric Castle": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Mimic (Titanite Scale)": { "points": 3 },
+          "Pus of Man (White)": { "points": 3 },
+          "Pus of Man (Green)": { "points": 3 },
+          "Boreal Outrider Knight": { "points": 3 },
+          "Mimic (Sunlight Straight Sword)": { "points": 3 },
+          "Dragonslayer Armour": { "points": 5 }
+        }
+      },
+      "Grand Archives": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Crystal Sage": { "points": 3 },
+          "Boreal Outrider Knight": { "points": 3 },
+          "Black Hand Kamui": { "points": 3 },
+          "Daughter of Crystal Kriemhild": { "points": 3 },
+          "Lion Knight Albert": { "points": 3 },
+          "The Twin Princes - Lothric and Lorian": { "points": 5 }
+        }
+      },
+      "Consumed King's Garden": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Oceiros, The Consumed King": { "points": 5 }
+        }
+      },
+      "Untended Graves": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Ravenous Crystal Lizard 1": { "points": 3 },
+          "Ravenous Crystal Lizard 2": { "points": 3 },
+          "Daughter of Crystal Kriemhild (Invader)": { "points": 3 },
+          "Champion Gundyr": { "points": 5 }
+        }
+      },
+      "Archdragon Peak": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Ancient Wyvern (Boss)": { "points": 5 },
+          "Ancient Wyvern": { "points": 3 },
+          "Havel the Rock": { "points": 3 },
+          "The Nameless King": { "points": 5 }
+        }
+      },
+      "Kiln of the First Flame": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Soul of Cinder": { "points": 5 }
+        }
+      },
+      "Painted World of Ariandel": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Champion's Gravetender & Gravetender Greatwolf": { "points": 5 },
+          "Sir Vilhelm": { "points": 3 },
+          "Livid Pyromancer Dunnel (Invader)": { "points": 3 },
+          "Blackflame Friede": { "points": 5 }
+        }
+      },
+      "The Dreg Heap": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Pilgrim Puba / Angel 1": { "points": 3 },
+          "Pilgrim Puba / Angel 2": { "points": 3 },
+          "Desert Pyromancer Zoey": { "points": 3 },
+          "Pilgrim Puba / Angel 3": { "points": 3 },
+          "The Demon Prince": { "points": 5 }
+        }
+      },
+      "The Ringed City": {
+        "gameMode": "No-Death",
+        "challenges": {
+          "Alva, Seeker of the Spurned (Invader)": { "points": 3 },
+          "Silver Knight Ledo (Invader)": { "points": 3 },
+          "Dragonslayer Armour": { "points": 3 },
+          "Moaning Knight (Invader)": { "points": 3 },
+          "Mimic": { "points": 3 },
+          "Darkeater Midir": { "points": 5 },
+          "Halflight, Spear of the Church": { "points": 5 },
+          "Shira, Knight of Filianore": { "points": 3 },
+          "Slave Knight Gael": { "points": 5 }
+        }
+      }
     }
   }
 }
-
-}}
 
