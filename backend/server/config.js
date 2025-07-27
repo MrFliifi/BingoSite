@@ -1,10 +1,9 @@
 //variables for the backend
+// config.js
 const domain = "https://bingo-app-cv3k.onrender.com";
-const frontPort = "3000";
-const backPort = process.env.PORT || 4000;
+const frontAdress = "https://bingo-app-cv3k.onrender.com";
+const backAdress = domain;
 
-const frontAdress = `${domain}:${frontPort}`;
-const backAdress = `${domain}:${backPort}`;
 
 module.exports = {
   domain,

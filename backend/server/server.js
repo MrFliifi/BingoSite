@@ -1,3 +1,4 @@
+// backend server.js
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -24,7 +25,15 @@ const options = {
 // Integrates CORS into the Express-App, so the frontend can communicate with the backend
 app.use(cors(options));
 // Safety Feature for HTTP-Header
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: ["'self'", "wss://bingo-app-cv3k.onrender.com"],
+    },
+  })
+);
+
 // Parses incoming requests with JSON payloads, makes it readable for the backend
 app.use(express.json());
 // Parses incoming requests with urlencoded payloads, makes HTML Forms readable for the backend
@@ -36,7 +45,7 @@ const httpServer = require("http").createServer(app);
 
 // Port for the backend
 httpServer.listen(backPort, () => {
-    console.log(`Server running on port 127.0.0.1:${backPort}`);
+    console.log(`Server running on port ${backPort}`);
   });
 
 
