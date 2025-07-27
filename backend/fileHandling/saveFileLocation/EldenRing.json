@@ -1,604 +1,1052 @@
 {
     "challenges": {
-        "bingo": {
-            "Besiege den Iudex Gundyr ohne Heilung": {
-                "length": ["short"],
+        "bingo": {   
+            "Kill Rykard and discard Serpent Hunter +0": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste eine Waffe auf +3 auf": {
-                "length": ["short"],
+            "Kill Limgrave Tree Sentinel with a +0 weapon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Sammle 5 Estus-Scherben": {
-                "length": ["short"],
+            "Kill Agheel with a +0 weapon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einer Wurfwaffe": {
-                "length": ["short"],
+            "Kill 5 bosses in Altus Plateau (no Volcano Manor)": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Beschwöre einen Phantom-Verbündeten": {
-                "length": ["short"],
+            "Restore Godrick’s Great Rune": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Schließe ein Gebiet komplett ohne Tod ab": {
-                "length": ["short"],
+            "Restore Radahn’s Great Rune": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Trage ein komplettes Set eines NPCs": {
-                "length": ["short"],
+            "Restore Rykard’s Great Rune": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze ein Wachsbecken": {
-                "length": ["short"],
+            "Restore Morgott’s Great Rune": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einem kritischen Treffer": {
-                "length": ["short"],
+            "Acquire 2 legendary armaments": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verbrenne eine Untotensplitter": {
-                "length": ["short"],
+            "Acquire 6 different Glintstone Staves": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Kristall-Echsen-Drachen": {
-                "length": ["short"],
+            "Acquire 4 different Sacred Seals": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste den Estus-Flakon vollständig aus": {
-                "length": ["short"],
+            "Sell Bloodhound's Fang +0": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Kaufe eine Geste von einem NPC": {
-                "length": ["short"],
+            "30 Intelligence (no rebirth or buffs)": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Lies die Beschreibung eines Boss-Seelen-Gegenstands": {
-                "length": ["short"],
+            "Kill Margit with 4+ parries": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze das Katapult in der Kathedrale": {
-                "length": ["short"],
+            "Kill Crucible Knight & Misbegotten Warrior duo": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Mimic ohne entdeckt zu werden": {
-                "length": ["short"],
+            "Kill Royal Revenant (Kingsrealm Ruins)": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Lege eine Nachricht, die bewertet wird": {
-                "length": ["short"],
+            "Kill 1 Deathbird and 1 Death Rite Bird": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Wechsle deine Covenant": {
-                "length": ["short"],
+            "Kill a boss Spirit Ashes only": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte den Dämon auf dem Dach in der Untoten-Siedlung": {
-                "length": ["short"],
+            "Kill a boss Consumables only": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mache einen Parry-Kill": {
-                "length": ["short"],
+            "Kill a boss on Torrent the whole fight": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Darkwraith": {
-                "length": ["short"],
+            "Kill 5 bosses in Caelid": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege Vordt mit nur einer Waffe": {
-                "length": ["short"],
+            "Kill 6 bosses in Altus Plateau (including Volcano Manor)": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Schwarzritter": {
-                "length": ["short"],
+            "Acquire full Dectus Medallion": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Öffne eine Abkürzung": {
-                "length": ["short"],
+            "Smithing-stone +12 weapon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Erhalte eine Boss-Seele": {
-                "length": ["short"],
+            "Acquire 4 Memory Stones": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss mit nur Pyromantie": {
-                "length": ["short"],
+            "Acquire 3 Whetblades": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nutze keine Estus-Flakons in einem ganzen Gebiet": {
-                "length": ["short"],
+            "Acquire 8 different Talismans": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege den Abyss Watchers ohne Treffer": {
-                "length": ["short"],
+            "Kill 3 NPC invaders": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss mit bloßen Fäusten": {
-                "length": ["short"],
+            "Give boc his needle back": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Invader": {
-                "length": ["short"],
+            "Collect 2 Painting rewards": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege einen Boss im Koop": {
-                "length": ["short"],
+            "Acquire 2 Hanging pot bell bearings": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste eine Boss-Waffe aus": {
-                "length": ["short"],
+            "Acquire Level 10 Scadu": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwandle dich mit dem Chameleon-Zauber": {
-                "length": ["short"],
+            "Acquire Level 5 Revered Ash": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mache einen Backstab mit einem Dolch": {
-                "length": ["short"],
+            "Kill a Furnace Golem": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit Fall-Schaden": {
-                "length": ["short"],
+            "Kill the Golden Hippo": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einer Umweltfalle": {
-                "length": ["short"],
+            "Kill 2 Hippos": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwandle eine Boss-Seele in einen Zauber": {
-                "length": ["short"],
+            "Kill Bayle while summoning Igon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste keine Rüstung aus": {
-                "length": ["short"],
+            "Clear 2 Catacombs": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss ohne Rollen": {
-                "length": ["short"],
+            "Kill Midra, Lord of Frenzied Flame": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Schließe einen NPC-Quest ab": {
-                "length": ["short"],
+            "Kill 4 Remembrance Bosses": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einer Peitsche": {
-                "length": ["short"],
+            "Acquire 2 Painting rewards": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze die 'Path of the Dragon'-Geste": {
-                "length": ["short"],
+            "Kill Consort Radahn": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner, während du vergiftet bist": {
-                "length": ["short"],
+            "Kill a Remembrance Boss hitless": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze keine Waffen, nur Magie": {
-                "length": ["short"],
+            "Heal the wounded Kindred rot": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einem Bogen": {
-                "length": ["short"],
+            "Put Florissax to sleep": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Trage nur 'Fashion Souls'-Rüstung": {
-                "length": ["short"],
+            "Kill 3 Dragon bosses": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mache einen Run ohne Schild": {
-                "length": ["short"],
+            "Clear two Forges": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte ein Gebiet nur mit Feuerbomben": {
-                "length": ["short"],
+            "Give an Iris of Grace": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte ein Phantom-Invader (Red NPC)": {
-                "length": ["short"],
+            "Give an Iris of Occultation": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwandle dich in ein Objekt mit Spook/Hidden Body": {
-                "length": ["medium"],
+            "Acquire Euporia": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege Pontiff Sulyvahn ohne Schaden": {
-                "length": ["medium"],
+            "Acquire 2 Kindred Cookbooks": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwende keine Rüstung oder Kleidung": {
-                "length": ["medium"],
+            "Acquire Moore Armor set": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte Aldrich ohne Estus": {
-                "length": ["medium"],
+            "Clear 2 Gaols": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte den Dancer als ersten Boss": {
-                "length": ["medium"],
+            "Kill a Dancing Lion": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte Lothric und Lorian solo ohne Estus": {
-                "length": ["medium"],
+            "Acquire Commander Gaius's pants": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte Yhorm ohne die Sturmherrscher-Waffe": {
-                "length": ["medium"],
+            "Kill 3 Ulcerated Tree spirits": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mache einen No-Bonfire-Run bis zum 3. Boss": {
-                "length": ["medium"],
+            "Kill Ancient Dragon Senessax": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Kein Level-Up bis zum 4. Boss": {
-                "length": ["medium"],
+            "Kill Count Ymir, Mother of Fingers": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze kein Leveling während des gesamten Spiels": {
-                "length": ["medium"],
+            "Acquire Jolan & Anna Summon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele ein ganzes Gebiet auf NG+": {
-                "length": ["medium"],
+            "Kill a Red bear": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss mit einer Waffe, die du gerade gefunden hast": {
-                "length": ["medium"],
+            "Kill 3 Unique NPC Invaders": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss mit einer 'broken straight sword'": {
-                "length": ["medium"],
+            "Kill 3 NPC bosses": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte Oceiros ohne Magie oder Heilung": {
-                "length": ["medium"],
+            "Have St. Trina talk to you": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele ein Gebiet in voller Havels-Rüstung": {
-                "length": ["medium"],
+            "Kill a Black Knight boss": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Drachen mit Nahkampf": {
-                "length": ["medium"],
+            "Acquire 4 DLC Talismans": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Keine Zauber, keine Pyromantie, keine Wunder im Spiel": {
-                "length": ["medium"],
+            "Visit 5 Miquella Crosses": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit Poison Mist": {
-                "length": ["medium"],
+            "Kill Moonrithyll, Carian Knight": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit Rüstung aus deinem Startgebiet": {
-                "length": ["medium"],
+            "Kill 2 unique Curseblade Assassins": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege einen Boss nur mit Konterparrys": {
-                "length": ["medium"],
+            "Acquire 3 DLC Ashes of war": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele mit maximaler Auslastung": {
-                "length": ["medium"],
+            "Acquire 3 DLC Spirit Ashes": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte den Champion Gundyr beim ersten Versuch": {
-                "length": ["medium"],
+            "Acquire 3 Larval tears": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte die Tänzerin mit einem Bogen": {
-                "length": ["medium"],
+            "Acquire 2 Dragon Hearts": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur Fäuste bis zum ersten Lord of Cinder": {
-                "length": ["medium"],
+            "Kill a Boss with a +0 Weapon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege einen Boss im NG++": {
-                "length": ["medium"],
+            "Kill a Remembrance Boss after 6 parries": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Kein Estus, nur Ashen Estus erlaubt": {
-                "length": ["medium"],
+            "Acquire the Sword of Light/Darkness": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Starte als 'Deprived' und töte 3 Bosse ohne Level-Up": {
-                "length": ["medium"],
+            "Kill Jori, The Elder Inquisitor": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte ein Gebiet ohne HUD": {
-                "length": ["medium"],
+            "Sell Bloodfiends Arm +0": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze die Symbol des Gier-Helm permanent": {
-                "length": ["medium"],
+            "Sell Great Katana +0": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege einen Boss mit nur einer Hand (Controller auf einer Hand)": {
-                "length": ["medium"],
+            "Kill Queelign in Belurat": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nutze keine Shortcut-Türen": {
-                "length": ["medium"],
+            "Acquire the Scorpion Stew": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele mit invertierter Steuerung (Joystick/Kamera vertauscht)": {
-                "length": ["medium"],
+            "Acquire the Golden Braid": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Wechsle nach jedem Tod deine komplette Ausrüstung": {
-                "length": ["medium"],
+            "Kill the Rolling Giant Lightning Ram": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze keine Leuchtfeuer-Teleports": {
-                "length": ["medium"],
+            "Kill the Frenzy NPC": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verbrauche alle Boss-Seelen für Seelen, keine Items": {
-                "length": ["medium"],
+            "Acquire the Aged Ones Exultation Talisman": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele mit Farbfilter/Monochrom-Modus (wenn möglich)": {
-                "length": ["medium"],
+            "Kill Lamenter Boss": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte 3 Bosse, ohne einen Estus-Flakon auszurüsten": {
-                "length": ["medium"],
+            "Acquire Verdigris Discus": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Halte immer unter 30% Ausrüstungslast": {
-                "length": ["medium"],
+            "Dupe a Remembrance": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwende keine Waffe länger als 5 Minuten": {
-                "length": ["medium"],
+            "Memory of grace with 300k runes": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte 3 Gegner mit nur Tritten": {
-                "length": ["medium"],
+            "Acquire a Leda Rune": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Sei verflucht UND vergiftet UND blutend gleichzeitig": {
-                "length": ["medium"],
+            "Acquire 3 NPC dropped weapons": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner, während du komplett nackt bist": {
-                "length": ["medium"],
+            "Acquire Devonia's Hammer": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Keine Backstabs während des Runs": {
-                "length": ["medium"],
+            "Kill a Death Knight": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele permanent in Hollow-Form": {
-                "length": ["medium"],
+            "Collect 4 perfumer bottles": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege einen Boss ohne zu sprinten": {
-                "length": ["medium"],
+            "Collect 2 DLC full armor sets": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Lege ein Prismastein in jedes neue Gebiet": {
-                "length": ["medium"],
+            "Acquire a DLC Legendary Ash Summon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einem Schild-Schlag": {
-                "length": ["medium"],
+            "Acquire 4 DLC Sorceries": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Lass dich 10x verfluchen (bzw. von Basilisken treffen)": {
-                "length": ["medium"],
+            "Acquire 6 DLC Incantations": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss ohne Lock-On": {
-                "length": ["medium"],
+            "Acquire 5 Hefty pots": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste das dümmste mögliche Outfit aus": {
-                "length": ["medium"],
+            "Acquire the Perfumed Oil of Ranah": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mache einen 'Pacifist-Run' bis zum ersten Boss": {
-                "length": ["long"],
+            "Kill Leda and her companions": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Geh nie über 70% Equip Load": {
-                "length": ["long"],
+            "Burn the Sealing Tree": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele mit dem Controller verkehrt herum": {
-                "length": ["long"],
+            "Drain the water in the Church District": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege 5 Gegner mit Spells, obwohl du keine Magic-Class bist": {
-                "length": ["long"],
+            "Acquire Igon's furled finger": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Springe in den Abgrund mit Absicht 3x (Selbstmordfeld)": {
-                "length": ["long"],
+            "Acquire Velvet St. Trina's Sword": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte alle Händler (nachdem du alles gekauft hast)": {
-                "length": ["long"],
+            "Kill Demi Human Marigga": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur Einhandwaffen erlaubt": {
-                "length": ["long"],
+            "Kill a Boss with Hand to Hand only": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele mit schlechtester Waffe (+0) bis zum 3. Boss": {
-                "length": ["long"],
+            "Kill a Boss with Throwing Attacks only": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur Waffen mit Blutung": {
-                "length": ["long"],
+            "Complete 2 Nameless Mausoleums": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Kein Blocken erlaubt": {
-                "length": ["long"],
+            "Kill a Remembrance Boss with a Remembrance Weapon": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte alle Crystal Lizards im Spiel": {
-                "length": ["long"],
+            "Kill Chief Bloodfiend": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte 10 Gegner mit der 'Fist Weapon'": {
-                "length": ["long"],
+            "Kill a Boss with Backhand Blades only": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Erhalte alle Estus-Upgrades": {
-                "length": ["long"],
+            "Kill Putrescent Knight": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste alle Ringe einer Ring-Kategorie gleichzeitig": {
-                "length": ["long"],
+            "Kill Dryleaf Dane in the Duel": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur Bossseelen-Waffen benutzen": {
-                "length": ["long"],
+            "Use a Transformation": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Spiele das ganze Spiel mit einem bestimmten Set (z. B. 'Kleriker')": {
-                "length": ["long"],
+            "Kill Scadutree Avatar": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Keine Verstärkungen an Waffen erlaubt": {
-                "length": ["long"],
+            "Kill Rellana, Twin Moon Knight": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Keine Buffs (Zauber/Harz/etc.) erlaubt": {
-                "length": ["long"],
+            "Kill Metyr, Mother of Fingers": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Immer unter 10% HP bleiben": {
-                "length": ["long"],
+            "Kill Messmer": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Keine Rollen – nur laufen und blocken": {
-                "length": ["long"],
+            "Kill the Tree Sentinel Duo": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur Boss-Armor benutzen": {
-                "length": ["long"],
+            "Kill Romina": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur NPC-Geschenke verwenden": {
-                "length": ["long"],
+            "Kill a Base Game Boss in DLC": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Kein Aufheben von Items erlaubt": {
-                "length": ["long"],
+            "Kill 3 Bosses with Knight in their name": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege einen Boss mit einer Geste am Ende": {
-                "length": ["long"],
+            "Acquire a Torch": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwende 'Untrue Dark Ring' permanent": {
-                "length": ["long"],
+            "Kill Bols in front of Castle Ensis": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einem 'Dung Pie'": {
-                "length": ["long"],
+            "Kill Ancient Dragon Man Boss": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Erhalte alle 3 Enden in einem Spielstand": {
-                "length": ["long"],
+            "Acquire the full Gravebird Armor Set": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit einem Critical Riposte durch Parry": {
-                "length": ["long"],
+            "Acquire Both Aspect of the Crucible Incantations": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mach einen Chaos Build mit Faith/Int/Str": {
-                "length": ["long"],
+            "Acquire Death Mask Helm, Winged Serpent Helm, and Salza's Hood": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mach einen Dexterity Run nur mit Dolchen": {
-                "length": ["long"],
+            "Kill Logur, the Beast Claw": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Hol alle Endbosse nackt und ohne Leveln": {
-                "length": ["long"],
+            "Kill the Death Rite Bird": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwende nie den linken Trigger": {
-                "length": ["long"],
+            "Kill a boss using a Perfume Bottle only": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Schlage einen Gegner mit der Faust KO": {
-                "length": ["long"],
+            "Acquire 2 Blessings of Marika": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Drachen mit einem Giftbogen": {
-                "length": ["long"],
+            "Kill the Giant Hand in the Finger Ruins Dheo": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Parrye einen Boss (z. B. Pontiff) mindestens 3x": {
-                "length": ["long"],
+            "Kill one boss of each, Bear / Lion / Hippo": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur schwere Waffen erlaubt": {
-                "length": ["long"],
+            "Reach Level 85": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nutze keine Ringe": {
-                "length": ["long"],
+            "Acquire Taylew, the Golem Smith": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Nur Unsichtbarkeitszauber erlaubt": {
-                "length": ["long"],
+            "Drink Thiollier's Concoction": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner, während du eine Emote machst": {
-                "length": ["long"],
+            "Kill a boss after inflicting 3 different status effects": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Werde 5x invaded und gewinne alle Kämpfe": {
-                "length": ["long"],
+            "Kill a Demi Human Swordsman": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Gegner mit dem ersten Treffer nach 5 Minuten Nichtkampf": {
-                "length": ["long"],
+            "Acquire 2 DLC shields": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verbrenne keine Untoten-Splitter": {
-                "length": ["long"],
+            "Upgrade a Remembrance Weapon to Max": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze keinen Schild, nur Zweihand": {
-                "length": ["long"],
+            "Kill Godrick while summoning Nepheli Loux": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Rüste keine Ringe aus": {
-                "length": ["long"],
+            "Kill Rennala after she summons all 4 different spirits": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Sammle alle Kisten im Spiel": {
-                "length": ["long"],
+            "Kill Radahn without summoning NPCs": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Benutze keine Items außer Estus": {
-                "length": ["long"],
+            "Kill Morgott": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Besiege 3 Bosse mit nur Wurfmessern": {
-                "length": ["long"],
+            "Kill an Ancestor Spirit": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Verwende nie den Sprint-Knopf": {
-                "length": ["long"],
+            "Kill Mohg, Lord of Blood": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Töte einen Boss mit nur 1 HP übrig": {
-                "length": ["long"],
+            "Kill Margit with 6+ parries": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Werde in jedem Gebiet einmal verflucht": {
-                "length": ["long"],
+            "Kill Leonine Misbegotten": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             },
-            "Mache den kompletten Run in einer Rolle deiner Wahl (z.B. 'Fashion Souls', 'Only Shields', 'Nackt mit Hut')": {
-                "length": ["long"],
+            "Kill a Red Wolf Boss": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Godskin Noble (Volcano Manor) without status effects": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Godskin Apostle": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Godfrey (Gold Spirit)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Mimic Tear consumables only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Valiant Gargoyles": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Fia's Champions": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Mohg (Sewers)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Loretta (Blue Spirit)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Commander O'Neil": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Grafted Scion (Chapel of Anticipation)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Soldier of Godrick bare fist only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Limgrave Tree Sentinel with a +0 weapon only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Agheel with a +0 weapon only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Tree Sentinel duo": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Crucible Knight and Misbegotten Warrior duo": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Elemer of the Briar": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Putrid Crystalian trio": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Wormface": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Bloodhound Knight while summoning Blaidd": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Greyoll without status effects": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 4 Bosses with the word God in it": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Dragonkin Soldier": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Magma Wyrm boss": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Fallingstar Beast": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Black Blade Kindred": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill an Omenkiller boss": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 2 Deathbirds and 1 Death Rite Bird": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 2 Cemetery Shades": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Watchdogs": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 2 Duelist bosses": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 2 Black Knife Assassins": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Crucible Knights": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Dragon Heart bosses": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Erdtree Avatars": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Night's Cavalry": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Tibia Mariners": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Bell Bearing Hunters": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 duo/trio bosses": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 5 bosses that ride a horse": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 5 bosses with 'tree' in their name": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss hitless": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss colossal armaments only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss daggers, claws, or fists only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss bow only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss sorcery only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss incantations only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill a Remembrance boss w/ remembrance weapon only": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Finish off a boss with the explosive physick": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 8 bosses in Limgrave": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 6 bosses in Liurnia": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 6 bosses in Caelid": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 7 bosses in Altus Plateau and Mt. Gelmir": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Complete 2 catacomb dungeons": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Complete 2 cave or grotto dungeons": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Complete 2 tunnel or precipice dungeons": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Complete an Altus Plateau Hero's Grave": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Complete 4 evergaols": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire 4 different Remembrances": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Fire Giant": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Somberstone Bell Bearing [1] and [2]": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Smithing-stone Bell Bearing [1] and [2]": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Grave and Ghost Glovewort Bell Bearings [1]": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Grave and Ghost Glovewort Bell Bearings [2]": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire 3 Imbued Sword Keys": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Margit's and Mohg's Shackles": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Restore Godrick's Great Rune": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Restore Radahn's Great Rune": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Restore Rykard's Great Rune": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Restore Morgott's Great Rune": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Somber +9 weapon": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Smithing-stone +16 weapon": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Spirit Ash +4 summon": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Sacred Flask +7": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "10 Sacred Flask charges": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire 10 Physick Flask tears": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire 10 Cracked Pots": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire 5 Ritual Pots": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire 10 different Talismans": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire both Scarseal talismans": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Take Rya's hand to Volcano Manor": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Return Thop's academy key": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Fingerslayer Blade": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Invade and defeat Magnus the Beast Claw": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Dupe a Remembrance at a Mausoleum": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Memory of Grace with 50k+ Runes": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 4 NPC invaders": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 friendly NPCs (no hermit merchants)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Gurranq": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Use AoW Lightning Ram to kill 10 sheep": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Learn 12 different sorceries": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Learn 14 different incantations": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Rune Level 60": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "30 Faith (no rebirth or buffs)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "30 Arcane (no rebirth or buffs)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "30 Int (no rebirth or buffs)": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Lansseax": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Give Hyetta 3 Shabriri Grapes": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 3 Tree spirits": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill the Milicent invader in Caelid": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Collect 6 unique Staves": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Collect 3 Painting rewards": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Collect the full Haligtree Medallion": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Malenia": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Borealis": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Astel and Astel, Stars of Darkness": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill 4 NPC Bosses": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Misbegotten Crusader": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Acquire Moon of Nokstella": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill Roundtable Knight Vyke": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Buy 20 Boiled Crab from Boggart": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Kill the Sleeping Golem in Leyndell": {
+                "length": ["short", "medium", "long"],
+                "gameMode": ["non-lockout", "lockout"]
+            },
+            "Collect 5 unique Seals": {
+                "length": ["short", "medium", "long"],
                 "gameMode": ["non-lockout", "lockout"]
             }
         },
