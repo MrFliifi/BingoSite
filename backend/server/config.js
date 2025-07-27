@@ -1,5 +1,5 @@
 //variables for the backend
-const domain = "95.217.16.200";
+const domain = "http://localhost";
 const frontPort = "3000";
 const backPort = "3500";
 
