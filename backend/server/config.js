@@ -7,8 +7,6 @@ const backAdress = domain;
 
 module.exports = {
   domain,
-  frontPort,
-  backPort,
   frontAdress,
   backAdress,
 };
