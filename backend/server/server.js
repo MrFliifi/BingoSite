@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 const httpServer = require("http").createServer(app);
 
 // Port for the backend
-httpServer.listen(backPort, "127.0.0.1", () => {
+httpServer.listen(backPort, () => {
     console.log(`Server running on port 127.0.0.1:${backPort}`);
   });
 
