@@ -3,7 +3,7 @@ import { socket } from "../websocket/socket.js";
 import "../styles/noDeath.css";
 import "../styles/button.css";
 import "../styles/header.css";
-import ChallengesModal from "../assets/challengesModal.js";
+import ChallengesModal from "../hooks/challengesModal.js";
 import { useLeaveLobbyOnExit } from "../hooks/useLeaveLobbyOnExit.js";
 
 function NoDeath() {

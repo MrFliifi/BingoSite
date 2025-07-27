@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/challengesModal.css"; // You'll add basic styles here
+import "../styles/challengesModal.css"; 
 
 const ChallengesModal = ({ show, onClose, children }) => {
   if (!show) return null;
