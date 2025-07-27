@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { socket } from "../websocket/socket.js";
 import "../styles/bingoField.css";
 import "../styles/button.css";
 import "../styles/header.css";
 import ChallengesModal from "../assets/challengesModal.js";
+import { useLeaveLobbyOnExit } from "../hooks/useLeaveLobbyOnExit.js";
 
 
 
@@ -28,6 +29,10 @@ function BingoPage() {
   // Values for picking Game and length of the Game
   const [challengeGame, setChallengeGame] = useState("");
   const [challengeLength, setChallengeLength] = useState("");
+
+  //For popState routing
+   useLeaveLobbyOnExit(lobbyId);
+
 
   useEffect(() => {
 

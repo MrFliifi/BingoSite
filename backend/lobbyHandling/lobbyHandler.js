@@ -12,7 +12,15 @@ class lobbyHandler {
     this.bingoColor = Array.from({ length: 25 }, () => []);
     // track the colors that have been picked
     this.usedColor = [];
-    this.possibleColor = ["red", "blue", "green", "deeppink", "purple", "teal", "chocolate"];
+    this.possibleColor = [
+      "red",
+      "blue",
+      "green",
+      "deeppink",
+      "purple",
+      "teal",
+      "chocolate",
+    ];
     // possibleColor - usedColor = colors players can pick
     this.pickableColor = [];
   }
@@ -67,7 +75,10 @@ class lobbyHandler {
   async setBingoChallenges(fileName, directory, challengeLength, gameMode) {
     const fileHandlerInst = new fileHandler(directory, fileName);
     // fill array with data from file
-    let contentArr = await fileHandlerInst.readFromSaveFile(challengeLength, gameMode);
+    let contentArr = await fileHandlerInst.readFromSaveFile(
+      challengeLength,
+      gameMode
+    );
 
     // shuffle content of array around
     for (let i = contentArr.length - 1; i > 0; i--) {
@@ -86,21 +97,20 @@ class lobbyHandler {
 
   async setBingoColor(i, color) {
     if (this.gameMode === "Lockout") {
-        //if field is empty, set color
+      //if field is empty, set color
       if (this.bingoColor[i].length === 0) {
         this.bingoColor[i][0] = color;
         //when the color in the array the same as the color in the argument is, make the array empty
       } else if (this.bingoColor[i][0] === color) {
         this.bingoColor[i] = [];
       }
-      
     } else {
-        //Non-Lockout if the color already exists, remove it
-        //indexof searches for the index, where the same color is located. If the color is not in the array index == -1
+      //Non-Lockout if the color already exists, remove it
+      //indexof searches for the index, where the same color is located. If the color is not in the array index == -1
       const index = this.bingoColor[i].indexOf(color);
-        console.log(this.bingoColor);
-        
-        //If the color is in the array, splice it
+      console.log(this.bingoColor);
+
+      //If the color is in the array, splice it
       if (index !== -1) {
         this.bingoColor[i].splice(index, 1);
       } else {
@@ -114,10 +124,27 @@ class lobbyHandler {
     this.usedColor.push(playerColor);
   }
 
+  async removePlayerBySocketId(socketId) {
+    this.playerArr = this.playerArr.filter(
+      (player) => player.socketId !== socketId
+    );
+  }
+
+  async getPlayerBySocketId(socketId) {
+    return this.playerArr.find((player) => player.socketId === socketId);
+  }
+
   async removeUsedColor(playerColor) {
     this.usedColor = this.usedColor.filter((color) => color !== playerColor);
   }
 
+
+  
 }
+
+
+
+
+
 
 module.exports = { lobbyHandler };

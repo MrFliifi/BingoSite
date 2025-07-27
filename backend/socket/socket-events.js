@@ -49,6 +49,9 @@ module.exports = function (io) {
         
       }
 
+      console.log(lobbies);
+      
+
       // ToDo: these two don't need to be send every second. Once is enough. Create a new Event for them
       
       const bingoChallenges = await lobbies[i].getBingoChallenges();
@@ -353,7 +356,46 @@ module.exports = function (io) {
       }
     });
 
-    // Handles the player disconnecting from the lobby
+   socket.on("leaveLobby", async (data) => {
+     const { lobbyId, socketId } = data;
+     console.log("leave lobby id:", lobbyId);
+     console.log("leave lobby socketid:", socketId);
+
+     console.log("Client used browser navigation and gets kicked out of the lobby:",socket.id);
+
+     const allLobbies = await listOfLobbies.getLobbies();
+     const lobby = allLobbies.find((lobby) => lobby.lobbyId === lobbyId);
+
+     if (!lobby) {
+       console.log("Lobby not found");
+       return;
+     }
+
+     const players = await lobby.getPlayerArr();
+     const player = players.find((p) => p.socketId === socketId);
+
+     if (!player) {
+       console.log("Player not found in the lobby");
+       return;
+     }
+
+     const playerColor = await player.getColor();
+     const playerName = await player.getPlayerName();
+
+     // Delete used Color
+     await lobby.removeUsedColor(playerColor);
+     console.log(`${playerColor} removed from used colors.`);
+
+     // Delete player from Lobby
+     await lobby.removePlayerBySocketId(socketId);
+     console.log(`Removed player ${playerName} from lobby: ${lobbyId}`);
+
+     socket.leave(socket.id);
+   });
+
+
+  /*  
+  // Handles the player disconnecting from the lobby
     socket.on("disconnect", async () => {
       console.log("Client disconnected", socket.id);
       const lobby = await listOfLobbies.getLobbies();
@@ -364,10 +406,13 @@ module.exports = function (io) {
         let freeColor = "";
         let goneUser = "";
 
-        for (let j = 0; j < players.length; j++) {
-          freeColor = await players[j].getColor();
-          goneUser = await players[j].getPlayerName();
-        }
+          for (let j = 0; j < players.length; j++) {
+            tempUser = await players[j].getPlayerName();
+            if (tempUser === socket.Id) {
+              freeColor = await players[j].getColor();
+              goneUser = await players[j].getPlayerName();
+            }
+          }
         const usedColor = await lobby[i].getUsedColor();
 
         // Loop that removes a bunch of stuff from lobby on dc
@@ -390,8 +435,10 @@ module.exports = function (io) {
         }
       }
       socket.leave(socket.id);
-    });
-  });
+    });*/
+
+
+  }); 
 };
 
 /*

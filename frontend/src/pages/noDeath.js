@@ -4,6 +4,7 @@ import "../styles/noDeath.css";
 import "../styles/button.css";
 import "../styles/header.css";
 import ChallengesModal from "../assets/challengesModal.js";
+import { useLeaveLobbyOnExit } from "../hooks/useLeaveLobbyOnExit.js";
 
 function NoDeath() {
   const [challengePointArray, setChallengePointArray] = useState([]);
@@ -17,6 +18,9 @@ function NoDeath() {
   const [lobbyId, setLobbyId] = useState("");
 
   const closeModal = () => setShowModal(false);
+
+  //Popstate Routing
+  useLeaveLobbyOnExit(lobbyId);
 
   useEffect(() => {
     socket.on("errorMsg", (message) => {

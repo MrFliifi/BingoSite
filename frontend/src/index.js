@@ -11,7 +11,7 @@ import BingoPage from "./pages/bingoField.js";
 import NoDeath from "./pages/noDeath.js"
 import HomePage from "./pages/homePage.js";
 import NotFoundPage from "./pages/notFoundPage.js";
-import Footer from "./pages/footer.js";
+
 import Empty from "./pages/empty.js";
 import ChallengeEditor from "./pages/challengeEditor.js"
 
