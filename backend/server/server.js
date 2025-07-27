@@ -29,7 +29,16 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      connectSrc: ["'self'", "wss://bingo-app-cv3k.onrender.com"],
+      connectSrc: [
+        "'self'",
+        "wss://bingo-app-cv3k.onrender.com:10000",
+        "https://bingo-app-cv3k.onrender.com:10000/"
+      ],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+      imgSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
     },
   })
 );
