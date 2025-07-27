@@ -24,7 +24,23 @@ const options = {
 // Integrates CORS into the Express-App, so the frontend can communicate with the backend
 app.use(cors(options));
 // Safety Feature for HTTP-Header
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: [
+        "'self'",
+        "wss://bingo-app-cv3k.onrender.com:10000",
+        "https://bingo-app-cv3k.onrender.com:10000/"
+      ],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+      imgSrc: ["'self'", "data:"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 // Parses incoming requests with JSON payloads, makes it readable for the backend
 app.use(express.json());
 // Parses incoming requests with urlencoded payloads, makes HTML Forms readable for the backend
