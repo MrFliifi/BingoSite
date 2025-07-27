@@ -1,0 +1,29 @@
+# render.yaml - Lege diese Datei im Root deines Projekts ab
+services:
+  - type: web
+    name: bingo-app
+    runtime: node
+    region: frankfurt  # EU Region für bessere Performance in Deutschland
+    plan: free
+    
+    # Build Process
+    buildCommand: |
+      echo "Starting build process..."
+      cd frontend && npm ci
+      cd ../frontend && npm run build
+      cd ../backend && npm ci
+      echo "Build completed successfully"
+    
+    # Start Command
+    startCommand: cd backend && npm start
+    
+    # Health Check
+    healthCheckPath: /health
+    
+    # Environment Variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+    
+    # Deployment Settings
+    autoDeploy: true
