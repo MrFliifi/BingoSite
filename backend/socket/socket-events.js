@@ -407,8 +407,6 @@ module.exports = function (io) {
         let goneUser = "";
 
           for (let j = 0; j < players.length; j++) {
-            tempUser = await players[j].getPlayerName();
-            if (tempUser === socket.Id) {
               freeColor = await players[j].getColor();
               goneUser = await players[j].getPlayerName();
             }
