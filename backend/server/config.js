@@ -1,5 +1,5 @@
 //variables for the backend
-const domain = "http://localhost";
+const domain = "https://bingo-app-cv3k.onrender.com";
 const frontPort = "3000";
 const backPort = process.env.PORT || 4000;
 

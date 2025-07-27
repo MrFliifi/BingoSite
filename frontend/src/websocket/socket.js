@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 
 // Creates a Socket.io instance for die frontend
-export const socket = io("http://localhost:10000", {
+export const socket = io("https://bingo-app-cv3k.onrender.com:10000", {
   transports: ["websocket"],
   autoConnect: true,
   reconnection: true,
