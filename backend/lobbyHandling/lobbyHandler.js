@@ -92,10 +92,9 @@ class lobbyHandler {
   }
 
   async setPlayer(playerObj) {
-    if (this.playerArr <= 7) {
+    if (this.playerArr <= possibleColor.length) {
       this.playerArr.push(playerObj);
-    } else {console.log("Lobby is full");
-    }
+    } else {console.log("Lobby is full");}
   }
 
   async setBingoColor(i, color) {
