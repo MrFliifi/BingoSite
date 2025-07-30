@@ -92,7 +92,7 @@ class lobbyHandler {
   }
 
   async setPlayer(playerObj) {
-    if (this.playerArr.length <= this.possibleColor.length) {
+    if (this.playerArr.length <= 6) {
       this.playerArr.push(playerObj);
     } else {console.log("Lobby is full");}
   }
