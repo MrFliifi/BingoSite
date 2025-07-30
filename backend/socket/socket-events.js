@@ -80,8 +80,8 @@ module.exports = function (io) {
 
 
 
-    //1000 equals 1 second. Right now 2 secs.
-  }, 2000);
+    //1000 equals 1 second.
+  }, 1000);
 
   // Logic to remove empty lobbys every 20 secs.
   setInterval(async () => {
@@ -161,14 +161,14 @@ module.exports = function (io) {
           // Check wich lobby player belongs to by comparing lobbyId
           const id = await lobbies[i].getLobbyId();
           if (id === lobbyId) {
-
+            
             // Create new player instance, when a lobby is found
             const player = new playerHandler(socketId, playerName, lobbyId);
             await lobbies[i].setPlayer(player); 
             const gameMode = await lobbies[i].getGameMode();
             
             socket.join(lobbyId);
-            console.log("Player " + player.getPlayerName() + " joined: " + id);
+            console.log("Player " + await player.getPlayerName() + " joined: " + id);
             // Send the Routing information, when player was assigned to a lobby
             io.to(socketId).emit("lobbyRouting", { lobbyId, gameMode });
             lobbyFound = true;
@@ -358,10 +358,10 @@ module.exports = function (io) {
 
    socket.on("leaveLobby", async (data) => {
      const { lobbyId, socketId } = data;
-     console.log("leave lobby id:", lobbyId);
-     console.log("leave lobby socketid:", socketId);
+     console.log("leave lobby id: ", lobbyId);
+     console.log("leave lobby socketid: ", socketId);
 
-     console.log("Client used browser navigation and gets kicked out of the lobby:",socket.id);
+     console.log("Client used browser navigation and gets kicked out of the lobby: ",socket.id);
 
      const allLobbies = await listOfLobbies.getLobbies();
      const lobby = allLobbies.find((lobby) => lobby.lobbyId === lobbyId);
