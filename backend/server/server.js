@@ -82,6 +82,13 @@ app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
 
+setInterval(() => {
+    const url = process.env.RENDER_EXTERNAL_URL || 'https://bingo-app-cv3k.onrender.com';
+    
+    fetch(`${url}/health`)
+      .then(res => console.log(`Self-ping: ${res.status}`))
+      .catch(err => console.log('Self-ping failed:', err.message));
+  }, 60 * 1000 * 10);
 
 // imports the logik back to the server.js file
 require("../socket/socket-events.js")(io);
