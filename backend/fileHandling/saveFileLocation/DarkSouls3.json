@@ -1,10 +1,6 @@
 {
   "challenges": {
     "bingo": {
-      "Besiege einen Boss hitless": {
-        "length": ["short", "medium", "long"],
-        "gameMode": ["non-lockout", "lockout"]
-      },
       "Töte einen Boss nur mit Pyromancys/Sorceries/Miracles": {
         "length": ["short", "medium", "long"],
         "gameMode": ["non-lockout", "lockout"]
